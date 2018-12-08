@@ -102,13 +102,15 @@ basic idea of the pipeline
 
 \section*{Materials and Methods}
 
-\subsection*{Data}
+\subsection*{Platforms and Datasources}
+Nessra is designed in three steps in which first subsets data,
+secondly runs the skeleton of the PC algorithm and finally aggregates results, computing the frequencies of the transcripts.
 
-Chiara
+For the most computationally demanding step of Nessra, which consists in running the skeleton of the PC algorithm, the sigle gene expansions were run within the local gene@home \cite{boinc} BOINC (Berkeley Open Infrastructure for Network Computing) project, hosted by the TN-Grid platform. 
+The platform allowed to distribute the expansions computational burden to committed volunteers' machines in order to reduce the running time and memory usage of the algorithm as much as possible.
+This gene@home project was previously set up for the network expansion of genes whose expression data came from the FANTOM5 Database \cite{fantom}, so this guided the choice of the transcriptional data to run Nessra on.
+To adress the drug repurposing task, Open Targets\cite{open} platform was chosen to select genes involved in the CAD disease.  
 
-Fantom database +  Boinc + NESSRA
-
-Open targets
 
 \subsection*{Pipeline}
 
@@ -165,6 +167,18 @@ necessity of experimental validations
 \phantomsection
 \bibliographystyle{unsrt}
 \bibliography{biblio}
+\begin{thebibliography}{1}
+	
+	\bibitem{boinc} Asnicar, F. et al. NES2RA. Int. J. High Perform. Comput. Appl. 32, 380–392 (2016).
+	
+	
+	\bibitem{fantom} Noguchi, S. et al. FANTOM5 CAGE profiles of human and mouse samples. Sci Data 4, 170112 (2017).
+	
+	
+	\bibitem{open} Koscielny, G. et al. Open Targets: a platform for therapeutic target identification and validation. Nucleic Acids Res. 45, D985–D994 (2017).
+	
+	
+\end{thebibliography}
 
 %----------------------------------------------------------------------------------------
 
