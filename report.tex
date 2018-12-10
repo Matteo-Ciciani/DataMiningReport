@@ -104,8 +104,6 @@ basic idea of the pipeline
 
 \addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
 
-\subsection*{Data}
-
 \subsection*{Platforms and Datasources}
 Nessra is designed in three steps in which first subsets data,
 secondly runs the skeleton of the PC algorithm and finally aggregates results, computing the frequencies of the transcripts.
@@ -132,11 +130,17 @@ filter on isoforms
 
 Matteo
 
-The resulting n isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms were was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its isoforms.
+The resulting n isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its isoforms.
 
-The OpenTragets pyhton API was used to query which of these genes are known to be targets of clinically approved drugs. We obtained a list of 148 target genes.
+\subsubsection{Selection of target genes}
 
-In order to identify a subset of genes with a strong association with CAD, we selected the isoforms corresponding to these 148 target genes and we performed single isoform expansion using NES$^2$RA. Only the isoforms that passed the previous filter were considered. We expect NES$^2$RA expansion of genes that have strong interaction with CAD genes to have a large overlap with the list of CAD genes we started form.
+The Open Tragets pyhton API [reference?] was used to query which of these genes are known to be targets of clinically approved drugs. We obtained a list of 148 target genes, which are the only ones that are considered in the following analyses.
+
+\subsubsection{NES$^{\textbf{2}}$RA expansion of target genes}
+
+In order to identify a subset of genes with a strong association with CAD, we selected the isoforms corresponding to these 148 target genes and we performed single isoform expansions using NES$^2$RA. Only the isoforms that passed the previous filter were considered. We expect NES$^2$RA expansions of genes that have strong interaction with CAD genes to have a large overlap with the list of CAD genes we started form.
+
+\subsubsection{Comparison of expanded lists to CAD genes}
 
 In order to quantify the overlap between the ranked list of CAD genes and the ranked expansion lists obtained with NES$^2$RA, we used the weighted Jaccard similarity (WJS), defined as follows:
 
@@ -150,25 +154,27 @@ where $\rho_i$ and $\sigma_i$ are the weights corresponding to the same feature 
 
 In our analysis the weight of a feature $i$ (gene or isoform) in a ranked list $\rho$ is computed as $length(\rho) - rank_{\rho}(i) + 1$. This allows to assign large weights to high ranking features.
 
-Since in principle the lists of features that we want to compare with the WJS do not contain the same elements, we need to add the missing elements to those lists. Given two lists of features $\rho$ and $\sigma$, containing different elements, we added the missing elements of one list to the other and viceversa. The added elements are added as ties in the last position of the ranking.
+Since in principle the lists of features that we want to compare with the WJS do not contain the same elements, we need to add the missing elements to those lists. Given two lists of features $\rho$ and $\sigma$, containing different elements, we added the missing elements of one list to the other and viceversa. The missing elements are added as ties in the last position of the ranking.
 
-In order to compute the WJS of the ranked list of CAD genes and a ranked list of isoforms obtained using NES$^2$RA, we have to either convert the ranked list of CAD genes in a ranked list of isoforms or convert the ranked  list of isoforms obtained using NES$^2$RA in a ranked list of genes. We explored both options.
+In order to compute the WJS of the ranked list of CAD genes and a ranked list of isoforms obtained using NES$^2$RA, we have to either convert the ranked list of CAD genes in a ranked list of isoforms or convert the ranked list of isoforms obtained using NES$^2$RA in a ranked list of genes. We explored both options:
 
-\subsubsection{Convert NES$^2$RA isoforms into genes}
+\begin{itemize}
+	\item \textit{Convert NES$^2$RA isoforms into genes}: Given list of isoforms obtained with NES$^2$RA, we can convert it in a list of genes, assigning to each gene the largest relative frequency of its isoforms. Then the genes were ranked according to relative frequency.
+	\item \textit{Convert CAD genes into isoforms}: The ranked list of CAD genes was converted to a weighted list of isoforms, were the weight of each isoform corresponded to the rank of the genes. Then the list of isoforms was ranked according to the weights. This way, isoforms corresponding to the same gene presented the same rank.
+\end{itemize}
 
-Given list of isoforms obteined with NES$^2$RA, we can convert it in a list of genes, assigning to each gene the largest relative frequency of its isoforms. Then the genes were ranked according to relative frequency.
+We computed the WJS of the ranked list of CAD genes (respectively, isoforms) and the ranked lists of genes (respectively, isoforms) obtained with NES$^2$RA.
 
-\subsubsection{Convert CAD genes into isoforms}
+\subsubsection{Significance analysis} 
 
-The ranked list of CAD genes was converted to a weighted list of isoforms, were the weight of each isoform corresponded to the rank of the genes. Then the list of isoforms was ranked according to the weights. This way, isoforms corresponding to the same gene presented the same rank.
+The scores obtained in different comparisons are not directly comparable between them, since they depend on the length of the lists. In order to obtain values that can be compared directly, we used a permutation approach to estimate the distribution of scores of lists of different length. For each length present, we generated 2000 random lists of genes or isoforms, we computed the WJS and we generated a distribution of the scores. Then, we used this distributions to compute p-values.
 
-We computed the WJS of the ranked list of CAD genes (respectively, isoforms) and the ranked lists of genes (respectively, isoforms) obtained with NES$^2$RA. 
+Using a significance level of 0.05 (?), we obtained n genes and m isoforms with expansion lists enriched in CAD gene. The list of isoforms was also converted in a list of genes.
 
-The scores obtained in different comparisons are not directly comparable. This is due to the different length of the lists. In order to obtain values that can be compared directly, we used a permutation approach to estimate the distribution of scores of lists of different length. For each length present, we generated 2000 random lists of genes or isoforms, we computed the WJS and we generated a distribution of the scores. Then, we used this distribution to compute p-values.
+\subsubsection{Enrichment analysis}
 
-...
+In order to gain insight on the biological role of the identified genes, we performed a functional enrichment analysis...
 
-enrichment analysis
 
 \section*{Results}
 
