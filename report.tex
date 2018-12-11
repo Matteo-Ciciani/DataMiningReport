@@ -51,8 +51,8 @@
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
 
-\JournalInfo{Journal, Vol. XXI, No. 1, 1-5, 2013} % Journal information
-\Archive{Additional note} % Additional notes (e.g. copyright, DOI, review/research article)
+\JournalInfo{Laboratory of Data Mining Report} % Journal information
+\Archive{} % Additional notes (e.g. copyright, DOI, review/research article)
 
 \PaperTitle{Article Title} % Article title
 
@@ -111,6 +111,8 @@ The aim of the project is to see if NES2RA can be proposed as a new \textit{in s
 \addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
 
 
+\addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
+
 \subsection*{Platforms and Datasources}
 \addcontentsline{toc}{subsection}{Platforms and Datasources} % Adds this section to the table of contents
 
@@ -124,7 +126,13 @@ To adress the drug repurposing task, Open Targets\cite{open} platform was chosen
 
 
 \subsection*{Pipeline}
+<<<<<<< HEAD
 \addcontentsline{toc}{subsection}{Pipeline} % Adds this section to the table of contents
+=======
+
+\addcontentsline{toc}{subsection}{Pipeline} % Adds this section to the table of contents
+
+>>>>>>> e0690675f635b946caf5403f9a7f9ce7615e2a79
 Enri
 
 selection of genes to expand
@@ -137,23 +145,61 @@ filter on isoforms
 
 Matteo
 
-gene ranking on max score
+The resulting n isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its isoforms.
 
-selection of genes with a known drug: 150 genes
+\subsubsection{Selection of target genes}
 
-backward expansion
+The Open Tragets pyhton API [reference?] was used to query which of these genes are known to be targets of clinically approved drugs. We obtained a list of 148 target genes, which are the only ones that are considered in the following analyses.
 
-overlap analysis
+\subsubsection{NES$^{\textbf{2}}$RA expansion of target genes}
 
-...
+In order to identify a subset of genes with a strong association with CAD, we selected the isoforms corresponding to these 148 target genes and we performed single isoform expansions using NES$^2$RA. Only the isoforms that passed the previous filter were considered. We expect NES$^2$RA expansions of genes that have strong interaction with CAD genes to have a large overlap with the list of CAD genes we started form.
 
-enrichment analysis
+\subsubsection{Comparison of expanded lists to CAD genes}
+
+In order to quantify the overlap between the ranked list of CAD genes and the ranked expansion lists previously obtained, we used the weighted Jaccard similarity (WJS), which we define below.\medskip
+
+\noindent
+\textit{Definition: given two weighted list of items, $\rho$ and $\sigma$, of equal length $N$, their weighted Jaccard similarity, $WJS(\rho, \sigma)$, is defined as:}
+
+$$
+WJS(\rho, \sigma) = \dfrac{\sum_{i=1}^Nmin(\rho_i,\sigma_i)}{\sum_{i=1}^Nmax(\rho_i,\sigma_i)}
+$$
+
+\noindent
+\textit{where $\rho_i$ and $\sigma_i$ are the weights corresponding to the same feature $i$.}\medskip
+
+In our analysis the weight of a feature $i$ (gene or isoform) in a ranked list $\rho$ is computed as $length(\rho) - rank_{\rho}(i) + 1$. This allows to assign large weights to high ranking features.
+
+Since in principle the lists of features that we want to compare with the WJS do not contain the same elements, we need to add the missing elements to those lists. Given two lists of features $\rho$ and $\sigma$, containing different elements, we added the missing elements of one list to the other and viceversa. The missing elements are added as ties in the last position of the ranking.
+
+In order to compute the WJS of the ranked list of CAD genes and a ranked list of isoforms obtained using NES$^2$RA, we have to either convert the ranked list of CAD genes in a ranked list of isoforms or convert the ranked list of isoforms obtained using NES$^2$RA in a ranked list of genes. We explored both options:
+
+\begin{itemize}
+	\item \textit{Convert NES$^2$RA isoforms into genes}: Given list of isoforms obtained with NES$^2$RA, we can convert it in a list of genes, assigning to each gene the largest relative frequency of its isoforms. Then the genes were ranked according to relative frequency.
+	\item \textit{Convert CAD genes into isoforms}: The ranked list of CAD genes was converted to a weighted list of isoforms, were the weight of each isoform corresponded to the rank of the genes. Then the list of isoforms was ranked according to the weights. This way, isoforms corresponding to the same gene presented the same rank.
+\end{itemize}
+
+We computed the WJS of the ranked list of CAD genes (respectively, isoforms) and the ranked lists of genes (respectively, isoforms) obtained with NES$^2$RA.
+
+\subsubsection{Significance analysis} 
+
+The scores obtained in different comparisons are not directly comparable between them, since they depend on the length of the lists. In order to obtain values that can be compared directly, we used a permutation approach to estimate the distribution of scores of lists of different length. For each length present, we generated 2000 random lists of genes or isoforms, we computed the WJS and we generated a distribution of the scores. Then, we used this distributions to compute p-values.
+
+Using a significance level of 0.05 (?), we obtained n genes and m isoforms with expansion lists enriched in CAD gene. The list of isoforms was also converted in a list of genes.
+
+\subsubsection{Enrichment analysis}
+
+In order to gain insight on the biological role of the identified genes, we performed a functional enrichment analysis...
+
 
 \section*{Results}
 \addcontentsline{toc}{section}{Results} % Adds this section to the table of contents
 Matteo
 
-tables of genes found
+The list of 149 target genes is reported in the Supplementary Material.
+
+Tables of significant genes / isoforms 
 
 results of the enrichment analysis
 
@@ -206,5 +252,49 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 \end{thebibliography}
 
 %----------------------------------------------------------------------------------------
+%	SUPPLEMENTARY MATERIAL
+%----------------------------------------------------------------------------------------
+
+\pagebreak
+\onecolumn
+
+\section*{SUPPLEMENTARY MATERIAL}
+\renewcommand{\arraystretch}{1.05}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{llllll}
+		\hline
+		NDUFA4L2 & JAK1 & CDK16 & SRD5A1 & PRKCD & FLT4 \\ 
+		FN1 & KCNJ2 & PIM2 & FGFR4 & ABCA1 & DHODH \\ 
+		COL4A1 & FDPS & COL27A1 & TUBA1B & ERBB3 & FNTB \\ 
+		COL4A2 & CPT2 & ALOX5 & PIK3CG & NR3C1 & TNFSF12 \\ 
+		CTGF & LAMB3 & CD70 & GABBR1 & HGF & TGFB3 \\ 
+		F5 & PCSK9 & GSK3B & PDE2A & BIRC2 & KCNH8 \\ 
+		SEBOX & FLT1 & SLC29A1 & MMP9 & ERAP1 & EGLN2 \\ 
+		TGFB1 & VEGFB & PIM3 & PSCA & OPRL1 & METAP2 \\ 
+		F2 & POLD1 & CSF1 & CALM1 & GSTP1 & LAMA2 \\ 
+		TLR4 & IL1R1 & CASP7 & PDE8B & PRKACA & NDUFA13 \\ 
+		COL5A3 & XPNPEP2 & GAA & DNMT3A & RAMP2 & MAPKAPK5 \\ 
+		COL1A1 & NR1H3 & PDE4B & IL6 & HSP90AA1 & CD276 \\ 
+		FGA & NFE2L2 & PTGS2 & EPHA2 & INSR & HDAC5 \\ 
+		FOLR1 & GBA & NCSTN & PIK3CA & MAP3K9 & DRD2 \\ 
+		DHCR24 & PLA2G2A & NDUFS2 & TNFRSF8 & TNFSF13 & NTRK1 \\ 
+		GLP2R & ACAT1 & TSG101 & LTB4R & CASP8 & PIK3R3 \\ 
+		TNFRSF1A & FDFT1 & PLK1 & VDR & CACNG4 & MALT1 \\ 
+		AVPR1A & HLA-DRB1 & NDUFB7 & EEF2 & NFE2 & SLC6A9 \\ 
+		FGG & IFNGR2 & BCL2L1 & SCN9A & LTBR & HDAC6 \\ 
+		NAMPTL & PLA2G7 & IDH2 & PTH1R & EPHB6 & PTGER4 \\ 
+		SRD5A3 & CHEK2 & PSMA4 & P4HB & GART & KCNK10 \\ 
+		PDE4D & ATP1B3 & ENG & CFD & KCNH2 & CD44 \\ 
+		HAMP & ANPEP & EPHA1 & ARAF & S1PR5 & P4HTM \\ 
+		RARA & COL6A3 & TNFRSF10B & SIGMAR1 & TUBB & MET \\ 
+		NAMPT & COL11A2 & CDK14 & IFNAR2 & KCNC3 &  \\ 
+		\hline
+	\end{tabular}
+	\smallskip
+	\caption{List of tagret genes}
+\end{table}
+
 
 \end{document}
