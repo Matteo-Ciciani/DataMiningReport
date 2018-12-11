@@ -27,9 +27,10 @@ digraph workflow {
     }
     OT3 [shape = cylinder, label = "Open Targets", style = filled, fillcolor = DeepSkyBlue]
     CAD2 [shape = note, label = "~600 CAD genes", style = filled, fillcolor = Gold]
-    WJS [shape = note, label = "WJS\nscores", style = filled, fillcolor = PaleGreen]
+    WJSmethod [shape = box, label = "Weighted\nJaccard\nSimilarity", style = filled, fillcolor = Salmon]
+    WJS [shape = note, label = "WJS\nscores", style = filled, fillcolor = Gold]
     null [shape = box, label = "permutations", style = filled, fillcolor = Salmon]
-    pvals [shape = note, label = "significant\ngenes", style = filled, fillcolor = PaleGreen]
+    pvals [shape = note, label = "significant\ngenes", style = filled, fillcolor = Gold]
     
     OT -> CAD -> NESSRA
     NESSRA -> 2 [lhead = cluster_1]
@@ -37,6 +38,6 @@ digraph workflow {
     filter -> iso_2k
     {OT2 iso_2k} -> targets -> NESSRA2
     NESSRA2 -> 22 [lhead = cluster_2]
-    dots2 -> WJS [ltail = cluster_2]
-    OT3 -> CAD2 -> WJS -> null -> pvals
+    dots2 -> WJSmethod [ltail = cluster_2]
+    OT3 -> CAD2 -> WJSmethod -> WJS -> null -> pvals
 }
