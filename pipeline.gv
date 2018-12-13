@@ -1,0 +1,43 @@
+digraph workflow {
+    compound = true
+    edge[arrowhead = vee]
+    node[fontsize = 8.5]
+    OT [shape = cylinder, label = "Open Targets", style = filled, fillcolor = DeepSkyBlue]
+    CAD [shape = note, label = "48 CAD genes", style = filled, fillcolor = Gold]
+    NESSRA [shape = box, label = "NES²RA", style = filled, fillcolor = Salmon]
+    subgraph cluster_1 {
+        labeljust = "l"
+        style = dashed
+        n [shape = note, label = "expansion n", style = filled, fillcolor = Gold]
+        dots [shape = plain, label = "...", fontsize = 20]
+        2 [shape = note, label = "expansion 2", style = filled, fillcolor = Gold]
+        1 [shape = note, label = "expansion 1", style = filled, fillcolor = Gold]
+    }
+    filter [shape = box, label = "aggregation\n+\nfilter", style = filled, fillcolor = Salmon]
+    iso_2k [shape = note, label = "~2000\nselected\nisoforms", style = filled, fillcolor = Gold]
+    OT2 [shape = cylinder, label = "Open Targets", style = filled, fillcolor = DeepSkyBlue]
+    targets [shape = note, label = "149 target\ngenes", style = filled, fillcolor = Gold]
+    NESSRA2 [shape = box, label = "NES²RA", style = filled, fillcolor = Salmon]
+    subgraph cluster_2 {
+        style = dashed
+        n2 [shape = note, label = "expansion m", style = filled, fillcolor = Gold]
+        dots2 [shape = plain, label = "...", fontsize = 20]
+        22 [shape = note, label = "expansion 2", style = filled, fillcolor = Gold]
+        12 [shape = note, label = "expansion 1", style = filled, fillcolor = Gold]
+    }
+    OT3 [shape = cylinder, label = "Open Targets", style = filled, fillcolor = DeepSkyBlue]
+    CAD2 [shape = note, label = "~600 CAD genes", style = filled, fillcolor = Gold]
+    WJSmethod [shape = box, label = "Weighted\nJaccard\nSimilarity", style = filled, fillcolor = Salmon]
+    WJS [shape = note, label = "WJS\nscores", style = filled, fillcolor = Gold]
+    null [shape = box, label = "permutations", style = filled, fillcolor = Salmon]
+    pvals [shape = note, label = "significant\ngenes", style = filled, fillcolor = Gold]
+    
+    OT -> CAD -> NESSRA
+    NESSRA -> 2 [lhead = cluster_1]
+    2 -> filter [ltail = cluster_1]
+    filter -> iso_2k
+    {OT2 iso_2k} -> targets -> NESSRA2
+    NESSRA2 -> 22 [lhead = cluster_2]
+    dots2 -> WJSmethod [ltail = cluster_2]
+    OT3 -> CAD2 -> WJSmethod -> WJS -> null -> pvals
+}
