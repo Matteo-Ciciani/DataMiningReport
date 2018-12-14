@@ -19,6 +19,8 @@
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
+\PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{dvipsnames}{xcolor}
 
 \documentclass[fleqn,10pt]{SelfArx} % Document font size and equations flushed left
 
@@ -204,6 +206,12 @@ The list of 149 target genes is reported in the Supplementary Material.
 
 Tables of significant genes / isoforms 
 
+\begin{figure}[ht]
+	\includegraphics[width=\linewidth]{already_in}
+	\smallskip
+	\caption{Putative targets already associated with CAD. Four of them are also already targeted in CAD.}
+\end{figure}
+
 results of the enrichment analysis
 
 \section*{Discussion}
@@ -298,6 +306,93 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\smallskip
 	\caption{List of tagret genes}
 \end{table}
+
+\renewcommand{\arraystretch}{1.2}
+
+\begin{table}[ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabular}{|lllll|}
+		\hline
+		\rowcolor{NavyBlue!80}
+		\color{white} \textbf{DRUG} & \color{white} \textbf{TARGET} & \color{white} \textbf{DISEASE} & \color{white} \textbf{PAHSE} & \color{white} \textbf{MOLECULE TYPE} \\
+		\hline
+		SORAFENIB & FLT1 & neoplasm & Phase IV & Small molecule \\ 
+		COLLAGENASE CLOSTRIDIUM HISTOLYTICUM & COL5A3 & Dupuytren Contracture & Phase IV & Enzyme \\ 
+		APREMILAST & PDE4D & immune system disease & Phase IV & Small molecule \\ 
+		INSULIN GLARGINE & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		METFORMIN & NDUFA4L2 & type II diabetes mellitus & Phase IV & Small molecule \\ 
+		INSULIN HUMAN & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		ADAPALENE & RARA & acne & Phase IV & Small molecule \\ 
+		THEOPHYLLINE & PDE4B & Bronchiectasis & Phase IV & Small molecule \\ 
+		LENVATINIB & FLT1 & thyroid carcinoma & Phase IV & Small molecule \\ 
+		INSULIN PORK & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		PEGINTERFERON ALFA-2A & IFNAR2 & hepatitis C infection & Phase IV & Protein \\ 
+		INTERFERON BETA-1A & IFNAR2 & multiple sclerosis & Phase IV & Protein \\ 
+		FLAVOXATE & PDE4D & pain & Phase IV & Small molecule \\ 
+		DECITABINE & DNMT3A & chronic myelomonocytic leukemia & Phase IV & Small molecule \\ 
+		AZACITIDINE & DNMT3A & myelodysplastic syndrome & Phase IV & Small molecule \\ 
+		INSULIN LISPRO & INSR & type I diabetes mellitus & Phase IV & Protein \\ 
+		ACITRETIN & RARA & squamous cell carcinoma & Phase IV & Small molecule \\ 
+		TRETINOIN & RARA & acne & Phase IV & Small molecule \\ 
+		PENTOXIFYLLINE & PDE4B & chronic kidney disease & Phase IV & Small molecule \\ 
+		PEGINTERFERON ALFA-2B & IFNAR2 & Chronic Hepatitis C infection & Phase IV & Protein \\ 
+		INSULIN DETEMIR & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		DRONEDARONE & KCNJ2 & atrial fibrillation & Phase IV & Small molecule \\ 
+		ISOTRETINOIN & RARA & seborrheic dermatitis & Phase IV & Small molecule \\ 
+		DIPYRIDAMOLE & PDE4D & coronary artery disease & Phase IV & Small molecule \\ 
+		INSULIN ASPART & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		CRISABOROLE & PDE4B & seborrheic dermatitis & Phase IV & Small molecule \\ 
+		SUNITINIB & FLT1 & neoplasm & Phase IV & Small molecule \\ 
+		INSULIN GLULISINE & INSR & type I diabetes mellitus & Phase IV & Protein \\ 
+		INSULIN SUSP ISOPHANE BEEF & INSR & type I diabetes mellitus & Phase IV & Protein \\ 
+		NINTEDANIB & FLT1 & idiopathic pulmonary fibrosis & Phase IV & Small molecule \\ 
+		ROFLUMILAST & PDE4B & chronic obstructive pulmonary disease & Phase IV & Small molecule \\ 
+		INTERFERON BETA-1B & IFNAR2 & relapsing-remitting multiple sclerosis & Phase IV & Protein \\ 
+		CONIVAPTAN & AVPR1A & heart failure & Phase IV & Small molecule \\ 
+		TAZAROTENE & RARA & acne & Phase IV & Small molecule \\ 
+		TOFACITINIB & JAK1 & rheumatoid arthritis & Phase IV & Small molecule \\ 
+		ETRETINATE & RARA & psoriasis & Phase IV & Small molecule \\ 
+		INSULIN DEGLUDEC & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		PAZOPANIB & FLT1 & renal cell carcinoma & Phase IV & Small molecule \\ 
+		INSULIN ASPART PROTAMINE RECOMBINANT & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		SILTUXIMAB & IL6 & Giant Lymph Node Hyperplasia & Phase IV & Antibody \\ 
+		PEGINTERFERON BETA-1A & IFNAR2 & multiple sclerosis & Phase IV & Protein \\ 
+		INSULIN PURIFIED PORK & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		ANAKINRA & IL1R1 & immune system disease & Phase IV & Protein \\ 
+		INTERFERON ALFA-2B & IFNAR2 & Chronic Hepatitis C infection & Phase IV & Protein \\ 
+		FIBRINOLYSIN, HUMAN & FGA & Recurrent thrombophlebitis & Phase IV & Unknown \\ 
+		VASOPRESSIN & AVPR1A & sudden cardiac arrest & Phase IV & Protein \\ 
+		DROTRECOGIN ALFA (ACTIVATED) & F5 & sepsis & Phase IV & Unknown \\ 
+		INTERFERON ALFACON-1 & IFNAR2 & hepatitis C infection & Phase IV & Protein \\ 
+		INSULIN SUSP ISOPHANE RECOMBINANT HUMAN & INSR & diabetic ketoacidosis & Phase IV & Protein \\ 
+		MIGLITOL & GAA & diabetes mellitus & Phase IV & Small molecule \\ 
+		INSULIN SUSP ISOPHANE SEMISYNTHETIC PURIFIED HUMAN & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		TIVOZANIB & FLT1 & neoplasm & Phase IV & Small molecule \\ 
+		AXITINIB & FLT1 & neoplasm & Phase IV & Small molecule \\ 
+		REGORAFENIB & FLT1 & neoplasm & Phase IV & Small molecule \\ 
+		DESMOPRESSIN & AVPR1A & hemorrhage & Phase IV & Protein \\ 
+		RUXOLITINIB & JAK1 & polycythemia vera & Phase IV & Small molecule \\ 
+		INSULIN PURIFIED BEEF & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		VANDETANIB & FLT1 & thyroid carcinoma & Phase IV & Small molecule \\ 
+		ALITRETINOIN & RARA & neoplasm & Phase IV & Small molecule \\ 
+		INSULIN LISPRO PROTAMINE RECOMBINANT & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		DYPHYLLINE & PDE4B & obstructive lung disease & Phase IV & Small molecule \\ 
+		BARICITINIB & JAK1 & immune system disease & Phase IV & Small molecule \\ 
+		AMLEXANOX & PDE4D & obstructive lung disease & Phase IV & Small molecule \\ 
+		OCRIPLASMIN & FN1 & macular holes & Phase IV & Enzyme \\ 
+		DINOPROSTONE & PTGER4 & pregnancy & Phase IV & Small molecule \\ 
+		INTERFERON ALFA-2A & IFNAR2 & lymphoma & Phase IV & Protein \\ 
+		COPANLISIB & PIK3CG & non-Hodgkins lymphoma & Phase IV & Small molecule \\ 
+		INSULIN ZINC SUSP RECOMBINANT HUMAN & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		INTERFERON ALFA-N3 & IFNAR2 & severe acute respiratory syndrome & Phase IV & Protein \\ 
+		\hline
+	\end{tabular}
+	\smallskip
+	\caption{List of drugs targeting the 36 genes. Only Phase IV drugs are reportes.}
+\end{table}
+
 
 
 \end{document}
