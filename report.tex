@@ -28,6 +28,8 @@
 
 \usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
 \usepackage{tabularx}
+\usepackage{multirow}
+\setlength{\parindent}{0pt}
 
 %----------------------------------------------------------------------------------------
 %	COLUMNS
@@ -113,9 +115,6 @@ The aim of the project is to see if NES2RA can be proposed as a new \textit{in s
 \section*{Materials and Methods}
 \addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
 
-
-\addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
-
 \subsection*{Platforms and Datasources}
 \addcontentsline{toc}{subsection}{Platforms and Datasources} % Adds this section to the table of contents
 
@@ -129,6 +128,7 @@ To adress the drug repurposing task, Open Targets\cite{open} platform was chosen
 
 
 \subsection*{Pipeline}
+\addcontentsline{toc}{subsection}{Pipeline} % Adds this section to the table of contents
 
 
 general description of the pipeline and figure
@@ -136,6 +136,7 @@ general description of the pipeline and figure
 \begin{figure}
 	\includegraphics[width=1.1\linewidth, trim = 2cm 0 1.5cm 0.4cm, clip = true]{pipeline.png}
 	\caption{Pipeline sketch. Color legend = ...}
+	\label{Fig:pipe}
 \end{figure}
 
 Enri
@@ -202,14 +203,73 @@ In order to gain insight on the biological role of the identified genes, we perf
 \addcontentsline{toc}{section}{Results} % Adds this section to the table of contents
 Matteo
 
-The list of 149 target genes is reported in the Supplementary Material.
+The list of 149 target genes is reported in the Supplementary Material (Tab. \ref{tab:194genes}).
 
-Tables of significant genes / isoforms 
+The list of 36 significant genes are reported in Tab. \ref{tab:sign}. In this table are also indicated the genes found by option2.
+
+\renewcommand{\arraystretch}{1.1}
+
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\begin{table}[htb]
+	\centering
+	\rowcolors{2}{NavyBlue!10}{white}
+	\begin{tabularx}{\linewidth}{XRRRR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Gene} & \textbf{\color{white} Number of isoforms} & \textbf{\color{white} Minimum p-value} & \textbf{\color{white} Number of isoforms} & \textbf{\color{white} Minimum p-value} \\ 
+		CASP7 & 1 & 0 & 1 & 0 \\ 
+		COL1A1 & 1 & 0 & 1 & 0 \\ 
+		COL4A1 & 4 & 0 & 4 & 0 \\ 
+		COL4A2 & 6 & 0 & 3 & 0 \\ 
+		CTGF & 2 & 0 & 1 & 0 \\ 
+		FN1 & 8 & 0 & 8 & 0 \\ 
+		IL1R1 & 1 & 0 & 1 & 0 \\ 
+		INSR & 1 & 0 & 1 & 4.0e-02 \\ 
+		JAK1 & 1 & 0 &  &  \\ 
+		NDUFA4L2 & 1 & 0 & 1 & 0 \\ 
+		PDE4B & 2 & 0 & 1 & 1.7e-02 \\ 
+		PDE4D & 3 & 0 & 2 & 7.5e-03 \\ 
+		RARA & 1 & 0 &  &  \\ 
+		TLR4 & 2 & 0 &  &  \\ 
+		PIK3CG & 1 & 1.2e-02 &  &  \\ 
+		FNTB & 1 & 1.6e-02 &  &  \\ 
+		CSF1 & 1 & 1.7e-02 &  &  \\ 
+		TSG101 & 1 & 1.7e-02 &  &  \\ 
+		F5 & 1 & 2.3e-02 &  &  \\ 
+		CDK14 & 1 & 2.6e-02 & 1 & 2.2e-02 \\ 
+		TGFB1 & 2 & 2.7e-02 &  &  \\ 
+		ANPEP & 1 & 2.9e-03 &  &  \\ 
+		AVPR1A & 1 & 2.9e-03 & 1 & 4.1e-03 \\ 
+		DNMT3A & 1 & 2.9e-03 &  &  \\ 
+		PIK3CA & 1 & 2.9e-03 & 1 & 3.9e-02 \\ 
+		TNFRSF1A & 1 & 2.9e-03 &  &  \\ 
+		IL6 & 1 & 3.2e-02 & 1 & 1.7e-02 \\ 
+		FLT1 & 1 & 3.5e-02 &  &  \\ 
+		SEBOX & 1 & 3.8e-02 &  &  \\ 
+		COL5A3 & 1 & 4.4e-02 &  &  \\ 
+		GAA & 1 & 4.4e-02 &  &  \\ 
+		KCNJ2 & 1 & 4.6e-02 & 1 & 1.1e-02 \\ 
+		FGA & 1 & 4.9e-02 &  &  \\ 
+		NAMPT & 1 & 5.3e-03 &  &  \\ 
+		IFNAR2 & 1 & 7.5e-03 &  &  \\ 
+		PTGER4 & 1 & 7.5e-03 &  &  \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{resulting genes}
+	\label{tab:sign}
+\end{table}
+
+The results of the enrichment analysis against the Biological Processes form Gene Ontology are reported in Tab. \ref{tab:GO36_1} and Tab. \ref{tab:GO36_2} for the results of option1 and in Tab. \ref*{tab:GO18} for the results of option2.
+
+The drugs that target the genes resulting from option1 are reported in Tab. \ref{tab:drugs}.
+
+19 genes found were already associated with CAD. 4 of them are also target of drugs used to treat CAD. The list of genes and their association levels are reported in Fig. \ref{fig:19CAD}.
+
 
 \begin{figure}[ht]
 	\includegraphics[width=\linewidth]{already_in}
 	\smallskip
 	\caption{Putative targets already associated with CAD. Four of them are also already targeted in CAD.}
+	\label{fig:19CAD}
 \end{figure}
 
 results of the enrichment analysis
@@ -246,7 +306,7 @@ necessity of experimental validations
 %----------------------------------------------------------------------------------------
 \phantomsection
 \bibliographystyle{unsrt}
-\bibliography{biblio}
+%\bibliography{biblio}
 \begin{thebibliography}{1}
 	
 	\bibitem{Polamreddy} Polamreddy P, Gattu N. The drug repurposing landscape from 2012 to 2017: evolution, challenges, and possible solutions. Drug Discov Today. 2018 Dec 1.	
@@ -281,7 +341,6 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 \onecolumn
 
 \section*{SUPPLEMENTARY MATERIAL}
-\renewcommand{\arraystretch}{1.05}
 
 \addcontentsline{toc}{section}{Supplementary Material} % Adds this section to the table of contents
 
@@ -318,6 +377,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{List of tagret genes}
+	\label{tab:194genes}
 \end{table}
 
 \renewcommand{\arraystretch}{1.2}
@@ -401,6 +461,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{List of drugs targeting the 36 genes. Only Phase IV drugs are reportes.}
+	\label{tab:drugs}
 \end{table}
 
 
@@ -481,6 +542,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{GO terms enriched in the list of 36 (continued)}
+	\label{tab:GO36_1}
 \end{table}
 			
 \begin{table}[!htb]
@@ -522,6 +584,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{GO terms enriched in the list of 36.}
+	\label{tab:GO36_2}
 \end{table}
 
 \begin{table}[!htb]
@@ -566,6 +629,8 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{GO terms enriched in the list of 18}
+	\label{tab:GO18}
 \end{table}
+
 
 \end{document}
