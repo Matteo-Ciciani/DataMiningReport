@@ -19,12 +19,17 @@
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
+\PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{dvipsnames}{xcolor}
 
 \documentclass[fleqn,10pt]{SelfArx} % Document font size and equations flushed left
 
 \usepackage[english]{babel} % Specify a different language here - english by default
 
 \usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
+\usepackage{tabularx}
+\usepackage{multirow}
+\setlength{\parindent}{0pt}
 
 %----------------------------------------------------------------------------------------
 %	COLUMNS
@@ -110,9 +115,6 @@ The aim of the project is to see if NES$^2$RA can be proposed as a new \textit{i
 \section*{Materials and Methods}
 \addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
 
-
-\addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
-
 \subsection*{Platforms and Datasources}
 \addcontentsline{toc}{subsection}{Platforms and Datasources} % Adds this section to the table of contents
 
@@ -126,6 +128,7 @@ To adress the drug repurposing task, Open Targets\cite{open} platform was chosen
 
 
 \subsection*{Pipeline}
+\addcontentsline{toc}{subsection}{Pipeline} % Adds this section to the table of contents
 
 
 general description of the pipeline and figure
@@ -133,6 +136,7 @@ general description of the pipeline and figure
 \begin{figure}
 	\includegraphics[width=1.1\linewidth, trim = 2cm 0 1.5cm 0.4cm, clip = true]{pipeline.png}
 	\caption{Pipeline sketch. Color legend = ...}
+	\label{Fig:pipe}
 \end{figure}
 
 Enri
@@ -199,15 +203,88 @@ In order to gain insight on the biological role of the identified genes, we perf
 \addcontentsline{toc}{section}{Results} % Adds this section to the table of contents
 Matteo
 
-The list of 149 target genes is reported in the Supplementary Material.
+The list of 149 target genes is reported in the Supplementary Material (Tab. \ref{tab:194genes}).
 
-Tables of significant genes / isoforms 
+The list of 36 significant genes are reported in Tab. \ref{tab:sign}. In this table are also indicated the genes found by option2.
+
+\renewcommand{\arraystretch}{1.1}
+
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\begin{table}[htb]
+	\centering
+	\rowcolors{2}{NavyBlue!10}{white}
+	\begin{tabularx}{\linewidth}{XRRRR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Gene} & \textbf{\color{white} Number of isoforms} & \textbf{\color{white} Minimum p-value} & \textbf{\color{white} Number of isoforms} & \textbf{\color{white} Minimum p-value} \\ 
+		CASP7 & 1 & 0 & 1 & 0 \\ 
+		COL1A1 & 1 & 0 & 1 & 0 \\ 
+		COL4A1 & 4 & 0 & 4 & 0 \\ 
+		COL4A2 & 6 & 0 & 3 & 0 \\ 
+		CTGF & 2 & 0 & 1 & 0 \\ 
+		FN1 & 8 & 0 & 8 & 0 \\ 
+		IL1R1 & 1 & 0 & 1 & 0 \\ 
+		INSR & 1 & 0 & 1 & 4.0e-02 \\ 
+		JAK1 & 1 & 0 &  &  \\ 
+		NDUFA4L2 & 1 & 0 & 1 & 0 \\ 
+		PDE4B & 2 & 0 & 1 & 1.7e-02 \\ 
+		PDE4D & 3 & 0 & 2 & 7.5e-03 \\ 
+		RARA & 1 & 0 &  &  \\ 
+		TLR4 & 2 & 0 &  &  \\ 
+		PIK3CG & 1 & 1.2e-02 &  &  \\ 
+		FNTB & 1 & 1.6e-02 &  &  \\ 
+		CSF1 & 1 & 1.7e-02 &  &  \\ 
+		TSG101 & 1 & 1.7e-02 &  &  \\ 
+		F5 & 1 & 2.3e-02 &  &  \\ 
+		CDK14 & 1 & 2.6e-02 & 1 & 2.2e-02 \\ 
+		TGFB1 & 2 & 2.7e-02 &  &  \\ 
+		ANPEP & 1 & 2.9e-03 &  &  \\ 
+		AVPR1A & 1 & 2.9e-03 & 1 & 4.1e-03 \\ 
+		DNMT3A & 1 & 2.9e-03 &  &  \\ 
+		PIK3CA & 1 & 2.9e-03 & 1 & 3.9e-02 \\ 
+		TNFRSF1A & 1 & 2.9e-03 &  &  \\ 
+		IL6 & 1 & 3.2e-02 & 1 & 1.7e-02 \\ 
+		FLT1 & 1 & 3.5e-02 &  &  \\ 
+		SEBOX & 1 & 3.8e-02 &  &  \\ 
+		COL5A3 & 1 & 4.4e-02 &  &  \\ 
+		GAA & 1 & 4.4e-02 &  &  \\ 
+		KCNJ2 & 1 & 4.6e-02 & 1 & 1.1e-02 \\ 
+		FGA & 1 & 4.9e-02 &  &  \\ 
+		NAMPT & 1 & 5.3e-03 &  &  \\ 
+		IFNAR2 & 1 & 7.5e-03 &  &  \\ 
+		PTGER4 & 1 & 7.5e-03 &  &  \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{resulting genes}
+	\label{tab:sign}
+\end{table}
+
+The results of the enrichment analysis against the Biological Processes form Gene Ontology are reported in Tab. \ref{tab:GO36_1} and Tab. \ref{tab:GO36_2} for the results of option1 and in Tab. \ref*{tab:GO18} for the results of option2.
+
+The drugs that target the genes resulting from option1 are reported in Tab. \ref{tab:drugs}.
+
+19 genes found were already associated with CAD. 4 of them are also target of drugs used to treat CAD. The list of genes and their association levels are reported in Fig. \ref{fig:19CAD}.
+
+
+\begin{figure}[ht]
+	\includegraphics[width=\linewidth]{already_in}
+	\smallskip
+	\caption{Putative targets already associated with CAD. Four of them are also already targeted in CAD.}
+	\label{fig:19CAD}
+\end{figure}
 
 results of the enrichment analysis
 
 \section*{Discussion}
 \addcontentsline{toc}{section}{Discussion} % Adds this section to the table of contents
-Chiara
+Because NESS2RA gene -isoforms- expansions are meant to explore through a local gene network approach the space of putative causal relationships between genes, without any further biological heuristics,NESS2RA outcome results conservative? enough to the further application of Filtering, Aggregation, Ranking and Comparison methods.
+
+
+
+Performing Enrichment analysis on Open Targets of the 36 genes resulted positive to the Significance analysis, GO terms (see Table 5) such as platelet activation, Tyrosine kinase signaling pathway,regulation of blood circulation, cell chemotaxis, angiogenesis and striated muscle contraction are present. 
+
+Performing Enrichment analysis on Open Targets of the 18 genes positive to the Significance analysis, GO terms (see Table 5) such as circulatory system development, cardiac muscle contraction and relaxation (pvalue 7.43^04), blood circulation, leukocytes migration are present (among others more general terms such as responce to compounds?) 
+ 
+Performing it on Top genes, specifically looking at Disease terms - pvalue
 
 gene that are already targets of drugs used for cad
 
@@ -218,6 +295,9 @@ discussion of new targets and drugs
 \section*{Conclusions}
 \addcontentsline{toc}{section}{Conclusions} % Adds this section to the table of contents
 
+The pipeline described here was intended to investigate on the potentialities of NESS2RA implementation in respect to a drug repurposing objective.
+NESS2RA allows to search for putative causal relationships between genes (specifically isoforms) but then a delicate phase of filtering, aggregation and validation has to follow in order to identify most promising gene relations.
+
 necessity of experimental validations
 
 \phantomsection
@@ -226,7 +306,7 @@ necessity of experimental validations
 %----------------------------------------------------------------------------------------
 \phantomsection
 \bibliographystyle{unsrt}
-\bibliography{biblio}
+%\bibliography{biblio}
 \begin{thebibliography}{1}
 	
 	\bibitem{Polamreddy} Polamreddy P, Gattu N. The drug repurposing landscape from 2012 to 2017: evolution, challenges, and possible solutions. Drug Discov Today. 2018 Dec 1.	
@@ -261,15 +341,14 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 \onecolumn
 
 \section*{SUPPLEMENTARY MATERIAL}
-\renewcommand{\arraystretch}{1.05}
 
 \addcontentsline{toc}{section}{Supplementary Material} % Adds this section to the table of contents
 
 
 \begin{table}[ht]
 	\centering
-	\begin{tabular}{llllll}
-		\hline
+	\rowcolors{2}{NavyBlue!10}{white}
+	\begin{tabularx}{\textwidth}{XXXXXX}
 		NDUFA4L2 & JAK1 & CDK16 & SRD5A1 & PRKCD & FLT4 \\ 
 		FN1 & KCNJ2 & PIM2 & FGFR4 & ABCA1 & DHODH \\ 
 		COL4A1 & FDPS & COL27A1 & TUBA1B & ERBB3 & FNTB \\ 
@@ -295,10 +374,263 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		HAMP & ANPEP & EPHA1 & ARAF & S1PR5 & P4HTM \\ 
 		RARA & COL6A3 & TNFRSF10B & SIGMAR1 & TUBB & MET \\ 
 		NAMPT & COL11A2 & CDK14 & IFNAR2 & KCNC3 &  \\ 
-		\hline
-	\end{tabular}
+	\end{tabularx}
 	\smallskip
-	\caption{List of target genes}
+	\caption{List of tagret genes}
+	\label{tab:194genes}
+\end{table}
+
+\renewcommand{\arraystretch}{1.2}
+
+\begin{table}[ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lXlll}
+		\rowcolor{NavyBlue!80}
+		 \textbf{\color{white} DRUG} & \textbf{\color{white} TARGET} & \textbf{\color{white} DISEASE} & \textbf{\color{white} PAHSE} & \textbf{\color{white} MOLECULE TYPE} \\
+		SORAFENIB & FLT1 & neoplasm & Phase IV & Small molecule \\ 
+		COLLAGENASE CLOSTRIDIUM HISTOLYTICUM & COL5A3 & Dupuytren Contracture & Phase IV & Enzyme \\ 
+		APREMILAST & PDE4D & immune system disease & Phase IV & Small molecule \\ 
+		INSULIN GLARGINE & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		METFORMIN & NDUFA4L2 & type II diabetes mellitus & Phase IV & Small molecule \\ 
+		INSULIN HUMAN & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		ADAPALENE & RARA & acne & Phase IV & Small molecule \\ 
+		THEOPHYLLINE & PDE4B & Bronchiectasis & Phase IV & Small molecule \\ 
+		LENVATINIB & FLT1 & thyroid carcinoma & Phase IV & Small molecule \\ 
+		INSULIN PORK & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		PEGINTERFERON ALFA-2A & IFNAR2 & hepatitis C infection & Phase IV & Protein \\ 
+		INTERFERON BETA-1A & IFNAR2 & multiple sclerosis & Phase IV & Protein \\ 
+		FLAVOXATE & PDE4D & pain & Phase IV & Small molecule \\ 
+		DECITABINE & DNMT3A & chronic myelomonocytic leukemia & Phase IV & Small molecule \\ 
+		AZACITIDINE & DNMT3A & myelodysplastic syndrome & Phase IV & Small molecule \\ 
+		INSULIN LISPRO & INSR & type I diabetes mellitus & Phase IV & Protein \\ 
+		ACITRETIN & RARA & squamous cell carcinoma & Phase IV & Small molecule \\ 
+		TRETINOIN & RARA & acne & Phase IV & Small molecule \\ 
+		PENTOXIFYLLINE & PDE4B & chronic kidney disease & Phase IV & Small molecule \\ 
+		PEGINTERFERON ALFA-2B & IFNAR2 & Chronic Hepatitis C infection & Phase IV & Protein \\ 
+		INSULIN DETEMIR & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		DRONEDARONE & KCNJ2 & atrial fibrillation & Phase IV & Small molecule \\ 
+		ISOTRETINOIN & RARA & seborrheic dermatitis & Phase IV & Small molecule \\ 
+		DIPYRIDAMOLE & PDE4D & coronary artery disease & Phase IV & Small molecule \\ 
+		INSULIN ASPART & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		CRISABOROLE & PDE4B & seborrheic dermatitis & Phase IV & Small molecule \\ 
+		SUNITINIB & FLT1 & neoplasm & Phase IV & Small molecule \\ 
+		INSULIN GLULISINE & INSR & type I diabetes mellitus & Phase IV & Protein \\ 
+		INSULIN SUSP ISOPHANE BEEF & INSR & type I diabetes mellitus & Phase IV & Protein \\ 
+		NINTEDANIB & FLT1 & idiopathic pulmonary fibrosis & Phase IV & Small molecule \\ 
+		ROFLUMILAST & PDE4B & chronic obstructive pulmonary disease & Phase IV & Small molecule \\ 
+		INTERFERON BETA-1B & IFNAR2 & relapsing-remitting multiple sclerosis & Phase IV & Protein \\ 
+		CONIVAPTAN & AVPR1A & heart failure & Phase IV & Small molecule \\ 
+		TAZAROTENE & RARA & acne & Phase IV & Small molecule \\ 
+		TOFACITINIB & JAK1 & rheumatoid arthritis & Phase IV & Small molecule \\ 
+		ETRETINATE & RARA & psoriasis & Phase IV & Small molecule \\ 
+		INSULIN DEGLUDEC & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		PAZOPANIB & FLT1 & renal cell carcinoma & Phase IV & Small molecule \\ 
+		INSULIN ASPART PROTAMINE RECOMBINANT & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		SILTUXIMAB & IL6 & Giant Lymph Node Hyperplasia & Phase IV & Antibody \\ 
+		PEGINTERFERON BETA-1A & IFNAR2 & multiple sclerosis & Phase IV & Protein \\ 
+		INSULIN PURIFIED PORK & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		ANAKINRA & IL1R1 & immune system disease & Phase IV & Protein \\ 
+		INTERFERON ALFA-2B & IFNAR2 & Chronic Hepatitis C infection & Phase IV & Protein \\ 
+		FIBRINOLYSIN, HUMAN & FGA & Recurrent thrombophlebitis & Phase IV & Unknown \\ 
+		VASOPRESSIN & AVPR1A & sudden cardiac arrest & Phase IV & Protein \\ 
+		DROTRECOGIN ALFA (ACTIVATED) & F5 & sepsis & Phase IV & Unknown \\ 
+		INTERFERON ALFACON-1 & IFNAR2 & hepatitis C infection & Phase IV & Protein \\ 
+		INSULIN SUSP ISOPHANE RECOMBINANT HUMAN & INSR & diabetic ketoacidosis & Phase IV & Protein \\ 
+		MIGLITOL & GAA & diabetes mellitus & Phase IV & Small molecule \\ 
+		INSULIN SUSP ISOPHANE SEMISYNTHETIC PURIFIED HUMAN & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		TIVOZANIB & FLT1 & neoplasm & Phase IV & Small molecule \\ 
+		AXITINIB & FLT1 & neoplasm & Phase IV & Small molecule \\ 
+		REGORAFENIB & FLT1 & neoplasm & Phase IV & Small molecule \\ 
+		DESMOPRESSIN & AVPR1A & hemorrhage & Phase IV & Protein \\ 
+		RUXOLITINIB & JAK1 & polycythemia vera & Phase IV & Small molecule \\ 
+		INSULIN PURIFIED BEEF & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		VANDETANIB & FLT1 & thyroid carcinoma & Phase IV & Small molecule \\ 
+		ALITRETINOIN & RARA & neoplasm & Phase IV & Small molecule \\ 
+		INSULIN LISPRO PROTAMINE RECOMBINANT & INSR & type II diabetes mellitus & Phase IV & Protein \\ 
+		DYPHYLLINE & PDE4B & obstructive lung disease & Phase IV & Small molecule \\ 
+		BARICITINIB & JAK1 & immune system disease & Phase IV & Small molecule \\ 
+		AMLEXANOX & PDE4D & obstructive lung disease & Phase IV & Small molecule \\ 
+		OCRIPLASMIN & FN1 & macular holes & Phase IV & Enzyme \\ 
+		DINOPROSTONE & PTGER4 & pregnancy & Phase IV & Small molecule \\ 
+		INTERFERON ALFA-2A & IFNAR2 & lymphoma & Phase IV & Protein \\ 
+		COPANLISIB & PIK3CG & non-Hodgkins lymphoma & Phase IV & Small molecule \\ 
+		INSULIN ZINC SUSP RECOMBINANT HUMAN & INSR & diabetes mellitus & Phase IV & Protein \\ 
+		INTERFERON ALFA-N3 & IFNAR2 & severe acute respiratory syndrome & Phase IV & Protein \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{List of drugs targeting the 36 genes. Only Phase IV drugs are reportes.}
+	\label{tab:drugs}
+\end{table}
+
+
+\begin{table}[ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{XlXl}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} GO term} & \textbf{\color{white} p-value} & \textbf{\color{white} GO term} & \textbf{\color{white} p-value} \\
+		response to organic substance & 1.7e-09 & positive regulation of response to external stimulus & 2.1e-03 \\ 
+		cellular response to organic ubstance & 3.0e-09 & movement of cell or subcellular component & 2.4e-03 \\ 
+		leukocyte migration & 3.8e-08 & intracellular signal transduction & 2.6e-03 \\ 
+		circulatory system development & 5.3e-08 & regulation of transport & 2.6e-03 \\ 
+		cellular response to chemical stimulus & 1.4e-07 & cellular response to environmental stimulus & 2.7e-03 \\ 
+		regulation of multicellular organismal process & 4.6e-07 & cellular response to abiotic stimulus & 2.7e-03 \\ 
+		response to chemical & 7.0e-07 & cell communication & 2.7e-03 \\ 
+		blood circulation & 1.8e-06 & regulation of phosphorylation & 2.7e-03 \\ 
+		multicellular organismal process & 2.0e-06 & cellular response to external stimulus & 2.8e-03 \\ 
+		circulatory system process & 2.2e-06 & regulation of cytokine production & 2.9e-03 \\ 
+		myeloid leukocyte migration & 2.5e-06 & cellular response to biotic stimulus & 2.9e-03 \\ 
+		cellular response to oxygen-containing compound & 3.2e-06 & interferon-gamma production & 3.0e-03 \\ 
+		cellular response to organonitrogen compound & 4.2e-06 & system process & 3.1e-03 \\ 
+		response to external stimulus & 4.4e-06 & cellular developmental process & 3.2e-03 \\ 
+		cellular response to endogenous stimulus & 8.3e-06 & response to bacterium & 3.4e-03 \\ 
+		response to endogenous stimulus & 8.4e-06 & cell proliferation & 3.4e-03 \\ 
+		response to organonitrogen compound & 1.1e-05 & cellular response to cytokine stimulus & 3.6e-03 \\ 
+		immune response & 1.1e-05 & regulation of cell adhesion & 3.7e-03 \\ 
+		cellular response to mechanical stimulus & 1.3e-05 & cellular response to acid chemical & 3.8e-03 \\ 
+		protein phosphorylation & 1.6e-05 & leukocyte chemotaxis & 3.8e-03 \\ 
+		cellular response to nitrogen compound & 2.3e-05 & collagen-activated signaling pathway & 3.9e-03 \\ 
+		cell surface receptor signaling pathway & 3.3e-05 & secretion & 4.2e-03 \\ 
+		regulation of response to cytokine stimulus & 3.6e-05 & response to mechanical stimulus & 5.0e-03 \\ 
+		response to nitrogen compound & 4.7e-05 & regulation of heart contraction & 5.3e-03 \\ 
+		extracellular structure organization & 4.9e-05 & positive regulation of biological process & 5.5e-03 \\ 
+		response to stimulus & 5.4e-05 & blood coagulation & 5.6e-03 \\ 
+		immune system process & 5.5e-05 & positive regulation of cell migration & 5.6e-03 \\ 
+		response to oxygen-containing compound & 6.7e-05 & regulation of secretion by cell & 6.1e-03 \\ 
+		multi-organism process & 6.9e-05 & hemostasis & 6.1e-03 \\ 
+		regulation of cell communication & 7.0e-05 & positive regulation of nitric-oxide synthase biosynthetic process & 6.2e-03 \\ 
+		tube morphogenesis & 7.1e-05 & coagulation & 6.4e-03 \\ 
+		regulation of signaling & 8.4e-05 & positive regulation of cell motility & 7.2e-03 \\ 
+		wound healing & 8.6e-05 & cell activation & 7.4e-03 \\ 
+		response to cytokine & 9.8e-05 & defense response & 7.8e-03 \\ 
+		blood vessel development & 1.1e-04 & positive regulation of inflammatory response & 7.9e-03 \\ 
+		response to organic cyclic compound & 1.3e-04 & negative regulation of relaxation of cardiac muscle & 8.2e-03 \\ 
+		positive regulation of multicellular organismal process & 1.4e-04 & positive regulation of secretion by cell & 8.3e-03 \\ 
+		cellular response to stimulus & 1.5e-04 & positive regulation of cellular component movement & 9.0e-03 \\ 
+		regulation of immune response & 1.7e-04 & localization & 9.1e-03 \\ 
+		anatomical structure development & 1.7e-04 & relaxation of cardiac muscle & 9.3e-03 \\ 
+		vasculature development & 1.8e-04 & response to other organism & 9.9e-03 \\ 
+		response to lipopolysaccharide & 1.9e-04 & response to external biotic stimulus & 1.0e-02 \\ 
+		cardiovascular system development & 2.0e-04 & regulation of phosphate metabolic process & 1.1e-02 \\ 
+		granulocyte migration & 2.0e-04 & regulation of phosphorus metabolic process & 1.1e-02 \\ 
+		negative regulation of multicellular organismal process & 2.1e-04 & positive regulation of cell adhesion & 1.1e-02 \\ 
+		regulation of cellular component movement & 2.3e-04 & regulation of secretion & 1.2e-02 \\ 
+		cell migration & 2.4e-04 & regulation of defense response & 1.2e-02 \\ 
+		extracellular matrix organization & 2.7e-04 & regulation of system process & 1.2e-02 \\ 
+		phosphorylation & 2.7e-04 & peptidyl-tyrosine phosphorylation & 1.3e-02 \\ 
+		regulation of response to stimulus & 2.8e-04 & positive regulation of interferon-gamma production & 1.3e-02 \\ 
+		response to molecule of bacterial origin & 2.9e-04 & negative regulation of cytokine production & 1.3e-02 \\ 
+		regulation of localization & 3.2e-04 & regulation of MAPK cascade & 1.3e-02 \\ 
+		regulation of immune system process & 3.2e-04 & nitric-oxide synthase biosynthetic process & 1.3e-02 \\ 
+		cardiac muscle contraction & 3.4e-04 & regulation of nitric-oxide synthase biosynthetic process & 1.3e-02 \\ 
+		signaling & 3.8e-04 & peptidyl-tyrosine modification & 1.3e-02 \\ 
+		signal transduction & 4.2e-04 & positive regulation of protein phosphorylation & 1.3e-02 \\ 
+		blood vessel morphogenesis & 4.4e-04 & positive regulation of secretion & 1.4e-02 \\ 
+		response to wounding & 4.6e-04 & cytokine-mediated signaling pathway & 1.4e-02 \\ 
+		tube development & 5.2e-04 & immune effector process & 1.5e-02 \\ 
+		locomotion & 5.5e-04 & positive regulation of immune response & 1.5e-02 \\ 
+		heart contraction & 6.0e-04 & response to biotic stimulus & 1.5e-02 \\ 
+		regulation of signal transduction & 6.4e-04 & regulation of locomotion & 1.6e-02 \\ 
+		cytokine production & 6.5e-04 & cellular response to lipid & 1.6e-02 \\ 
+		MAPK cascade & 6.8e-04 & macromolecule modification & 1.8e-02 \\ 
+		system development & 7.3e-04 & chemotaxis & 1.8e-02 \\
+		heart process & 7.4e-04 & taxis & 1.8e-02 \\	
+		localization of cell & 7.5e-04 & regulation of cytokine production involved in immune response & 1.8e-02 \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{GO terms enriched in the list of 36 (continued)}
+	\label{tab:GO36_1}
+\end{table}
+			
+\begin{table}[!htb]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{XlXl}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} GO term} & \textbf{\color{white} p-value} & \textbf{\color{white} GO term} & \textbf{\color{white} p-value} \\
+		cell motility & 7.5e-04 & regulation of protein modification process & 1.9e-02 \\ 
+		regulation of cytokine-mediated signaling pathway & 7.5e-04 & positive regulation of phosphorylation & 2.0e-02 \\ 
+		platelet activation & 7.8e-04 & enzyme linked receptor protein signaling pathway & 2.4e-02 \\ 
+		transmembrane receptor protein tyrosine kinase signaling pathway & 8.1e-04 & regulation of response to external stimulus & 2.4e-02 \\ 
+		developmental process & 8.2e-04 & positive regulation of intracellular signal transduction & 2.4e-02 \\ 
+		signal transduction by protein phosphorylation & 8.3e-04 & positive regulation of response to macrophage colony-stimulating factor & 2.5e-02 \\ 
+		response to lipid & 8.4e-04 & positive regulation of cellular response to macrophage colony-stimulating factor stimulus & 2.5e-02 \\ 
+		positive regulation of locomotion & 9.3e-04 & positive regulation of signal transduction & 2.6e-02 \\ 
+		regulation of blood circulation & 9.6e-04 & positive regulation of immune system process & 2.8e-02 \\ 
+		anatomical structure formation involved in morphogenesis & 9.8e-04 & regulation of intracellular signal transduction & 2.9e-02 \\ 
+		phosphate-containing compound metabolic process & 1.0e-03 & mononuclear cell migration & 3.3e-02 \\ 
+		phosphorus metabolic process & 1.1e-03 & regulation of cardiac muscle contraction & 3.3e-02 \\ 
+		multicellular organism development & 1.1e-03 & lymphocyte activation involved in immune response & 3.4e-02 \\ 
+		cell chemotaxis & 1.1e-03 & positive regulation of phosphorus metabolic process & 3.5e-02 \\ 
+		positive regulation of cell proliferation & 1.1e-03 & positive regulation of phosphate metabolic process & 3.5e-02 \\ 
+		cellular response to lipopolysaccharide & 1.1e-03 & regulation of biological quality & 3.5e-02 \\ 
+		positive regulation of cytokine production & 1.2e-03 & tissue development & 3.9e-02 \\ 
+		regulation of protein phosphorylation & 1.3e-03 & regulation of cell migration & 4.0e-02 \\ 
+		anatomical structure morphogenesis & 1.4e-03 & protein modification process & 4.1e-02 \\ 
+		angiogenesis & 1.5e-03 & cellular protein modification process & 4.1e-02 \\ 
+		positive regulation of response to stimulus & 1.5e-03 & transport & 4.2e-02 \\ 
+		cell differentiation & 1.5e-03 & muscle system process & 4.2e-02 \\ 
+		cellular response to molecule of bacterial origin & 1.5e-03 & positive regulation of production of molecular mediator of immune response & 4.2e-02 \\ 
+		secretion by cell & 1.5e-03 & regulation of leukocyte migration & 4.2e-02 \\ 
+		regulation of cell proliferation & 1.6e-03 & positive regulation of metabolic process & 4.6e-02 \\ 
+		collagen-activated tyrosine kinase receptor signaling pathway & 1.7e-03 & cytokine production involved in immune response & 4.6e-02 \\ 
+		regulation of interferon-gamma production & 1.7e-03 & positive regulation of developmental process & 4.8e-02 \\ 
+		striated muscle contraction & 1.9e-03 & positive regulation of immune effector process & 4.8e-02 \\ 
+		inflammatory response & 2.0e-03 &  &  \\
+	\end{tabularx}
+	\smallskip
+	\caption{GO terms enriched in the list of 36.}
+	\label{tab:GO36_2}
+\end{table}
+
+\begin{table}[!htb]
+		\centering
+		\scriptsize
+		\rowcolors{2}{NavyBlue!10}{white}
+		\begin{tabularx}{\textwidth}{XlXl}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} GO term} & \textbf{\color{white} p-value} & \textbf{\color{white} GO term} & \textbf{\color{white} p-value} \\
+		cellular response to organic substance & 5.1e-07 & response to interleukin-6 & 9.1e-03 \\ 
+		cellular response to chemical stimulus & 5.8e-06 & signaling & 9.2e-03 \\ 
+		response to organic substance & 7.6e-06 & cardiac muscle contraction & 9.5e-03 \\ 
+		response to organonitrogen compound & 4.9e-05 & regulation of system process & 9.6e-03 \\ 
+		regulation of multicellular organismal process & 5.7e-05 & response to external stimulus & 1.0e-02 \\ 
+		cellular response to oxygen-containing compound & 1.2e-04 & regulation of transport & 1.1e-02 \\ 
+		leukocyte migration & 1.3e-04 & regulation of cardiac muscle cell contraction & 1.2e-02 \\ 
+		collagen-activated tyrosine kinase receptor signaling pathway & 1.3e-04 & extracellular matrix organization & 1.4e-02 \\ 
+		response to nitrogen compound & 1.4e-04 & response to organic cyclic compound & 1.6e-02 \\ 
+		circulatory system development & 2.2e-04 & regulation of actin filament-based movement & 1.6e-02 \\ 
+		response to endogenous stimulus & 2.8e-04 & platelet activation & 1.6e-02 \\ 
+		collagen-activated signaling pathway & 3.1e-04 & regulation of immune response & 1.9e-02 \\ 
+		cellular response to organonitrogen compound & 3.8e-04 & acute-phase response & 2.0e-02 \\ 
+		relaxation of cardiac muscle & 7.4e-04 & cellular response to lipopolysaccharide & 2.1e-02 \\ 
+		cell surface receptor signaling pathway & 8.4e-04 & negative regulation of relaxation of muscle & 2.1e-02 \\ 
+		response to chemical & 9.4e-04 & cellular response to molecule of bacterial origin & 2.5e-02 \\ 
+		cellular response to endogenous stimulus & 1.0e-03 & cell migration & 2.6e-02 \\ 
+		cellular response to nitrogen compound & 1.2e-03 & striated muscle contraction & 3.0e-02 \\ 
+		negative regulation of relaxation of cardiac muscle & 1.4e-03 & extracellular structure organization & 3.0e-02 \\ 
+		regulation of cellular component movement & 1.5e-03 & regulation of relaxation of cardiac muscle & 3.0e-02 \\ 
+		heart contraction & 3.3e-03 & regulation of interleukin-1-mediated signaling pathway & 3.0e-02 \\ 
+		regulation of localization & 3.5e-03 & myeloid leukocyte migration & 3.2e-02 \\ 
+		cellular response to stimulus & 3.7e-03 & cellular response to cytokine stimulus & 3.2e-02 \\ 
+		response to oxygen-containing compound & 3.8e-03 & signal transduction & 3.6e-02 \\ 
+		heart process & 3.8e-03 & movement of cell or subcellular component & 3.6e-02 \\ 
+		regulation of blood circulation & 4.7e-03 & cellular response to biotic stimulus & 4.0e-02 \\ 
+		blood circulation & 5.4e-03 & system process & 4.2e-02 \\ 
+		positive regulation of multicellular organismal process & 5.9e-03 & positive regulation of interferon-gamma production & 4.2e-02 \\ 
+		relaxation of muscle & 5.9e-03 & regulation of cell communication & 4.5e-02 \\ 
+		circulatory system process & 6.0e-03 & cellular response to acid chemical & 4.8e-02 \\ 
+		negative regulation of multicellular organismal process & 6.4e-03 & regulation of signaling & 5.0e-02 \\ 
+		cellular response to interleukin-6 & 6.5e-03 &  &  \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{GO terms enriched in the list of 18}
+	\label{tab:GO18}
+>>>>>>> 9da0a3d546a7373b09765b65c96ac4206165f565
 \end{table}
 
 
