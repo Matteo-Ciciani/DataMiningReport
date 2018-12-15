@@ -94,12 +94,26 @@
 \section*{Introduction} % The \section*{} command stops section numbering
 
 \addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
+Drug repurposing is a strategy to identify new therapeutics uses for marketed drugs \cite{Polamreddy}. This procedure has known for time but only in recent years its use has increased due to new molecular discoveries, new high-throughput technologies and databases. 
 
-Drug repurposing is a strategy to identify new therapeutics uses for marketed drugs \cite{Polamreddy}. This procedure has known for time but only in recent years its use has increased due to new molecular discoveries, new high-throughput technologies and databases. In average the launch of a new drug on the market takes 14 years, drug repurposing can drastically decrease this time because of the usage of previous knowledge and, moreover, it can lower the costs of the R{\&}D process.
+The classic discovery of a new drug is a difficult and expensive process. Although investment in biomedical and pharmaceutical research and development has increased significantly in the past 20 years, the annual number of new treatments
+approved by the US Food and Drug Administration (FDA) has not significantly increased \cite{Feixiong}. This could be due to a lack of well-establisehd  predictive pharmacokinetics/pharmacody-
+namics approaches, and concerning safety and tolerability profiles
+for new chemical entities from preclinical studies to clinical
+trials\cite{Shih}. 
 
-Coronary artery disease (CAD) is the most common type of heart disease.It is the leading cause of death in the United States and in Italy (WHO data). The condition leads the formation of a waxy substance calle plaque into coronary arteries decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture due to the formation of blood clot that could mostrly (or completely) block blood flow through a coronary artery. The disease can weaken the heart muscle and lead to heart failure and arrhytmias, moreover it cas cause angina and heart attack.
+Discovering a new drug implies many resources and copious time, in average it takes 14 years to be able to have a product ready for the market, although all the efforts are often not payed off. 
 
-In this project we apply NES$^2$RA\cite{NES2RA}, a pipeline that finds candidate genes to expand a known gene-network based PC-algorithm \cite{PC-alg}, to find marketed drug that can be repurposed for CAD.
+Drug repurposing can be a good proposal to overcome some of the problems of classic drug discovery. For example it can drastically decrease the time because it is based on previous knowlege and drugs that have already been approved by the FDA, therefore also the costs can decrease because there is not the need of safety and efficacy evaluation.
+
+Coronary artery disease (CAD), also knwon as coronary heart disease (CHD) or ischemic heart disease (IHD), is the most common type of heart disease. It is the leading cause of death in most of the western countries including Italy (World Health Organization data). The condition leads the formation of a waxy substance called plaque into coronary arteries decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture due to the formation of blood clot that could mostly (or completely) block blood flow through a coronary artery. The disease can weaken the heart muscle and lead to heart failure and arrhytmias, moreover it can cause angina, heart attack and sudden cardiac heart.
+CAD can be prevent maintaining a healthy lifestyle with regular exercises and a balance diet, however when this is not enough the use of medication is needed. Since CAD is a complex disease caused by many factors, different kind of drugs that can be used, among which aspirin is the most knwon one. 
+However in the worst cases, it is necessary to undergo surgical intervention such as coronary artery bypass surgery (CABG).
+
+Since, as aforementioned, CAD is the leading cause of death in most of the countries, we think there is the unmet medical need to find new drugs able to cure the disease acting on diffent aspects genetics or not. Moreover having a large panel of medications to use could help the physicians to identify the right cure for the patients.
+
+In this project therefore we apply NES$^2$RA\cite{NES2RA}, a pipeline that finds candidate genes to expand a known gene-network based PC-algorithm \cite{PC-alg}, with the aim to find marketed drug that can be repurposed for CAD.
+Moreover we want to test if NES$^2$RA could be a useful tool for this process with the idea to propose it such as standard workflow to follow for drug repurposing. 
 
 \section*{Materials and Methods}
 \addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
@@ -331,6 +345,10 @@ necessity of experimental validations
 \begin{thebibliography}{1}
 	
 	\bibitem{Polamreddy} Polamreddy P, Gattu N. The drug repurposing landscape from 2012 to 2017: evolution, challenges, and possible solutions. Drug Discov Today. 2018 Dec 1.	
+	
+	\bibitem{Feixiong} Cheng F, Desai RJ, Handy DE, Wang R, Schneeweiss S, Barabási AL, Loscalzo J. Network-based approach to prediction and population-based validation of in silico drug repurposing. Nat Commun. (2018).
+	
+	\bibitem{Shih} Shih, H. P., Zhang,X. & Aronov, A. M. Drug discovery effectiveness from the standpoint of therapeutic mechanisms and indications. Nat. Rev. Drug Discov.17, 19–33 (2017).
 
 	\bibitem{NES2RA} Asnicar F, Masera L, NES2RA: network expansion by stratified variable subsetting and ranking aggregation. INTERNATIONAL JOURNAL OF HIGH PERFORMANCE COMPUTING APPLICATIONS (2018)
 	
@@ -338,7 +356,7 @@ necessity of experimental validations
 of sparse causal graphs. Social Science Computer, Review, (1991).  
 
 	\bibitem{OpenTargetPlatform}Denise Carvalho-Silva, Open Targets Platform: new developments and updates two years on, Nucleic Acids Research 
-
+	
 	\bibitem{realBoinc}Anderson DP, BOINC: A system for public-resource computing and storage. In: Proceedings of the 5th IEEE/ ACM international workshop on grid computing, GRID ‘04,Washington, DC, US (2004)
 	
 	\bibitem{WGS}Improved Consistent Sampling, Weighted Minhash and L1 Sketching, Sergey Ioffe, 2010, ICDM
