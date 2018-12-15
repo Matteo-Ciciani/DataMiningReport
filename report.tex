@@ -145,19 +145,24 @@ Each step of the pipeline is described in further details below.
 	\label{Fig:pipe}
 \end{figure}
 
-Enri
+\subsubsection{Selection of CAD genes}
+Among the features of Open Target, there's the search for genes somehow associated to a specific illness. 
+We downloaded from the website the list of 643 genetically associated CAD genes and sorted them based on the overall association score and focused on the first 100 of them. 
+The FANTOM5 database is built on gene isoforms and we were provided with an annotation file to perform the mapping of a gene into its corresponding isoforms.
+Some of the downloaded CAD genes were not present in the annotation, therefore we had to exclude them aprioristically.
+Given unlimited time, we would have expanded all the selected 100 genes, yet we had to restrain our search to 41 of them, aside from the 5 that had already been expanded by previous runs of the gene@home BOINC project.
 
-selection of genes to expand
+\subsubsection{NESSRA expansion of CAD associated genes}
+The 41 cad genetically associated genes, totalling to about 180 isoforms, were turned into one gene network files as inputs for NESSRA.
+The algorithm outputs a series of expansion networks, each of which is a list of nodes ranked on the reported score, which is a measure of the strenght of the supposed correlation between that node and the input one. 
 
-nessra expansion of cad associated genes
+\subsubsection{Score aggregation of each isoform}
+The output lists were merged on the isoforms,summing their scores in order to rank them based on how many times each isoform appeared in the various expansions lists.
 
-score aggregation of each isoform
+\subsubsection{Filtering based on association score}
+The output lists were shortened using as weight the genetic association of the gene that corresponds to the input isoform, going from a maximum of 100 nodes (in the case of highest genetic association) to a minimum of 1 at steps of 1. 
 
-filter on isoforms
-
-Matteo
-
-The resulting n isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its isoforms.
+The resulting n isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its isoforms. 
 
 \subsubsection{Selection of target genes}
 
