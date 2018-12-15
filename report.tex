@@ -29,6 +29,7 @@
 \usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
 \usepackage{tabularx}
 \usepackage{multirow}
+\setlength{\parindent}{0pt}
 
 %----------------------------------------------------------------------------------------
 %	COLUMNS
@@ -137,6 +138,7 @@ general description of the pipeline and figure
 \begin{figure}
 	\includegraphics[width=1.1\linewidth, trim = 2cm 0 1.5cm 0.4cm, clip = true]{pipeline.png}
 	\caption{Pipeline sketch. Color legend = ...}
+	\label{Fig:pipe}
 \end{figure}
 
 Enri
@@ -203,7 +205,11 @@ In order to gain insight on the biological role of the identified genes, we perf
 \addcontentsline{toc}{section}{Results} % Adds this section to the table of contents
 Matteo
 
-The list of 149 target genes is reported in the Supplementary Material.
+The list of 149 target genes is reported in the Supplementary Material (Tab. \ref{tab:194genes}).
+
+The list of 36 significant genes are reported in Tab. \ref{tab:sign}. In this table are also indicated the genes found by option2.
+
+\renewcommand{\arraystretch}{1.1}
 
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 \begin{table}[htb]
@@ -249,14 +255,23 @@ The list of 149 target genes is reported in the Supplementary Material.
 		IFNAR2 & 1 & 7.5e-03 &  &  \\ 
 		PTGER4 & 1 & 7.5e-03 &  &  \\ 
 	\end{tabularx}
+	\smallskip
 	\caption{resulting genes}
+	\label{tab:sign}
 \end{table}
+
+The results of the enrichment analysis against the Biological Processes form Gene Ontology are reported in Tab. \ref{tab:GO36_1} and Tab. \ref{tab:GO36_2} for the results of option1 and in Tab. \ref*{tab:GO18} for the results of option2.
+
+The drugs that target the genes resulting from option1 are reported in Tab. \ref{tab:drugs}.
+
+19 genes found were already associated with CAD. 4 of them are also target of drugs used to treat CAD. The list of genes and their association levels are reported in Fig. \ref{fig:19CAD}.
 
 
 \begin{figure}[ht]
 	\includegraphics[width=\linewidth]{already_in}
 	\smallskip
 	\caption{Putative targets already associated with CAD. Four of them are also already targeted in CAD.}
+	\label{fig:19CAD}
 \end{figure}
 
 results of the enrichment analysis
@@ -317,7 +332,6 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 \onecolumn
 
 \section*{SUPPLEMENTARY MATERIAL}
-\renewcommand{\arraystretch}{1.05}
 
 \addcontentsline{toc}{section}{Supplementary Material} % Adds this section to the table of contents
 
@@ -354,6 +368,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{List of tagret genes}
+	\label{tab:194genes}
 \end{table}
 
 \renewcommand{\arraystretch}{1.2}
@@ -437,6 +452,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{List of drugs targeting the 36 genes. Only Phase IV drugs are reportes.}
+	\label{tab:drugs}
 \end{table}
 
 
@@ -517,6 +533,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{GO terms enriched in the list of 36 (continued)}
+	\label{tab:GO36_1}
 \end{table}
 			
 \begin{table}[!htb]
@@ -558,6 +575,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{GO terms enriched in the list of 36.}
+	\label{tab:GO36_2}
 \end{table}
 
 \begin{table}[!htb]
@@ -602,6 +620,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{GO terms enriched in the list of 18}
+	\label{tab:GO18}
 \end{table}
 
 
