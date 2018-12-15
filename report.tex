@@ -477,7 +477,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\rowcolors{2}{white}{NavyBlue!10}
 	\begin{tabularx}{\textwidth}{XlXl}
 		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} GO term} & \textbf{\color{white} p-value} & \textbf{\color{white} GO term} & \textbf{\color{white} p-value} \\
+		\textbf{\color{white} GO term} & \textbf{\color{white} q-value} & \textbf{\color{white} GO term} & \textbf{\color{white} q-value} \\
 		response to organic substance & 1.7e-09 & positive regulation of response to external stimulus & 2.1e-03 \\ 
 		cellular response to organic ubstance & 3.0e-09 & movement of cell or subcellular component & 2.4e-03 \\ 
 		leukocyte migration & 3.8e-08 & intracellular signal transduction & 2.6e-03 \\ 
@@ -557,7 +557,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\rowcolors{2}{white}{NavyBlue!10}
 	\begin{tabularx}{\textwidth}{XlXl}
 		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} GO term} & \textbf{\color{white} p-value} & \textbf{\color{white} GO term} & \textbf{\color{white} p-value} \\
+		\textbf{\color{white} GO term} & \textbf{\color{white} q-value} & \textbf{\color{white} GO term} & \textbf{\color{white} q-value} \\
 		cell motility & 7.5e-04 & regulation of protein modification process & 1.9e-02 \\ 
 		regulation of cytokine-mediated signaling pathway & 7.5e-04 & positive regulation of phosphorylation & 2.0e-02 \\ 
 		platelet activation & 7.8e-04 & enzyme linked receptor protein signaling pathway & 2.4e-02 \\ 
@@ -599,7 +599,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		\rowcolors{2}{NavyBlue!10}{white}
 		\begin{tabularx}{\textwidth}{XlXl}
 		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} GO term} & \textbf{\color{white} p-value} & \textbf{\color{white} GO term} & \textbf{\color{white} p-value} \\
+		\textbf{\color{white} GO term} & \textbf{\color{white} q-value} & \textbf{\color{white} GO term} & \textbf{\color{white} q-value} \\
 		cellular response to organic substance & 5.1e-07 & response to interleukin-6 & 9.1e-03 \\ 
 		cellular response to chemical stimulus & 5.8e-06 & signaling & 9.2e-03 \\ 
 		response to organic substance & 7.6e-06 & cardiac muscle contraction & 9.5e-03 \\ 
@@ -641,10 +641,11 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 
 \begin{table}[ht]
 	\centering
+	\scriptsize
 	\rowcolors{2}{white}{NavyBlue!10}
 	\begin{tabularx}{\textwidth}{lRlR}
 		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} Disease} & \textbf{\color{white} q-value (FDR)} & \textbf{\color{white} Disease} & \textbf{\color{white} q-value (FDR)} \\
+		\textbf{\color{white} Disease} & \textbf{\color{white} q-value} & \textbf{\color{white} Disease} & \textbf{\color{white} q-value} \\
 		Endometriosis & 3.14e-10 & Epithelial ovarian cancer & 4.74e-07 \\ 
 		Myocardial Infarction & 1.36e-09 & Nephrotic Syndrome & 7.05e-07 \\ 
 		Rheumatoid Arthritis & 8.56e-09 & Malignant tumor of cervix & 7.09e-07 \\ 
@@ -674,6 +675,82 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\smallskip
 	\caption{Disease form 36 genes}
 	\label{tab:diseases}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{NavyBlue!10}{white}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
+		response to oxygen-containing compound & 3.6e-25 & apoptotic process & 4.0e-16 \\ 
+		positive regulation of protein metabolic process & 4.4e-21 & positive regulation of signaling & 5.7e-16 \\ 
+		response to organic cyclic compound & 3.0e-20 & regulation of cell proliferation & 6.1e-16 \\ 
+		positive regulation of cellular protein metabolic process & 2.4e-19 & cardiovascular system development & 8.6e-16 \\ 
+		cellular response to oxygen-containing compound & 1.7e-18 & circulatory system development & 8.6e-16 \\ 
+		regulation of programmed cell death & 2.2e-18 & positive regulation of signal transduction & 9.5e-16 \\ 
+		response to endogenous stimulus & 2.4e-18 & inflammatory response & 1.8e-15 \\ 
+		regulation of cell death & 6.8e-18 & response to cytokine & 3.1e-15 \\ 
+		positive regulation of phosphate metabolic process & 1.1e-17 & regulation of system process & 3.5e-15 \\ 
+		positive regulation of phosphorus metabolic process & 1.1e-17 & blood circulation & 7.2e-15 \\ 
+		protein phosphorylation & 1.1e-17 & positive regulation of intracellular signal transduction & 7.2e-15 \\ 
+		regulation of apoptotic process & 2.7e-17 & signal transduction by protein phosphorylation & 7.9e-15 \\ 
+		positive regulation of protein modification process & 4.2e-17 & circulatory system process & 7.9e-15 \\ 
+		programmed cell death & 5.0e-17 & response to lipid & 8.9e-15 \\ 
+		positive regulation of protein phosphorylation & 5.0e-17 & response to wounding & 8.9e-15 \\ 
+		regulation of phosphate metabolic process & 5.9e-17 & regulation of transport & 2.2e-14 \\ 
+		regulation of phosphorus metabolic process & 7.7e-17 & defense response & 4.4e-14 \\ 
+		regulation of protein phosphorylation & 1.5e-16 & blood vessel development & 5.3e-14 \\ 
+		response to alcohol & 1.7e-16 & response to hormone & 7.0e-14 \\ 
+		positive regulation of phosphorylation & 1.9e-16 & cellular response to endogenous stimulus & 7.4e-14 \\ 
+		positive regulation of multicellular organismal process & 1.9e-16 & MAPK cascade & 9.0e-14 \\ 
+		positive regulation of cell communication & 2.2e-16 & cellular response to external stimulus & 1.1e-13 \\ 
+		regulation of protein modification process & 3.4e-16 & vasculature development & 1.4e-13 \\ 
+		regulation of phosphorylation & 3.8e-16 & blood vessel morphogenesis & 2.9e-13 \\ 
+		regulation of intracellular signal transduction & 4.0e-16 & angiogenesis & 3.2e-13 \\
+	\end{tabularx}
+	\smallskip
+	\caption{BP 149 genes ToppGenes}
+	\label{tab:bp149}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
+		response to oxygen-containing compound & 8.4e-162 & nucleotide metabolic process & 2.7e-91 \\ 
+		carboxylic acid metabolic process & 4.5e-157 & nucleoside phosphate metabolic process & 5.3e-91 \\ 
+		ion transport & 5.2e-153 & cell-cell signaling & 7.9e-89 \\ 
+		organic acid metabolic process & 1.8e-145 & response to drug & 2.2e-88 \\ 
+		oxoacid metabolic process & 1.8e-145 & regulation of system process & 2.4e-87 \\ 
+		response to endogenous stimulus & 4.1e-134 & response to inorganic substance & 3.2e-87 \\ 
+		response to organic cyclic compound & 9.1e-130 & small molecule biosynthetic process & 5.5e-87 \\ 
+		response to nitrogen compound & 9.9e-130 & cellular response to oxygen-containing compound & 8.3e-87 \\ 
+		response to organonitrogen compound & 1.9e-129 & purine-containing compound metabolic process & 1.3e-85 \\ 
+		oxidation-reduction process & 6.3e-124 & chemical homeostasis & 6.8e-85 \\ 
+		protein phosphorylation & 1.1e-108 & protein autophosphorylation & 4.9e-83 \\ 
+		cation transport & 2.1e-107 & ribose phosphate metabolic process & 9.3e-82 \\ 
+		regulation of transport & 2.6e-106 & lipid metabolic process & 1.3e-81 \\ 
+		ion transmembrane transport & 4.9e-106 & cation transmembrane transport & 4.1e-81 \\ 
+		homeostatic process & 4.8e-103 & response to wounding & 9.4e-80 \\ 
+		organophosphate metabolic process & 2.3e-102 & ribonucleotide metabolic process & 3.6e-79 \\ 
+		transmembrane transport & 1.5e-99 & purine nucleotide metabolic process & 2.2e-78 \\ 
+		response to lipid & 1.2e-97 & organonitrogen compound biosynthetic process & 7.0e-78 \\ 
+		response to hormone & 1.5e-97 & anion transport & 4.4e-77 \\ 
+		nucleobase-containing small molecule metabolic process & 1.9e-97 & alpha-amino acid metabolic process & 1.1e-76 \\ 
+		secretion & 5.4e-97 & purine ribonucleotide metabolic process & 1.3e-76 \\ 
+		circulatory system process & 3.4e-96 & inorganic ion transmembrane transport & 1.8e-76 \\ 
+		blood circulation & 5.0e-96 & metal ion transport & 2.1e-76 \\ 
+		cellular amino acid metabolic process & 4.8e-95 & secretion by cell & 1.7e-73 \\ 
+		regulation of ion transport & 2.6e-93 & response to abiotic stimulus & 4.7e-73 \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{BP 2229 genes ToppGenes}
+	\label{tab:bp2229}
 \end{table}
 
 \end{document}
