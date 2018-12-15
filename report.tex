@@ -28,8 +28,9 @@
 
 \usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
 \usepackage{tabularx}
-\usepackage{multirow}
+%\usepackage{halloweenmath}
 \setlength{\parindent}{0pt}
+
 
 %----------------------------------------------------------------------------------------
 %	COLUMNS
@@ -56,15 +57,14 @@
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
 
-\JournalInfo{Laboratory of Data Mining Report} % Journal information
+\JournalInfo{\color{white} Correlation is not causation} % Journal information
 \Archive{} % Additional notes (e.g. copyright, DOI, review/research article)
 
 \PaperTitle{Identification of putative drug targets for coronary artery disease} % Article title
 
-\Authors{John Smith\textsuperscript{1}*, James Smith\textsuperscript{2}} % Authors
-\affiliation{\textsuperscript{1}\textit{Department of Biology, University of Examples, London, United Kingdom}} % Author affiliation
-\affiliation{\textsuperscript{2}\textit{Department of Chemistry, University of Examples, London, United Kingdom}} % Author affiliation
-\affiliation{*\textbf{Corresponding author}: john@smith.com} % Corresponding author
+\Authors{Matteo Ciciani\textsuperscript{1}{\small$^{^\wedge}$}, Enrica Colasurdo\textsuperscript{1}{\small$^{^\wedge}$}, Chiara Mazzoni\textsuperscript{1}{\small$^{^\wedge}$} and Eleonora Nigro\textsuperscript{1}{\small$^{^\wedge}$}} % Authors
+\affiliation{\textsuperscript{1}\textit{Quantitative and Computational Biology Master, University of Trento, Italy}}
+\affiliation{{\small$^{^\wedge}$}\textit{Equal contributions}}
 
 \Keywords{Keyword1 --- Keyword2 --- Keyword3} % Keywords - if you don't want any simply remove all the text between the curly brackets
 \newcommand{\keywordname}{Keywords} % Defines the keywords heading name
@@ -94,157 +94,148 @@
 \section*{Introduction} % The \section*{} command stops section numbering
 
 \addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
-Drug repurposing is a strategy to identify new therapeutics uses for marketed drugs \cite{Polamreddy}. This procedure has known for time but only in recent years its use has increased due to new molecular discoveries, new high-throughput technologies and databases. 
 
-The classic discovery of a new drug is a difficult and expensive process. Although investment in biomedical and pharmaceutical research and development has increased significantly in the past 20 years, the annual number of new treatments approved by the US Food and Drug Administration (FDA) has not significantly increased \cite{Feixiong}. This could be due to a lack of well-establisehd  predictive pharmacokinetics and pharmacodynamics approaches, and concerning safety and tolerability profiles for new chemical entities from preclinical studies to clinical trials\cite{Shih}. 
+Drug repurposing is a strategy to identify new therapeutic uses for marketed drugs \cite{Polamreddy}. The use of these procedure has increased in recent years due to new molecular discoveries, new high-throughput technologies and databases. 
 
-Discovering a new drug implies many resources and copious time, in average it takes 14 years to be able to have a product ready for the market, although all the efforts are often not payed off. 
+The traditional drug discovery is difficult and time consuming. Even though investments in biomedical and pharmaceutical research and development has increased significantly in the past 20 years, the annual number of new treatments approved by the US Food and Drug Administration (FDA) has not significantly increased \cite{Feixiong}. This could be due to a lack of well-established  predictive pharmacokinetics and pharmacodynamics approaches, and concerning safety and tolerability profiles for new chemical entities from preclinical studies to clinical trials\cite{Shih}. 
 
-Drug repurposing can be a good proposal to overcome some of the problems of classic drug discovery. For example it can drastically decrease the time because it is based on previous knowlege and drugs that have already been approved by the FDA, therefore also the costs can decrease because there is not the need of safety and efficacy evaluation.
+On average, it takes 14 years to be able to have a marketable product, yet most drug development efforts do not pay off.
 
-Coronary artery disease (CAD), also knwon as coronary heart disease (CHD) or ischemic heart disease (IHD), is the most common type of heart disease. It is the leading cause of death in most of the western countries including Italy (World Health Organization data). The condition leads the formation of a waxy substance called plaque into coronary arteries decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture due to the formation of blood clot that could mostly (or completely) block blood flow through a coronary artery. The disease can weaken the heart muscle and lead to heart failure and arrhytmias, moreover it can cause angina, heart attack and sudden cardiac heart.
+Drug repurposing can be a good solution to overcome some of the shortcomings of traditional drug discovery. For instance, it can drastically speed up the process, since it relies on previous knowledge and circumvents the FDA approval procedure.
 
-CAD can be prevent maintaining a healthy lifestyle with regular exercises and a balance diet, however when this is not enough the use of medication is needed. Since CAD is a complex disease caused by many factors, different kind of drugs that can be used, among which aspirin is the most knwon one. 
-However in the worst cases, it is necessary to undergo surgical intervention such as coronary artery bypass surgery (CABG).
+Coronary artery disease (CAD), also knwon as coronary heart disease (CHD) or ischemic heart disease (IHD), is the most common type of heart disease. It is the leading cause of death in most of the western countries including Italy (World Health Organization data). The condition leads to the formation of a waxy substance called plaque into coronary arteries, decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture, due to the formation of blood clots that could mostly (or completely) block blood flow through coronary arteries. The disease can weaken the heart muscle and lead to heart failure and arrhythmias. Moreover, it can cause angina, heart attack and sudden cardiac death. [cit]
 
-Since, as aforementioned, CAD is the leading cause of death in most of the countries, we think there is the unmet medical need to find new drugs able to cure the disease acting on diffent genetics aspects or not. Moreover having a large panel of medications to use could help the physicians to identify the right cure for the patients.
+CAD can be prevented maintaining a healthy lifestyle with regular exercise and a balanced diet. When this is not enough, the use of medication is needed. Since CAD is a complex disease caused by many factors, different kind of drugs can be used to treat it, among which aspirin is the most known one. However, in the worst cases it is necessary to undergo surgical intervention such as coronary artery bypass surgery (CABG).
 
-In this project therefore we apply NES$^2$RA\cite{NES2RA}, a pipeline that finds candidate genes to expand a known gene-network based PC-algorithm \cite{PC-alg}, with the aim to find marketed drug that can be repurposed for CAD.
-Moreover we want to test if NES$^2$RA could be a useful tool for this process with the idea to propose it such as standard workflow to follow for drug repurposing. 
+Since, as aforementioned, CAD is the leading cause of death in most western countries, we think there is the unmet medical need to broaden the range of drugs effective against this disease.
+
+Currently, there is no standard for \textit{in silico} drug repurposing. In this project we apply NES$^2$RA\cite{NES2RA}, a computational approach that identifies candidate genes that may expand a given gene network. We aim to identify novel putative drug targets for CAD, applying NES$^2$RA to genes genetically associated with CAD. In addition, we aim to test whether NES$^2$RA could be a suitable tool to address drug repurposing.
 
 \section*{Materials and Methods}
 \addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
 
-\subsection*{Platforms and Datasources}
+\subsection*{Platforms and Data Sources}
 \addcontentsline{toc}{subsection}{Platforms and Datasources} % Adds this section to the table of contents
 
-NES$^2$RA is a PC-based algorithm in which first data undergo subsetting,
-secondly the skeleton of the PC algorithm is ran and finally results are aggregated, giving to each of the isoforms in the expansion lists the corresponding relative frequency score?.
 
-To facilitate the most computationally demanding step of NES$^2$RA, running the skeleton of the PC algorithm, the single gene expansions were submitted to gene@home \cite{boinc} BOINC (Berkeley Open Infrastructure for Network Computing) project, hosted by the TN-Grid platform.
- 
-The platform allowed to distribute the algorithm computational burden to committed volunteers' machines in order to reduce the running time and memory usage as much as possible.
+\subsubsection*{NES$^2$RA and BOINC}
+NES$^2$RA is a method based on the PC-algorithm \cite{PC-alg} and can be summarized in three steps. First, data undergo subsetting, then the skeleton of the PC algorithm is run and finally results are aggregated, assigning to each isoform in the expansion lists the corresponding relative frequency score.
 
-This gene@home project was previously set up for the network expansion of genes whose expression data came from the FANTOM5 Database \cite{fantom}, therefore this guided the choice of the transcriptional data to run NES$^2$RA on. 
-Finally, the isoforms on the BOINC platform available to be expanded were all the gene isoforms that were previously identified as significantly different within the same encoded gene, so to consider the all the isoforms in reasonably different biological functions and roles.
+\setlength\emergencystretch{\textwidth}
+To facilitate the most computationally demanding step of NES$^2$RA, i.e. running the skeleton of the PC algorithm, the single gene expansions were submitted to gene@home \cite{boinc, realBoinc} BOINC (Berkeley Open Infrastructure for Network Computing) project, hosted by the TN-Grid platform. The platform allows to distribute the computational burden among committed volunteers' machines, in order to reduce the running time and memory usage as much as possible.
 
-To adress the drug repurposing task, Open Targets\cite{open} platform was used to select genes involved in CAD disease.
-DrugBank database was used to retrieve all the genes already target of a FDA approved drug.
-Toppgene Suite and Open Targets were used to perform Enrichment analysis.
+This gene@home project was previously set up for the network expansion of genes whose expression data came from the FANTOM5 Database \cite{fantom}. On the BOINC platform, alongside the original FANTOM5 expression data, a filtered version is available. The latter was built selecting, among the isoforms encoded by the same gene, the ones that differ mostly in terms of expression profile, presumably corresponding to different biological functions. We chose to use the filtered version, in order to cut down on the computational load of subsequent analyses.
 
+
+\subsubsection{On-line resources}
+\emph{Open Targets} is a platform which integrates public domain data to enable drug target identification and prioritisation\cite{open, OpenTargetPlatform}. This resource was used to select genes genetically associated with CAD disease, to identify drug targets and to perform functional enrichment analysis on the final results.
+
+The \emph{DrugBank} database is a bioinformatics and cheminformatics resource that combines detailed drug data with comprehensive drug target information [cit]. This resource was used to retrieve all the genes already targeted by FDA approved drugs.
+
+\emph{ToppGene} is a portal for gene list enrichment analysis and candidate gene prioritization based on functional annotations and protein interaction networks [cit]. This resource was used to perform functional enrichment analysis on the final results.
 
 \subsection*{Pipeline}
 \addcontentsline{toc}{subsection}{Pipeline} % Adds this section to the table of contents
 
-Our pipeline can be summarized in  6 steps, that are briefly summarized below and are represented in Fig. \ref{Fig:pipe}.
+Our pipeline can be summarized in  6 steps, that are briefly outlined below and are represented in Fig. \ref{Fig:pipe}.
 
 \begin{itemize}[leftmargin=*]
-	\item[1)] Starting from a list of 48 genes genetically associated with CAD, obtained form Open Targets, single gene expansions are preformed using NES$^2$RA.
-	\item[2)] The resulting expansion lists are aggregated, obtaining a score for each isoform present in the expansion lists. This score is meant to recapitulate the overall interaction of an isoform with the list of CAD genes. Isoforms are then filtered according to the genetic association scores of the CAD genes they interact with.
-	\item[3)] The resulting list of isoforms is converted in a list of genes. Among these genes, we select those that are targets of clinically approved drugs. The result of this step is a list of preliminary putative drug repurposing targets.
-	\item[4)] The list of preliminary targets is further analyzed, performing single gene expansions using NES$^2$RA.
-	\item[5)] The Weighted Jaccard Similarity (WJS) is used to compare a ranked list of genes genetically associated with CAD, obtained form Open Targets, with the ranked lists of isoforms, obtained using NES$^2$RA.
-	\item[6)] A statistical analysis of the WJS scores is employed in order to identify which genes present a significant interaction with the list of CAD genes. The result of this step is a final list of putative drug repurposing targets.
+	\item[1.] Starting from a list of 48 genes genetically associated with CAD, obtained form Open Targets, single gene expansions are performed using NES$^2$RA.
+	\item[2.] The resulting expansion lists are aggregated, obtaining a score for each isoform present in the expansion lists. This score is meant to recapitulate the overall interaction of an isoform with the list of CAD genes. Isoforms are then filtered according to the genetic association scores of the CAD genes they interact with.
+	\item[3.] The resulting list of isoforms is converted in a list of genes. Among these genes, we select those that are targets of clinically approved drugs. The result of this step is a list of preliminary putative drug repurposing targets.
+	\item[4.] The list of preliminary targets is further analyzed, performing single gene expansions using NES$^2$RA.
+	\item[5.] The Weighted Jaccard Similarity (WJS) \cite{WGS} is used to compare a ranked list of genes genetically associated with CAD, obtained form Open Targets, with the output of NES$^2$RA.
+	\item[6.] A statistical analysis of the WJS scores is employed in order to identify which genes present a significant interaction with the list of CAD genes. The result of this step is a final list of putative drug repurposing targets.
 \end{itemize}
 
-The rationale of steps 4), 5) and 6) is the identification of genes, among the preliminary targets, that present a strong interaction with CAD associated genes. This analysis allows us to have a larger confidence on the final list of putative targets, since their interactions with CAD genes has been tested twice (they were found in the expansions of CAD genes and CAD genes are present in their expansion).
+The rationale of steps 4, 5 and 6 is the identification of genes, among the preliminary targets, that present a strong interaction with CAD associated genes. This analysis allows us to have a larger confidence on the final list of putative targets, since their interactions with CAD genes has been tested twice (they were found in the expansions of CAD genes and CAD genes are present in their expansions).
 
-Each step of the pipeline is described in further details below.
- 
-\cite{OpenTargetPlatform}
-\cite{fantom}
-\cite{realBoinc}
-\cite{WGS}
+Each step of the pipeline is described in further detail below.
 
 \begin{figure}
 	\includegraphics[width=1.1\linewidth, trim = 2cm 0 1.5cm 0.4cm, clip = true]{pipeline.png}
-	\caption{Pipeline sketch. Color legend = ...}
+	\caption{Visual representation of the pipeline used. Color legend: blue = databases, yellow = data files, red = data processing steps}.
 	\label{Fig:pipe}
 \end{figure}
 
 \subsubsection*{Selection of CAD genes}
-Among the features of Open Target, there's the search for genes somehow associated to a specific illness. 
-We downloaded from the website the list of 643 genetically associated CAD genes and sorted them based on the overall association score and focused on the first 100 of them. 
+Open Target allows to search for genes associated with a given disease. We downloaded from the website the list of 643 genes genetically associated with CAD, ranked them based on the genetic association score and focused on the first 100.
+
 The FANTOM5 database is built on gene isoforms and we were provided with an annotation file to perform the mapping of a gene into its corresponding isoforms.
-Some of the downloaded CAD genes were not present in the annotation, therefore we had to exclude them aprioristically.
-Given unlimited time, we would have expanded all the selected 100 genes, yet we had to restrain our search to 41 of them, aside from the 5 that had already been expanded by previous runs of the gene@home BOINC project.
 
-\subsubsection*{NESSRA expansion of CAD associated genes}
-The 41 cad genetically associated genes, totalling to about 180 isoforms, were turned into one gene network files as inputs for NESSRA.
-The algorithm outputs a series of expansion networks, each of which is a list of nodes ranked on the reported score, which is a measure of the strenght of the supposed correlation between that node and the input one. 
+Some of the downloaded CAD genes were not present in the annotation, therefore we had to exclude them aprioristically. Given unlimited time, we would have expanded all the selected 100 genes, yet we had to restrain our search to 41 of them, aside from the 5 that had already been expanded by previous runs of the gene@home BOINC project.
 
-\subsubsection*{Score aggregation of each isoform}
-The output lists were merged on the isoforms,summing their scores in order to rank them based on how many times each isoform appeared in the various expansions lists.
+\subsubsection*{NES$^{\textbf{2}}$RA expansion of CAD associated genes}
+The 41 CAD genetically associated genes, totaling to 183 isoforms, were turned into one gene network files as inputs for NES$^2$RA.
+The algorithm outputs a series of expansion networks, each of which is a list of nodes ranked on the reported score, which is a measure of the strength of the supposed correlation between that node and the input one. 
 
-\subsubsection*{Filtering based on association score}
-The output lists were shortened using as weight the genetic association of the gene that corresponds to the input isoform, going from a maximum of 100 nodes (in the case of highest genetic association) to a minimum of 1 at steps of 1. 
+\subsubsection*{Score aggregation and filtering}
+The output lists were merged on the isoforms, summing their scores in order to rank them based on how many times each isoform appeared in the various expansion lists.
 
-The resulting n isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its isoforms. 
+Due to the large number of isoforms present in the expansion lists, we performed a selection on the isoforms. For each expansion list $\ell$, only the first $N_\ell$ isoforms were selected, where $N_\ell=max\{5;\,100-R_\ell\}$, and $R_\ell$ is the rank, based on genetic association, of the gene whose isoform was expanded to obtain the list $\ell$. 
+
+The resulting isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its corresponding isoforms. 
 
 \subsubsection*{Selection of target genes}
 
-The Open Tragets pyhton API [reference?] was used to query which of these genes are known to be targets of clinically approved drugs. We obtained a list of 148 target genes, which are the only ones that are considered in the following analyses.
+The Open Targets Python API \cite{open} was used to query which of these genes are known to be targets of clinically approved drugs. We obtained a list of 148 target genes, which are the only ones that are considered in the following analyses.
 
 \subsubsection*{NES$^{\textbf{2}}$RA expansion of target genes}
 
 In order to identify a subset of genes with a strong association with CAD, we selected the isoforms corresponding to these 148 target genes and we performed single isoform expansions using NES$^2$RA. Only the isoforms that passed the previous filter were considered. We expect NES$^2$RA expansions of genes that have strong interaction with CAD genes to have a large overlap with the list of CAD genes we started form.
 
-\subsubsection*{Comparison of expanded lists to CAD genes}
+\subsubsection*{Comparison of expanded lists with CAD genes}
 
-In order to quantify the overlap between the ranked list of CAD genes and the ranked expansion lists previously obtained, we used the weighted Jaccard similarity (WJS), which we define below.\medskip
+In order to quantify the overlap between the ranked list of CAD genes and the ranked expansion lists obtained in the previous step, we used the Weighted Jaccard Similarity (WJS), which we define below.\medskip
 
 \noindent
-\textit{Definition: given two weighted list of items, $\rho$ and $\sigma$, of equal length $N$, their weighted Jaccard similarity, $WJS(\rho, \sigma)$, is defined as:}
+\textit{Definition: given two weighted list of items, $\rho$ and $\sigma$, of equal length $N$, their Weighted Jaccard Similarity, $WJS(\rho, \sigma)$, is defined as:}
 
 $$
 WJS(\rho, \sigma) = \dfrac{\sum_{i=1}^Nmin(\rho_i,\sigma_i)}{\sum_{i=1}^Nmax(\rho_i,\sigma_i)}
 $$
 
 \noindent
-\textit{where $\rho_i$ and $\sigma_i$ are the weights corresponding to the same feature $i$.}\medskip
+\textit{where $\rho_i$ and $\sigma_i$ are the weights corresponding to the same item $i$.}\medskip
 
-In our analysis the weight of a feature $i$ (gene or isoform) in a ranked list $\rho$ is computed as $length(\rho) - rank_{\rho}(i) + 1$. This allows to assign large weights to high ranking features.
+In our analysis, the weight of a feature $i$ (gene or isoform) in a ranked list $\rho$ is computed as $length(\rho) - rank_{\rho}(i) + 1$. This allows to assign large weights to high ranking features.
 
-Since in principle the lists of features that we want to compare with the WJS do not contain the same elements, we need to add the missing elements to those lists. Given two lists of features $\rho$ and $\sigma$, containing different elements, we added the missing elements of one list to the other and viceversa. The missing elements are added as ties in the last position of the ranking.
+In principle, the lists of features do not contain the same number of elements. To solve this, we add the missing elements of one list to the other (and vice versa) as ties in the last position of the ranking.
 
-In order to compute the WJS of the ranked list of CAD genes and a ranked list of isoforms obtained using NES$^2$RA, we have to either convert the ranked list of CAD genes in a ranked list of isoforms or convert the ranked list of isoforms obtained using NES$^2$RA in a ranked list of genes. We explored both options:
+To compute the WJS between the CAD genes and each expansion list, we have to either convert genes into isoforms or vice versa. We explored both options:
 
 \begin{itemize}[leftmargin=*]
-	\item \textit{Convert NES$^2$RA isoforms into genes}: Given list of isoforms obtained with NES$^2$RA, we can convert it in a list of genes, assigning to each gene the largest relative frequency of its isoforms. Then the genes were ranked according to relative frequency.
-	\item \textit{Convert CAD genes into isoforms}: The ranked list of CAD genes was converted to a weighted list of isoforms, were the weight of each isoform corresponded to the rank of the genes. Then the list of isoforms was ranked according to the weights. This way, isoforms corresponding to the same gene presented the same rank.
+	\item \textit{Convert NES$^2$RA isoforms into genes}: Given a list of isoforms obtained with NES$^2$RA, we can convert it in a list of genes, ranking them by the largest relative frequency of their isoforms.
+	\item \textit{Convert CAD genes into isoforms}: The ranked list of CAD genes was converted into a ranked list of isoforms, treated as ties in the ranking.
 \end{itemize}
 
-We computed the WJS of the ranked list of CAD genes (respectively, isoforms) and the ranked lists of genes (respectively, isoforms) obtained with NES$^2$RA.
+We then computed the WJS scores for both cases.
 
 \subsubsection*{Significance analysis} 
 
-The scores obtained in different comparisons are not directly comparable between them, since they depend on the length of the lists. In order to obtain values that can be compared directly, we used a permutation approach to estimate the distribution of scores of lists of different length. For each length present, we generated 2000 random lists of genes or isoforms, we computed the WJS and we generated a distribution of the scores. Then, we used this distributions to compute p-values.
-
-Using a significance level of 0.05 (?), we obtained n genes and m isoforms with expansion lists enriched in CAD gene. The list of isoforms was also converted in a list of genes.
+The scores obtained from the WJS are not directly comparable between them, since they depend on the length of the lists. In order to obtain values that can be compared directly, we used a permutation approach to estimate a set of score distributions. For each length present, we generated 2000 random lists of genes or isoforms, we computed the WJS and we generated the score distribution associated to that length. Then, we used these distributions to compute p-values. The Benjamini-Hochberg correction was used to adjust p-values [cit]. A significance level of 0.05 was used to identify statistically significant WJS scores. 
 
 \subsection*{Enrichment analysis}
 \addcontentsline{toc}{subsection}{Enrichment analysis} % Adds this section to the table of contents
 
-In order to gain insight on the biological role of the identified genes, we performed functional enrichment analysis. We used both Open Targets to perform enrichment analysis against the Biological Processes form Gene Ontology.
-
-2229 genes, targets of approved drugs, ToppGenes, BP
-
-149 genes, ToppGenes, BP
-
-36 genes, BP Open Targets
-
-18 genes, BP Open Targets
-
-26 genes, diseases, ToppGenes
-
+In order to gain insight on the biological role of identified genes, we performed functional enrichment analysis. We used both Open Targets and ToppGene to perform enrichment analysis against the Biological Processes from Gene Ontology. In addition, we used ToppGene to perform enrichment analysis against disease databases (Clinical Variations, DisGeNET BeFree, DIsGeNET Curated, GWAS and OMIM).
 
 \section*{Results}
 \addcontentsline{toc}{section}{Results} % Adds this section to the table of contents
-Matteo
 
-The list of 149 target genes is reported in the Supplementary Material (Tab. \ref{tab:194genes}).
+\subsubsection*{Results of steps 3}
+Step 3 of the pipeline (see Materials and Methods) produced a list of 2043 genes, of which 149 are targets of clinically approved drugs (reported in Tab. \ref{tab:149genes}). For both lists, we employed ToppGene to perform enrichment analysis against the Biological Processes from Gene Ontology. The 50 most significant terms are reported in Tab. \ref{tab:bp2043} and Tab. \ref{tab:bp149}.
 
-The list of 36 significant genes are reported in Tab. \ref{tab:sign}. In this table are also indicated the genes found by option2.
+Since genes involved in cardiovascular diseases are highly represented among genes targeted by drugs, we may expect the enrichment analysis of the second set to present a bias. Therefore, we retrieved the list of all genes targeted by approved drugs from DrugBank and we performed an enrichment analysis on it (Tab. \ref{tab:bp2229}). We compared the results of this analysis with the results of the previous one in order to evaluate the bias.
+
+\subsubsection*{Results of steps 6}
+In the last step of the pipeline, we obtained 36 genes from the first approach (converting isoforms to genes) and 18 genes from the second approach (converting genes to isoforms). Remarkably, the latter are a subset of the former. These results are reported in Tab. \ref*{tab:sign}.
+
+For both lists, we used Open Targets to perform enrichment analysis against the Biological Processes from Gene Ontology. The results are reported in Tab. \ref{tab:GO36_1}, Tab. \ref{tab:GO36_2} and Tab. \ref*{tab:GO18}.
+
+We used Open Targets to identify which drugs target the 36 genes identified. In Tab. \ref{tab:drugs} we reported only the drugs at phase IV of clinical trial.
+
+Among the 36 genes, 19 were already associated with CAD. 4 of them are also target of drugs used to treat CAD. The list of genes and their association levels are reported in Fig. \ref{fig:19CAD}.
 
 \renewcommand{\arraystretch}{1.1}
 
@@ -297,13 +288,6 @@ The list of 36 significant genes are reported in Tab. \ref{tab:sign}. In this ta
 	\label{tab:sign}
 \end{table}
 
-The results of the enrichment analysis against the Biological Processes form Gene Ontology are reported in Tab. \ref{tab:GO36_1} and Tab. \ref{tab:GO36_2} for the results of option1 and in Tab. \ref*{tab:GO18} for the results of option2.
-
-The drugs that target the genes resulting from option1 are reported in Tab. \ref{tab:drugs}.
-
-19 genes found were already associated with CAD. 4 of them are also target of drugs used to treat CAD. The list of genes and their association levels are reported in Fig. \ref{fig:19CAD}.
-
-
 \begin{figure}[ht]
 	\includegraphics[width=\linewidth]{already_in}
 	\smallskip
@@ -311,10 +295,9 @@ The drugs that target the genes resulting from option1 are reported in Tab. \ref
 	\label{fig:19CAD}
 \end{figure}
 
-results of the enrichment analysis
-
 \section*{Discussion}
 \addcontentsline{toc}{section}{Discussion} % Adds this section to the table of contents
+
 NES$^2$RA gene-isoforms expansions are meant to explore putative causal relationships between genes via a local gene network (LGN) approach,   and without any further biological heuristics,NES$^2$RA outcome is indeed conservative enough to apply further techniques for filtering, aggregating, ranking and comparing results.
 Applying them wisely on NES$^2$RA results was imperative in order to gain profitable results. Indeed genes were expanded at two different steps of the pipeline to recover a list of genes presumably comparable to the starting list of genes. In this regard, the Weighted Jaccard Similarity and the statistical approach used aimed to produce results with a statistical significance.  
 DrugBank was used to extract the list of genes reported to be target of approved drugs (2229 genes) and Enrichment Analysis was performed in order to assess whether fltering NES$^2$RA results for genes that were already target of drugs introduced a bias in the analysis.
@@ -419,7 +402,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{List of tagret genes}
-	\label{tab:194genes}
+	\label{tab:149genes}
 \end{table}
 
 \renewcommand{\arraystretch}{1.2}
@@ -716,7 +699,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 \begin{table}[ht]
 	\centering
 	\scriptsize
-	\rowcolors{2}{NavyBlue!10}{white}
+	\rowcolors{2}{white}{NavyBlue!10}
 	\begin{tabularx}{\textwidth}{lRlR}
 		\rowcolor{NavyBlue!80}
 		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
@@ -787,6 +770,44 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\smallskip
 	\caption{BP 2229 genes ToppGenes}
 	\label{tab:bp2229}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
+		organic substance catabolic process & 4.4e-11 & protein catabolic process & 1.2e-07 \\ 
+		positive regulation of biosynthetic process & 4.4e-11 & regulation of protein catabolic process & 1.2e-07 \\ 
+		regulation of intracellular signal transduction & 1.2e-10 & positive regulation of cellular protein metabolic process & 1.6e-07 \\ 
+		positive regulation of cellular biosynthetic process & 1.5e-10 & regulation of cell proliferation & 1.8e-07 \\ 
+		positive regulation of gene expression & 4.1e-10 & positive regulation of molecular function & 2.4e-07 \\ 
+		response to oxygen-containing compound & 4.6e-10 & alcohol metabolic process & 2.8e-07 \\ 
+		positive regulation of nucleic acid-templated transcription & 4.6e-10 & negative regulation of RNA metabolic process & 2.9e-07 \\ 
+		positive regulation of transcription, DNA-templated & 4.6e-10 & lipid metabolic process & 3.3e-07 \\ 
+		positive regulation of macromolecule biosynthetic process & 1.2e-09 & blood vessel development & 6.3e-07 \\ 
+		positive regulation of RNA biosynthetic process & 1.2e-09 & regulation of proteolysis & 7.0e-07 \\ 
+		cellular catabolic process & 1.2e-09 & negative regulation of biosynthetic process & 7.1e-07 \\ 
+		positive regulation of RNA metabolic process & 1.6e-09 & regulation of kinase activity & 9.1e-07 \\ 
+		positive regulation of nitrogen compound metabolic process & 2.7e-09 & negative regulation of macromolecule biosynthetic process & 9.7e-07 \\ 
+		positive regulation of protein metabolic process & 2.7e-09 & multi-organism cellular process & 9.7e-07 \\ 
+		positive regulation of nucleobase-containing compound metabolic process & 3.3e-09 & regulation of protein kinase activity & 1.1e-06 \\ 
+		negative regulation of gene expression & 1.1e-08 & negative regulation of response to stimulus & 1.1e-06 \\ 
+		regulation of response to stress & 2.0e-08 & response to endogenous stimulus & 1.1e-06 \\ 
+		macromolecule catabolic process & 4.6e-08 & cell cycle & 1.1e-06 \\ 
+		vasculature development & 4.6e-08 & negative regulation of cellular macromolecule biosynthetic process & 1.1e-06 \\ 
+		regulation of catabolic process & 5.2e-08 & symbiont process & 1.1e-06 \\ 
+		negative regulation of nitrogen compound metabolic process & 5.4e-08 & interspecies interaction between organisms & 1.1e-06 \\ 
+		cardiovascular system development & 8.4e-08 & negative regulation of cellular biosynthetic process & 1.1e-06 \\ 
+		circulatory system development & 8.4e-08 & negative regulation of transcription, DNA-templated & 1.1e-06 \\ 
+		negative regulation of nucleobase-containing compound metabolic process & 8.7e-08 & regulation of protein serine/threonine kinase activity & 1.3e-06 \\ 
+		cellular response to oxygen-containing compound & 1.2e-07 & negative regulation of RNA biosynthetic process & 1.6e-06 \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{BP 2043 genes ToppGenes}
+	\label{tab:bp2043}
 \end{table}
 
 \end{document}
