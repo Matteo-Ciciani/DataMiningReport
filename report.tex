@@ -145,34 +145,34 @@ Each step of the pipeline is described in further details below.
 	\label{Fig:pipe}
 \end{figure}
 
-\subsubsection{Selection of CAD genes}
+\subsubsection*{Selection of CAD genes}
 Among the features of Open Target, there's the search for genes somehow associated to a specific illness. 
 We downloaded from the website the list of 643 genetically associated CAD genes and sorted them based on the overall association score and focused on the first 100 of them. 
 The FANTOM5 database is built on gene isoforms and we were provided with an annotation file to perform the mapping of a gene into its corresponding isoforms.
 Some of the downloaded CAD genes were not present in the annotation, therefore we had to exclude them aprioristically.
 Given unlimited time, we would have expanded all the selected 100 genes, yet we had to restrain our search to 41 of them, aside from the 5 that had already been expanded by previous runs of the gene@home BOINC project.
 
-\subsubsection{NESSRA expansion of CAD associated genes}
+\subsubsection*{NESSRA expansion of CAD associated genes}
 The 41 cad genetically associated genes, totalling to about 180 isoforms, were turned into one gene network files as inputs for NESSRA.
 The algorithm outputs a series of expansion networks, each of which is a list of nodes ranked on the reported score, which is a measure of the strenght of the supposed correlation between that node and the input one. 
 
-\subsubsection{Score aggregation of each isoform}
+\subsubsection*{Score aggregation of each isoform}
 The output lists were merged on the isoforms,summing their scores in order to rank them based on how many times each isoform appeared in the various expansions lists.
 
-\subsubsection{Filtering based on association score}
+\subsubsection*{Filtering based on association score}
 The output lists were shortened using as weight the genetic association of the gene that corresponds to the input isoform, going from a maximum of 100 nodes (in the case of highest genetic association) to a minimum of 1 at steps of 1. 
 
 The resulting n isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its isoforms. 
 
-\subsubsection{Selection of target genes}
+\subsubsection*{Selection of target genes}
 
 The Open Tragets pyhton API [reference?] was used to query which of these genes are known to be targets of clinically approved drugs. We obtained a list of 148 target genes, which are the only ones that are considered in the following analyses.
 
-\subsubsection{NES$^{\textbf{2}}$RA expansion of target genes}
+\subsubsection*{NES$^{\textbf{2}}$RA expansion of target genes}
 
 In order to identify a subset of genes with a strong association with CAD, we selected the isoforms corresponding to these 148 target genes and we performed single isoform expansions using NES$^2$RA. Only the isoforms that passed the previous filter were considered. We expect NES$^2$RA expansions of genes that have strong interaction with CAD genes to have a large overlap with the list of CAD genes we started form.
 
-\subsubsection{Comparison of expanded lists to CAD genes}
+\subsubsection*{Comparison of expanded lists to CAD genes}
 
 In order to quantify the overlap between the ranked list of CAD genes and the ranked expansion lists previously obtained, we used the weighted Jaccard similarity (WJS), which we define below.\medskip
 
@@ -199,15 +199,25 @@ In order to compute the WJS of the ranked list of CAD genes and a ranked list of
 
 We computed the WJS of the ranked list of CAD genes (respectively, isoforms) and the ranked lists of genes (respectively, isoforms) obtained with NES$^2$RA.
 
-\subsubsection{Significance analysis} 
+\subsubsection*{Significance analysis} 
 
 The scores obtained in different comparisons are not directly comparable between them, since they depend on the length of the lists. In order to obtain values that can be compared directly, we used a permutation approach to estimate the distribution of scores of lists of different length. For each length present, we generated 2000 random lists of genes or isoforms, we computed the WJS and we generated a distribution of the scores. Then, we used this distributions to compute p-values.
 
 Using a significance level of 0.05 (?), we obtained n genes and m isoforms with expansion lists enriched in CAD gene. The list of isoforms was also converted in a list of genes.
 
-\subsubsection{Enrichment analysis}
+\subsubsection*{Enrichment analysis}
 
-In order to gain insight on the biological role of the identified genes, we performed a functional enrichment analysis 
+In order to gain insight on the biological role of the identified genes, we performed functional enrichment analysis. We used both Open Targets to perform enrichment analysis against the Biological Processes form Gene Ontology.
+
+2229 genes, targets of approved drugs, ToppGenes, BP
+
+149 genes, ToppGenes, BP
+
+36 genes, BP Open Targets
+
+18 genes, BP Open Targets
+
+26 genes, diseases, ToppGenes
 
 
 \section*{Results}
