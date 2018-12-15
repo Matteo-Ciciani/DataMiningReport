@@ -121,13 +121,13 @@ To adress the drug repurposing task, Open Targets\cite{open} platform was chosen
 
 Our pipeline can be summarized in  6 steps, that are briefly summarized below and are represented in Fig. \ref{Fig:pipe}.
 
-\begin{itemize}
-	\item[1)] starting from a list of 48 genes genetically associated with CAD, obtained form Open Targets, single gene expansions are preformed using NES$^2$RA;
-	\item[2)] the resulting expansion lists are aggregated, obtaining a score for each isoform present in the expansion lists. This score is meant to recapitulate the overall interaction of an isoform with the list of CAD genes. Isoforms are then filtered according to the genetic association scores of the CAD genes they interact with;
-	\item[3)] the resulting list of isoforms is converted in a list of genes. Among these genes, we select those that are targets of clinically approved drugs. The result of this step is a list of preliminary putative drug repurposing targets;
-	\item[4)] the list of preliminary targets is further analyzed, performing single gene expansions using NES$^2$RA;
-	\item[5)] the Weighted Jaccard Similarity (WJS) is used to compare a ranked list of genes genetically associated with CAD, obtained form Open Targets, with the ranked lists of isoforms, obtained using NES$^2$RA;
-	\item[6)] a statistical analysis of the WJS scores is employed in order to identify which genes present a significant interaction with the list of CAD genes. The result of this step is a final list of putative drug repurposing targets.
+\begin{itemize}[leftmargin=*]
+	\item[1)] Starting from a list of 48 genes genetically associated with CAD, obtained form Open Targets, single gene expansions are preformed using NES$^2$RA.
+	\item[2)] The resulting expansion lists are aggregated, obtaining a score for each isoform present in the expansion lists. This score is meant to recapitulate the overall interaction of an isoform with the list of CAD genes. Isoforms are then filtered according to the genetic association scores of the CAD genes they interact with.
+	\item[3)] The resulting list of isoforms is converted in a list of genes. Among these genes, we select those that are targets of clinically approved drugs. The result of this step is a list of preliminary putative drug repurposing targets.
+	\item[4)] The list of preliminary targets is further analyzed, performing single gene expansions using NES$^2$RA.
+	\item[5)] The Weighted Jaccard Similarity (WJS) is used to compare a ranked list of genes genetically associated with CAD, obtained form Open Targets, with the ranked lists of isoforms, obtained using NES$^2$RA.
+	\item[6)] A statistical analysis of the WJS scores is employed in order to identify which genes present a significant interaction with the list of CAD genes. The result of this step is a final list of putative drug repurposing targets.
 \end{itemize}
 
 The rationale of steps 4), 5) and 6) is the identification of genes, among the preliminary targets, that present a strong interaction with CAD associated genes. This analysis allows us to have a larger confidence on the final list of putative targets, since their interactions with CAD genes has been tested twice (they were found in the expansions of CAD genes and CAD genes are present in their expansion).
@@ -187,7 +187,7 @@ Since in principle the lists of features that we want to compare with the WJS do
 
 In order to compute the WJS of the ranked list of CAD genes and a ranked list of isoforms obtained using NES$^2$RA, we have to either convert the ranked list of CAD genes in a ranked list of isoforms or convert the ranked list of isoforms obtained using NES$^2$RA in a ranked list of genes. We explored both options:
 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
 	\item \textit{Convert NES$^2$RA isoforms into genes}: Given list of isoforms obtained with NES$^2$RA, we can convert it in a list of genes, assigning to each gene the largest relative frequency of its isoforms. Then the genes were ranked according to relative frequency.
 	\item \textit{Convert CAD genes into isoforms}: The ranked list of CAD genes was converted to a weighted list of isoforms, were the weight of each isoform corresponded to the rank of the genes. Then the list of isoforms was ranked according to the weights. This way, isoforms corresponding to the same gene presented the same rank.
 \end{itemize}
@@ -202,7 +202,7 @@ Using a significance level of 0.05 (?), we obtained n genes and m isoforms with 
 
 \subsubsection{Enrichment analysis}
 
-In order to gain insight on the biological role of the identified genes, we performed a functional enrichment analysis...
+In order to gain insight on the biological role of the identified genes, we performed a functional enrichment analysis 
 
 
 \section*{Results}
@@ -638,5 +638,42 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\label{tab:GO18}
 \end{table}
 
+
+\begin{table}[ht]
+	\centering
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Disease} & \textbf{\color{white} q-value (FDR)} & \textbf{\color{white} Disease} & \textbf{\color{white} q-value (FDR)} \\
+		Endometriosis & 3.14e-10 & Epithelial ovarian cancer & 4.74e-07 \\ 
+		Myocardial Infarction & 1.36e-09 & Nephrotic Syndrome & 7.05e-07 \\ 
+		Rheumatoid Arthritis & 8.56e-09 & Malignant tumor of cervix & 7.09e-07 \\ 
+		Atherosclerosis & 5.34e-08 & Cirrhosis & 8.09e-07 \\ 
+		Scleroderma & 5.34e-08 & Ear, patella, short stature syndrome & 8.19e-07 \\ 
+		Lymphoma & 5.34e-08 & Cerebrovascular accident & 9.14e-07 \\ 
+		Diabetes Mellitus & 5.34e-08 & Fibrosarcoma & 9.29e-07 \\ 
+		Arteriosclerosis & 5.34e-08 & Epithelioma & 9.29e-07 \\ 
+		Cardiovascular Diseases & 5.52e-08 & Exanthema & 1.18e-06 \\ 
+		Diabetes & 5.77e-08 & Cervical cancer & 1.20e-06 \\ 
+		Hypertensive disease & 7.17e-08 & Mammary Neoplasms & 1.37e-06 \\ 
+		Systemic Scleroderma & 1.13e-07 & Fibrosis, Liver & 1.40e-06 \\ 
+		Obesity & 1.13e-07 & Kidney Diseases & 1.40e-06 \\ 
+		Diabetic Nephropathy & 1.13e-07 & Colitis & 1.40e-06 \\ 
+		Leukemia, Myelocytic, Acute & 2.09e-07 & Liver diseases & 1.55e-06 \\ 
+		Elastosis perforans serpiginosa & 2.21e-07 & Hamartoma Syndrome, Multiple & 1.72e-06 \\ 
+		Malignant neoplasm of ovary & 2.39e-07 & Hyperglycemia & 1.79e-06 \\ 
+		Acute lymphocytic leukemia & 2.90e-07 & Amyloidosis & 1.84e-06 \\ 
+		Degenerative polyarthritis & 3.22e-07 & Pancreatic carcinoma & 2.00e-06 \\ 
+		Pain & 3.92e-07 & Chronic myeloproliferative disorder & 2.01e-06 \\ 
+		Liver neoplasms & 4.53e-07 & Overweight & 2.17e-06 \\ 
+		Kidney Failure & 4.53e-07 & Acute Promyelocytic Leukemia & 2.32e-06 \\ 
+		Psoriasis & 4.66e-07 & Esophageal carcinoma & 2.51e-06 \\ 
+		Liver Cirrhosis & 4.66e-07 & Lupus Erythematosus, Systemic & 2.51e-06 \\ 
+		Acute leukemia & 4.73e-07 & Hamman-Rich syndrome & 2.62e-06 \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{Disease form 36 genes}
+	\label{tab:diseases}
+\end{table}
 
 \end{document}
