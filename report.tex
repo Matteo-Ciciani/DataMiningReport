@@ -28,6 +28,7 @@
 
 \usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
 \usepackage{tabularx}
+\usepackage{multirow}
 
 %----------------------------------------------------------------------------------------
 %	COLUMNS
@@ -204,7 +205,53 @@ Matteo
 
 The list of 149 target genes is reported in the Supplementary Material.
 
-Tables of significant genes / isoforms 
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\begin{table}[htb]
+	\centering
+	\rowcolors{2}{NavyBlue!10}{white}
+	\begin{tabularx}{\linewidth}{XRRRR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Gene} & \textbf{\color{white} Number of isoforms} & \textbf{\color{white} Minimum p-value} & \textbf{\color{white} Number of isoforms} & \textbf{\color{white} Minimum p-value} \\ 
+		CASP7 & 1 & 0 & 1 & 0 \\ 
+		COL1A1 & 1 & 0 & 1 & 0 \\ 
+		COL4A1 & 4 & 0 & 4 & 0 \\ 
+		COL4A2 & 6 & 0 & 3 & 0 \\ 
+		CTGF & 2 & 0 & 1 & 0 \\ 
+		FN1 & 8 & 0 & 8 & 0 \\ 
+		IL1R1 & 1 & 0 & 1 & 0 \\ 
+		INSR & 1 & 0 & 1 & 4.0e-02 \\ 
+		JAK1 & 1 & 0 &  &  \\ 
+		NDUFA4L2 & 1 & 0 & 1 & 0 \\ 
+		PDE4B & 2 & 0 & 1 & 1.7e-02 \\ 
+		PDE4D & 3 & 0 & 2 & 7.5e-03 \\ 
+		RARA & 1 & 0 &  &  \\ 
+		TLR4 & 2 & 0 &  &  \\ 
+		PIK3CG & 1 & 1.2e-02 &  &  \\ 
+		FNTB & 1 & 1.6e-02 &  &  \\ 
+		CSF1 & 1 & 1.7e-02 &  &  \\ 
+		TSG101 & 1 & 1.7e-02 &  &  \\ 
+		F5 & 1 & 2.3e-02 &  &  \\ 
+		CDK14 & 1 & 2.6e-02 & 1 & 2.2e-02 \\ 
+		TGFB1 & 2 & 2.7e-02 &  &  \\ 
+		ANPEP & 1 & 2.9e-03 &  &  \\ 
+		AVPR1A & 1 & 2.9e-03 & 1 & 4.1e-03 \\ 
+		DNMT3A & 1 & 2.9e-03 &  &  \\ 
+		PIK3CA & 1 & 2.9e-03 & 1 & 3.9e-02 \\ 
+		TNFRSF1A & 1 & 2.9e-03 &  &  \\ 
+		IL6 & 1 & 3.2e-02 & 1 & 1.7e-02 \\ 
+		FLT1 & 1 & 3.5e-02 &  &  \\ 
+		SEBOX & 1 & 3.8e-02 &  &  \\ 
+		COL5A3 & 1 & 4.4e-02 &  &  \\ 
+		GAA & 1 & 4.4e-02 &  &  \\ 
+		KCNJ2 & 1 & 4.6e-02 & 1 & 1.1e-02 \\ 
+		FGA & 1 & 4.9e-02 &  &  \\ 
+		NAMPT & 1 & 5.3e-03 &  &  \\ 
+		IFNAR2 & 1 & 7.5e-03 &  &  \\ 
+		PTGER4 & 1 & 7.5e-03 &  &  \\ 
+	\end{tabularx}
+	\caption{resulting genes}
+\end{table}
+
 
 \begin{figure}[ht]
 	\includegraphics[width=\linewidth]{already_in}
@@ -556,5 +603,6 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\smallskip
 	\caption{GO terms enriched in the list of 18}
 \end{table}
+
 
 \end{document}
