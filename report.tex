@@ -96,17 +96,14 @@
 \addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
 Drug repurposing is a strategy to identify new therapeutics uses for marketed drugs \cite{Polamreddy}. This procedure has known for time but only in recent years its use has increased due to new molecular discoveries, new high-throughput technologies and databases. 
 
-The classic discovery of a new drug is a difficult and expensive process. Although investment in biomedical and pharmaceutical research and development has increased significantly in the past 20 years, the annual number of new treatments
-approved by the US Food and Drug Administration (FDA) has not significantly increased \cite{Feixiong}. This could be due to a lack of well-establisehd  predictive pharmacokinetics/pharmacody-
-namics approaches, and concerning safety and tolerability profiles
-for new chemical entities from preclinical studies to clinical
-trials\cite{Shih}. 
+The classic discovery of a new drug is a difficult and expensive process. Although investment in biomedical and pharmaceutical research and development has increased significantly in the past 20 years, the annual number of new treatments approved by the US Food and Drug Administration (FDA) has not significantly increased \cite{Feixiong}. This could be due to a lack of well-establisehd  predictive pharmacokinetics and pharmacodynamics approaches, and concerning safety and tolerability profiles for new chemical entities from preclinical studies to clinical trials\cite{Shih}. 
 
 Discovering a new drug implies many resources and copious time, in average it takes 14 years to be able to have a product ready for the market, although all the efforts are often not payed off. 
 
 Drug repurposing can be a good proposal to overcome some of the problems of classic drug discovery. For example it can drastically decrease the time because it is based on previous knowlege and drugs that have already been approved by the FDA, therefore also the costs can decrease because there is not the need of safety and efficacy evaluation.
 
 Coronary artery disease (CAD), also knwon as coronary heart disease (CHD) or ischemic heart disease (IHD), is the most common type of heart disease. It is the leading cause of death in most of the western countries including Italy (World Health Organization data). The condition leads the formation of a waxy substance called plaque into coronary arteries decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture due to the formation of blood clot that could mostly (or completely) block blood flow through a coronary artery. The disease can weaken the heart muscle and lead to heart failure and arrhytmias, moreover it can cause angina, heart attack and sudden cardiac heart.
+
 CAD can be prevent maintaining a healthy lifestyle with regular exercises and a balance diet, however when this is not enough the use of medication is needed. Since CAD is a complex disease caused by many factors, different kind of drugs that can be used, among which aspirin is the most knwon one. 
 However in the worst cases, it is necessary to undergo surgical intervention such as coronary artery bypass surgery (CABG).
 
@@ -124,8 +121,10 @@ Moreover we want to test if NES$^2$RA could be a useful tool for this process wi
 NES$^2$RA is a PC-based algorithm in which first data undergo subsetting,
 secondly the skeleton of the PC algorithm is ran and finally results are aggregated, giving to each of the isoforms in the expansion lists the corresponding relative frequency score?.
 
-To facilitate the most computationally demanding step of NES$^2$RA, running the skeleton of the PC algorithm, the sigle gene expansions were submitted to gene@home \cite{boinc} BOINC (Berkeley Open Infrastructure for Network Computing) project, hosted by the TN-Grid platform. 
+To facilitate the most computationally demanding step of NES$^2$RA, running the skeleton of the PC algorithm, the single gene expansions were submitted to gene@home \cite{boinc} BOINC (Berkeley Open Infrastructure for Network Computing) project, hosted by the TN-Grid platform.
+ 
 The platform allowed to distribute the algorithm computational burden to committed volunteers' machines in order to reduce the running time and memory usage as much as possible.
+
 This gene@home project was previously set up for the network expansion of genes whose expression data came from the FANTOM5 Database \cite{fantom}, therefore this guided the choice of the transcriptional data to run NES$^2$RA on. 
 Finally, the isoforms on the BOINC platform available to be expanded were all the gene isoforms that were previously identified as significantly different within the same encoded gene, so to consider the all the isoforms in reasonably different biological functions and roles.
 
@@ -321,14 +320,9 @@ Applying them wisely on NES$^2$RA results was imperative in order to gain profit
 DrugBank was used to extract the list of genes reported to be target of approved drugs (2229 genes) and Enrichment Analysis was performed in order to assess whether fltering NES$^2$RA results for genes that were already target of drugs introduced a bias in the analysis.
 Among the significant GO terms, apart from Alzheimer,obesity and diabetes also cardiovascular diseases is reported as significant (pvalues $<<$ 0.001), which possibly limited outcomes to CAD compatible results.
 
-<<<<<<< HEAD
-Enrichment analysis was performed to gain insight on the biological processes involving the genes resulting from the previuous Significance Analysis.
-As Enrichment analysis was performed on the 36 genes list from the option 1 of the Significance analysis, GO terms (Tab.5) such as platelet activation, Tyrosine kinase signaling pathway,regulation of blood circulation, cell chemotaxis, angiogenesis and striated muscle contraction are present.  
-=======
-Performing Enrichment analysis on Open Targets of the 36 genes resulted positive to the Significance analysis, GO terms (see Table 5) such as platelet activation, Tyrosine kinase signaling pathway,regulation of blood circulation, cell chemotaxis, angiogenesis and striated muscle contraction are present. 
 
-Performing Enrichment analysis on Open Targets of the 18 genes positive to the Significance analysis, GO terms (see Table 5) such as circulatory system development, cardiac muscle contraction and relaxation (pvalue $7.43^04$), blood circulation, leukocytes migration are present (among others more general terms such as responce to compounds?) 
->>>>>>> 3894545b040b94cdc35f3e2c99daf016359d4553
+Enrichment analysis was performed to gain insight on the biological processes involving the genes resulting from the previuous Significance Analysis.
+As Enrichment analysis was performed on the 36 genes list from the option 1 of the Significance analysis, GO terms (Tab.5) such as platelet activation, Tyrosine kinase signaling pathway,regulation of blood circulation, cell chemotaxis, angiogenesis and striated muscle contraction are present.
  
 Similarly Enrichment analysis was performed on the 18 genes list from the option 2 of the Significance analysis and GO terms (see Table 6) such as circulatory system development, cardiac muscle contraction and relaxation, blood circulation, leukocytes migration are present (pvalue <  0.001).
 
