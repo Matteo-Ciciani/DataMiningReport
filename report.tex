@@ -94,7 +94,6 @@
 \section*{Introduction} % The \section*{} command stops section numbering
 
 \addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
-
 Drug repurposing is a strategy to identify new therapeutics uses for marketed drugs \cite{Polamreddy}. This procedure has known for time but only in recent years its use has increased due to new molecular discoveries, new high-throughput technologies and databases. 
 
 The classic discovery of a new drug is a difficult and expensive process. Although investment in biomedical and pharmaceutical research and development has increased significantly in the past 20 years, the annual number of new treatments
@@ -116,7 +115,6 @@ Since, as aforementioned, CAD is the leading cause of death in most of the count
 In this project therefore we apply NES$^2$RA\cite{NES2RA}, a pipeline that finds candidate genes to expand a known gene-network based PC-algorithm \cite{PC-alg}, with the aim to find marketed drug that can be repurposed for CAD.
 Moreover we want to test if NES$^2$RA could be a useful tool for this process with the idea to propose it such as standard workflow to follow for drug repurposing. 
 
-
 \section*{Materials and Methods}
 \addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
 
@@ -135,8 +133,25 @@ To adress the drug repurposing task, Open Targets\cite{open} platform was chosen
 \subsection*{Pipeline}
 \addcontentsline{toc}{subsection}{Pipeline} % Adds this section to the table of contents
 
+Our pipeline can be summarized in  6 steps, that are briefly summarized below and are represented in Fig. \ref{Fig:pipe}.
 
-general description of the pipeline and figure
+\begin{itemize}[leftmargin=*]
+	\item[1)] Starting from a list of 48 genes genetically associated with CAD, obtained form Open Targets, single gene expansions are preformed using NES$^2$RA.
+	\item[2)] The resulting expansion lists are aggregated, obtaining a score for each isoform present in the expansion lists. This score is meant to recapitulate the overall interaction of an isoform with the list of CAD genes. Isoforms are then filtered according to the genetic association scores of the CAD genes they interact with.
+	\item[3)] The resulting list of isoforms is converted in a list of genes. Among these genes, we select those that are targets of clinically approved drugs. The result of this step is a list of preliminary putative drug repurposing targets.
+	\item[4)] The list of preliminary targets is further analyzed, performing single gene expansions using NES$^2$RA.
+	\item[5)] The Weighted Jaccard Similarity (WJS) is used to compare a ranked list of genes genetically associated with CAD, obtained form Open Targets, with the ranked lists of isoforms, obtained using NES$^2$RA.
+	\item[6)] A statistical analysis of the WJS scores is employed in order to identify which genes present a significant interaction with the list of CAD genes. The result of this step is a final list of putative drug repurposing targets.
+\end{itemize}
+
+The rationale of steps 4), 5) and 6) is the identification of genes, among the preliminary targets, that present a strong interaction with CAD associated genes. This analysis allows us to have a larger confidence on the final list of putative targets, since their interactions with CAD genes has been tested twice (they were found in the expansions of CAD genes and CAD genes are present in their expansion).
+
+Each step of the pipeline is described in further details below.
+ 
+\cite{OpenTargetPlatform}
+\cite{fantom}
+\cite{realBoinc}
+\cite{WGS}
 
 \begin{figure}
 	\includegraphics[width=1.1\linewidth, trim = 2cm 0 1.5cm 0.4cm, clip = true]{pipeline.png}
@@ -144,19 +159,24 @@ general description of the pipeline and figure
 	\label{Fig:pipe}
 \end{figure}
 
-Enri
+\subsubsection{Selection of CAD genes}
+Among the features of Open Target, there's the search for genes somehow associated to a specific illness. 
+We downloaded from the website the list of 643 genetically associated CAD genes and sorted them based on the overall association score and focused on the first 100 of them. 
+The FANTOM5 database is built on gene isoforms and we were provided with an annotation file to perform the mapping of a gene into its corresponding isoforms.
+Some of the downloaded CAD genes were not present in the annotation, therefore we had to exclude them aprioristically.
+Given unlimited time, we would have expanded all the selected 100 genes, yet we had to restrain our search to 41 of them, aside from the 5 that had already been expanded by previous runs of the gene@home BOINC project.
 
-selection of genes to expand
+\subsubsection{NESSRA expansion of CAD associated genes}
+The 41 cad genetically associated genes, totalling to about 180 isoforms, were turned into one gene network files as inputs for NESSRA.
+The algorithm outputs a series of expansion networks, each of which is a list of nodes ranked on the reported score, which is a measure of the strenght of the supposed correlation between that node and the input one. 
 
-nessra expansion of cad associated genes
+\subsubsection{Score aggregation of each isoform}
+The output lists were merged on the isoforms,summing their scores in order to rank them based on how many times each isoform appeared in the various expansions lists.
 
-score aggregation of each isoform
+\subsubsection{Filtering based on association score}
+The output lists were shortened using as weight the genetic association of the gene that corresponds to the input isoform, going from a maximum of 100 nodes (in the case of highest genetic association) to a minimum of 1 at steps of 1. 
 
-filter on isoforms
-
-Matteo
-
-The resulting n isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its isoforms.
+The resulting n isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its isoforms. 
 
 \subsubsection{Selection of target genes}
 
@@ -186,7 +206,7 @@ Since in principle the lists of features that we want to compare with the WJS do
 
 In order to compute the WJS of the ranked list of CAD genes and a ranked list of isoforms obtained using NES$^2$RA, we have to either convert the ranked list of CAD genes in a ranked list of isoforms or convert the ranked list of isoforms obtained using NES$^2$RA in a ranked list of genes. We explored both options:
 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
 	\item \textit{Convert NES$^2$RA isoforms into genes}: Given list of isoforms obtained with NES$^2$RA, we can convert it in a list of genes, assigning to each gene the largest relative frequency of its isoforms. Then the genes were ranked according to relative frequency.
 	\item \textit{Convert CAD genes into isoforms}: The ranked list of CAD genes was converted to a weighted list of isoforms, were the weight of each isoform corresponded to the rank of the genes. Then the list of isoforms was ranked according to the weights. This way, isoforms corresponding to the same gene presented the same rank.
 \end{itemize}
@@ -201,7 +221,7 @@ Using a significance level of 0.05 (?), we obtained n genes and m isoforms with 
 
 \subsubsection{Enrichment analysis}
 
-In order to gain insight on the biological role of the identified genes, we performed a functional enrichment analysis...
+In order to gain insight on the biological role of the identified genes, we performed a functional enrichment analysis 
 
 
 \section*{Results}
@@ -480,7 +500,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\rowcolors{2}{white}{NavyBlue!10}
 	\begin{tabularx}{\textwidth}{XlXl}
 		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} GO term} & \textbf{\color{white} p-value} & \textbf{\color{white} GO term} & \textbf{\color{white} p-value} \\
+		\textbf{\color{white} GO term} & \textbf{\color{white} q-value} & \textbf{\color{white} GO term} & \textbf{\color{white} q-value} \\
 		response to organic substance & 1.7e-09 & positive regulation of response to external stimulus & 2.1e-03 \\ 
 		cellular response to organic ubstance & 3.0e-09 & movement of cell or subcellular component & 2.4e-03 \\ 
 		leukocyte migration & 3.8e-08 & intracellular signal transduction & 2.6e-03 \\ 
@@ -560,7 +580,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\rowcolors{2}{white}{NavyBlue!10}
 	\begin{tabularx}{\textwidth}{XlXl}
 		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} GO term} & \textbf{\color{white} p-value} & \textbf{\color{white} GO term} & \textbf{\color{white} p-value} \\
+		\textbf{\color{white} GO term} & \textbf{\color{white} q-value} & \textbf{\color{white} GO term} & \textbf{\color{white} q-value} \\
 		cell motility & 7.5e-04 & regulation of protein modification process & 1.9e-02 \\ 
 		regulation of cytokine-mediated signaling pathway & 7.5e-04 & positive regulation of phosphorylation & 2.0e-02 \\ 
 		platelet activation & 7.8e-04 & enzyme linked receptor protein signaling pathway & 2.4e-02 \\ 
@@ -602,7 +622,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		\rowcolors{2}{NavyBlue!10}{white}
 		\begin{tabularx}{\textwidth}{XlXl}
 		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} GO term} & \textbf{\color{white} p-value} & \textbf{\color{white} GO term} & \textbf{\color{white} p-value} \\
+		\textbf{\color{white} GO term} & \textbf{\color{white} q-value} & \textbf{\color{white} GO term} & \textbf{\color{white} q-value} \\
 		cellular response to organic substance & 5.1e-07 & response to interleukin-6 & 9.1e-03 \\ 
 		cellular response to chemical stimulus & 5.8e-06 & signaling & 9.2e-03 \\ 
 		response to organic substance & 7.6e-06 & cardiac muscle contraction & 9.5e-03 \\ 
@@ -641,5 +661,119 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\label{tab:GO18}
 \end{table}
 
+
+\begin{table}[ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Disease} & \textbf{\color{white} q-value} & \textbf{\color{white} Disease} & \textbf{\color{white} q-value} \\
+		Endometriosis & 3.14e-10 & Epithelial ovarian cancer & 4.74e-07 \\ 
+		Myocardial Infarction & 1.36e-09 & Nephrotic Syndrome & 7.05e-07 \\ 
+		Rheumatoid Arthritis & 8.56e-09 & Malignant tumor of cervix & 7.09e-07 \\ 
+		Atherosclerosis & 5.34e-08 & Cirrhosis & 8.09e-07 \\ 
+		Scleroderma & 5.34e-08 & Ear, patella, short stature syndrome & 8.19e-07 \\ 
+		Lymphoma & 5.34e-08 & Cerebrovascular accident & 9.14e-07 \\ 
+		Diabetes Mellitus & 5.34e-08 & Fibrosarcoma & 9.29e-07 \\ 
+		Arteriosclerosis & 5.34e-08 & Epithelioma & 9.29e-07 \\ 
+		Cardiovascular Diseases & 5.52e-08 & Exanthema & 1.18e-06 \\ 
+		Diabetes & 5.77e-08 & Cervical cancer & 1.20e-06 \\ 
+		Hypertensive disease & 7.17e-08 & Mammary Neoplasms & 1.37e-06 \\ 
+		Systemic Scleroderma & 1.13e-07 & Fibrosis, Liver & 1.40e-06 \\ 
+		Obesity & 1.13e-07 & Kidney Diseases & 1.40e-06 \\ 
+		Diabetic Nephropathy & 1.13e-07 & Colitis & 1.40e-06 \\ 
+		Leukemia, Myelocytic, Acute & 2.09e-07 & Liver diseases & 1.55e-06 \\ 
+		Elastosis perforans serpiginosa & 2.21e-07 & Hamartoma Syndrome, Multiple & 1.72e-06 \\ 
+		Malignant neoplasm of ovary & 2.39e-07 & Hyperglycemia & 1.79e-06 \\ 
+		Acute lymphocytic leukemia & 2.90e-07 & Amyloidosis & 1.84e-06 \\ 
+		Degenerative polyarthritis & 3.22e-07 & Pancreatic carcinoma & 2.00e-06 \\ 
+		Pain & 3.92e-07 & Chronic myeloproliferative disorder & 2.01e-06 \\ 
+		Liver neoplasms & 4.53e-07 & Overweight & 2.17e-06 \\ 
+		Kidney Failure & 4.53e-07 & Acute Promyelocytic Leukemia & 2.32e-06 \\ 
+		Psoriasis & 4.66e-07 & Esophageal carcinoma & 2.51e-06 \\ 
+		Liver Cirrhosis & 4.66e-07 & Lupus Erythematosus, Systemic & 2.51e-06 \\ 
+		Acute leukemia & 4.73e-07 & Hamman-Rich syndrome & 2.62e-06 \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{Disease form 36 genes}
+	\label{tab:diseases}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{NavyBlue!10}{white}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
+		response to oxygen-containing compound & 3.6e-25 & apoptotic process & 4.0e-16 \\ 
+		positive regulation of protein metabolic process & 4.4e-21 & positive regulation of signaling & 5.7e-16 \\ 
+		response to organic cyclic compound & 3.0e-20 & regulation of cell proliferation & 6.1e-16 \\ 
+		positive regulation of cellular protein metabolic process & 2.4e-19 & cardiovascular system development & 8.6e-16 \\ 
+		cellular response to oxygen-containing compound & 1.7e-18 & circulatory system development & 8.6e-16 \\ 
+		regulation of programmed cell death & 2.2e-18 & positive regulation of signal transduction & 9.5e-16 \\ 
+		response to endogenous stimulus & 2.4e-18 & inflammatory response & 1.8e-15 \\ 
+		regulation of cell death & 6.8e-18 & response to cytokine & 3.1e-15 \\ 
+		positive regulation of phosphate metabolic process & 1.1e-17 & regulation of system process & 3.5e-15 \\ 
+		positive regulation of phosphorus metabolic process & 1.1e-17 & blood circulation & 7.2e-15 \\ 
+		protein phosphorylation & 1.1e-17 & positive regulation of intracellular signal transduction & 7.2e-15 \\ 
+		regulation of apoptotic process & 2.7e-17 & signal transduction by protein phosphorylation & 7.9e-15 \\ 
+		positive regulation of protein modification process & 4.2e-17 & circulatory system process & 7.9e-15 \\ 
+		programmed cell death & 5.0e-17 & response to lipid & 8.9e-15 \\ 
+		positive regulation of protein phosphorylation & 5.0e-17 & response to wounding & 8.9e-15 \\ 
+		regulation of phosphate metabolic process & 5.9e-17 & regulation of transport & 2.2e-14 \\ 
+		regulation of phosphorus metabolic process & 7.7e-17 & defense response & 4.4e-14 \\ 
+		regulation of protein phosphorylation & 1.5e-16 & blood vessel development & 5.3e-14 \\ 
+		response to alcohol & 1.7e-16 & response to hormone & 7.0e-14 \\ 
+		positive regulation of phosphorylation & 1.9e-16 & cellular response to endogenous stimulus & 7.4e-14 \\ 
+		positive regulation of multicellular organismal process & 1.9e-16 & MAPK cascade & 9.0e-14 \\ 
+		positive regulation of cell communication & 2.2e-16 & cellular response to external stimulus & 1.1e-13 \\ 
+		regulation of protein modification process & 3.4e-16 & vasculature development & 1.4e-13 \\ 
+		regulation of phosphorylation & 3.8e-16 & blood vessel morphogenesis & 2.9e-13 \\ 
+		regulation of intracellular signal transduction & 4.0e-16 & angiogenesis & 3.2e-13 \\
+	\end{tabularx}
+	\smallskip
+	\caption{BP 149 genes ToppGenes}
+	\label{tab:bp149}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
+		response to oxygen-containing compound & 8.4e-162 & nucleotide metabolic process & 2.7e-91 \\ 
+		carboxylic acid metabolic process & 4.5e-157 & nucleoside phosphate metabolic process & 5.3e-91 \\ 
+		ion transport & 5.2e-153 & cell-cell signaling & 7.9e-89 \\ 
+		organic acid metabolic process & 1.8e-145 & response to drug & 2.2e-88 \\ 
+		oxoacid metabolic process & 1.8e-145 & regulation of system process & 2.4e-87 \\ 
+		response to endogenous stimulus & 4.1e-134 & response to inorganic substance & 3.2e-87 \\ 
+		response to organic cyclic compound & 9.1e-130 & small molecule biosynthetic process & 5.5e-87 \\ 
+		response to nitrogen compound & 9.9e-130 & cellular response to oxygen-containing compound & 8.3e-87 \\ 
+		response to organonitrogen compound & 1.9e-129 & purine-containing compound metabolic process & 1.3e-85 \\ 
+		oxidation-reduction process & 6.3e-124 & chemical homeostasis & 6.8e-85 \\ 
+		protein phosphorylation & 1.1e-108 & protein autophosphorylation & 4.9e-83 \\ 
+		cation transport & 2.1e-107 & ribose phosphate metabolic process & 9.3e-82 \\ 
+		regulation of transport & 2.6e-106 & lipid metabolic process & 1.3e-81 \\ 
+		ion transmembrane transport & 4.9e-106 & cation transmembrane transport & 4.1e-81 \\ 
+		homeostatic process & 4.8e-103 & response to wounding & 9.4e-80 \\ 
+		organophosphate metabolic process & 2.3e-102 & ribonucleotide metabolic process & 3.6e-79 \\ 
+		transmembrane transport & 1.5e-99 & purine nucleotide metabolic process & 2.2e-78 \\ 
+		response to lipid & 1.2e-97 & organonitrogen compound biosynthetic process & 7.0e-78 \\ 
+		response to hormone & 1.5e-97 & anion transport & 4.4e-77 \\ 
+		nucleobase-containing small molecule metabolic process & 1.9e-97 & alpha-amino acid metabolic process & 1.1e-76 \\ 
+		secretion & 5.4e-97 & purine ribonucleotide metabolic process & 1.3e-76 \\ 
+		circulatory system process & 3.4e-96 & inorganic ion transmembrane transport & 1.8e-76 \\ 
+		blood circulation & 5.0e-96 & metal ion transport & 2.1e-76 \\ 
+		cellular amino acid metabolic process & 4.8e-95 & secretion by cell & 1.7e-73 \\ 
+		regulation of ion transport & 2.6e-93 & response to abiotic stimulus & 4.7e-73 \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{BP 2229 genes ToppGenes}
+	\label{tab:bp2229}
+\end{table}
 
 \end{document}
