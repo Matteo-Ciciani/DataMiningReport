@@ -95,22 +95,11 @@
 
 \addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
 
-Drug repurposing is a strategy to identify new therapeutics uses for marketed drugs \cite{Polamreddy}. This procedure has known for time but only in recent years its use has increased due to new molecular discoveries, new high-throughput technologies and databases. In average the launch of a new drug on the market takes 14 years, drug repurposing can drastically decrease this time because of the usage of previous knowledge and, moreover, it can lower the costs of the R{\&}D process.\\
-\\
-Coronary artery disease (CAD) is the most common type of heart disease.It is the leading cause of death in the United States and in Italy (WHO data). The condition leads the formation of a waxy substance calle plaque into coronary arteries decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture due to the formation of blood clot that could mostrly (or completely) block blood flow through a coronary artery. The disease can weaken the heart muscle and lead to heart failure and arrhytmias, moreover it cas cause angina and heart attack.\\
-\\
-In this project we apply NES2RA\cite{NES2RA}, a pipeline that finds candidate genes to expand a known gene-network based PC-algorithm \cite{PC-alg}, to find marketed drug that can be repurposed for CAD. 
-The pipeline of our work can be divided in 2 significant steps: retrieving known target genes, backward expansion and analysis.\\
-\\
-In the first step the ranked CAD genetic associated genes are obtained using Open Target \cite{OpenTargetPlatform}, we decide to focus on the 100 most important ones without minding if there are already known drug target for the disease.\\
-For each gene the corresponding isoforms are picked from the filtered annotation of the FANTOM5 database \cite{fantom} and then expanded by NES2RA using the Boinc Platform \cite{realBoinc} and FANTOM5. NES2RA gives an expansion file for each isoform, where isoforms related with the one in input are collected and ranked by an association score. Minding the importance of the previous 100 CAD genes and the overall score for each isoform , the expansion files are filtered such that a list of particularly interesting isoforms is obtained. Successively using the Open Target Platform, we extract the gens that are already known targets for any drug from the aforementioned list. At the end of this step we are left with a list of 148 drugged genes corresponding to 217 isoforms.\\
-\\
-The purpose of the second step is to verify which of the genes has a drug that can be repurposed for CAD.
-Firstly a backward expansion on the 217 isoforms is performed using NES2RA.
-Secondly an analsyis using weighted Jaccard Similarity (WGS) \cite{WGS} for each expansion result paired with the initial CAD genetic associated genes is done to obtain a p-value for possible relation among the isoform in input and the CAD. 
+Drug repurposing is a strategy to identify new therapeutics uses for marketed drugs \cite{Polamreddy}. This procedure has known for time but only in recent years its use has increased due to new molecular discoveries, new high-throughput technologies and databases. In average the launch of a new drug on the market takes 14 years, drug repurposing can drastically decrease this time because of the usage of previous knowledge and, moreover, it can lower the costs of the R{\&}D process.
 
-The aim of the project is to see if NES2RA can be proposed as a new \textit{in silico} tool for drug repurposing and to find possible new drugs for the CAD disease.  
+Coronary artery disease (CAD) is the most common type of heart disease.It is the leading cause of death in the United States and in Italy (WHO data). The condition leads the formation of a waxy substance calle plaque into coronary arteries decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture due to the formation of blood clot that could mostrly (or completely) block blood flow through a coronary artery. The disease can weaken the heart muscle and lead to heart failure and arrhytmias, moreover it cas cause angina and heart attack.
 
+In this project we apply NES$^2$RA\cite{NES2RA}, a pipeline that finds candidate genes to expand a known gene-network based PC-algorithm \cite{PC-alg}, to find marketed drug that can be repurposed for CAD.
 
 \section*{Materials and Methods}
 \addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
@@ -130,8 +119,25 @@ To adress the drug repurposing task, Open Targets\cite{open} platform was chosen
 \subsection*{Pipeline}
 \addcontentsline{toc}{subsection}{Pipeline} % Adds this section to the table of contents
 
+Our pipeline can be summarized in  6 steps, that are briefly summarized below and are represented in Fig. \ref{Fig:pipe}.
 
-general description of the pipeline and figure
+\begin{itemize}[leftmargin=*]
+	\item[1)] Starting from a list of 48 genes genetically associated with CAD, obtained form Open Targets, single gene expansions are preformed using NES$^2$RA.
+	\item[2)] The resulting expansion lists are aggregated, obtaining a score for each isoform present in the expansion lists. This score is meant to recapitulate the overall interaction of an isoform with the list of CAD genes. Isoforms are then filtered according to the genetic association scores of the CAD genes they interact with.
+	\item[3)] The resulting list of isoforms is converted in a list of genes. Among these genes, we select those that are targets of clinically approved drugs. The result of this step is a list of preliminary putative drug repurposing targets.
+	\item[4)] The list of preliminary targets is further analyzed, performing single gene expansions using NES$^2$RA.
+	\item[5)] The Weighted Jaccard Similarity (WJS) is used to compare a ranked list of genes genetically associated with CAD, obtained form Open Targets, with the ranked lists of isoforms, obtained using NES$^2$RA.
+	\item[6)] A statistical analysis of the WJS scores is employed in order to identify which genes present a significant interaction with the list of CAD genes. The result of this step is a final list of putative drug repurposing targets.
+\end{itemize}
+
+The rationale of steps 4), 5) and 6) is the identification of genes, among the preliminary targets, that present a strong interaction with CAD associated genes. This analysis allows us to have a larger confidence on the final list of putative targets, since their interactions with CAD genes has been tested twice (they were found in the expansions of CAD genes and CAD genes are present in their expansion).
+
+Each step of the pipeline is described in further details below.
+ 
+\cite{OpenTargetPlatform}
+\cite{fantom}
+\cite{realBoinc}
+\cite{WGS}
 
 \begin{figure}
 	\includegraphics[width=1.1\linewidth, trim = 2cm 0 1.5cm 0.4cm, clip = true]{pipeline.png}
@@ -186,7 +192,7 @@ Since in principle the lists of features that we want to compare with the WJS do
 
 In order to compute the WJS of the ranked list of CAD genes and a ranked list of isoforms obtained using NES$^2$RA, we have to either convert the ranked list of CAD genes in a ranked list of isoforms or convert the ranked list of isoforms obtained using NES$^2$RA in a ranked list of genes. We explored both options:
 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
 	\item \textit{Convert NES$^2$RA isoforms into genes}: Given list of isoforms obtained with NES$^2$RA, we can convert it in a list of genes, assigning to each gene the largest relative frequency of its isoforms. Then the genes were ranked according to relative frequency.
 	\item \textit{Convert CAD genes into isoforms}: The ranked list of CAD genes was converted to a weighted list of isoforms, were the weight of each isoform corresponded to the rank of the genes. Then the list of isoforms was ranked according to the weights. This way, isoforms corresponding to the same gene presented the same rank.
 \end{itemize}
@@ -201,7 +207,7 @@ Using a significance level of 0.05 (?), we obtained n genes and m isoforms with 
 
 \subsubsection{Enrichment analysis}
 
-In order to gain insight on the biological role of the identified genes, we performed a functional enrichment analysis...
+In order to gain insight on the biological role of the identified genes, we performed a functional enrichment analysis 
 
 
 \section*{Results}
@@ -287,7 +293,7 @@ Because NESS2RA gene -isoforms- expansions are meant to explore through a local 
 
 Performing Enrichment analysis on Open Targets of the 36 genes resulted positive to the Significance analysis, GO terms (see Table 5) such as platelet activation, Tyrosine kinase signaling pathway,regulation of blood circulation, cell chemotaxis, angiogenesis and striated muscle contraction are present. 
 
-Performing Enrichment analysis on Open Targets of the 18 genes positive to the Significance analysis, GO terms (see Table 5) such as circulatory system development, cardiac muscle contraction and relaxation (pvalue 7.43^04), blood circulation, leukocytes migration are present (among others more general terms such as responce to compounds?) 
+Performing Enrichment analysis on Open Targets of the 18 genes positive to the Significance analysis, GO terms (see Table 5) such as circulatory system development, cardiac muscle contraction and relaxation (pvalue $7.43^04$), blood circulation, leukocytes migration are present (among others more general terms such as responce to compounds?) 
  
 Performing it on Top genes, specifically looking at Disease terms - pvalue
 
@@ -637,5 +643,42 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\label{tab:GO18}
 \end{table}
 
+
+\begin{table}[ht]
+	\centering
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Disease} & \textbf{\color{white} q-value (FDR)} & \textbf{\color{white} Disease} & \textbf{\color{white} q-value (FDR)} \\
+		Endometriosis & 3.14e-10 & Epithelial ovarian cancer & 4.74e-07 \\ 
+		Myocardial Infarction & 1.36e-09 & Nephrotic Syndrome & 7.05e-07 \\ 
+		Rheumatoid Arthritis & 8.56e-09 & Malignant tumor of cervix & 7.09e-07 \\ 
+		Atherosclerosis & 5.34e-08 & Cirrhosis & 8.09e-07 \\ 
+		Scleroderma & 5.34e-08 & Ear, patella, short stature syndrome & 8.19e-07 \\ 
+		Lymphoma & 5.34e-08 & Cerebrovascular accident & 9.14e-07 \\ 
+		Diabetes Mellitus & 5.34e-08 & Fibrosarcoma & 9.29e-07 \\ 
+		Arteriosclerosis & 5.34e-08 & Epithelioma & 9.29e-07 \\ 
+		Cardiovascular Diseases & 5.52e-08 & Exanthema & 1.18e-06 \\ 
+		Diabetes & 5.77e-08 & Cervical cancer & 1.20e-06 \\ 
+		Hypertensive disease & 7.17e-08 & Mammary Neoplasms & 1.37e-06 \\ 
+		Systemic Scleroderma & 1.13e-07 & Fibrosis, Liver & 1.40e-06 \\ 
+		Obesity & 1.13e-07 & Kidney Diseases & 1.40e-06 \\ 
+		Diabetic Nephropathy & 1.13e-07 & Colitis & 1.40e-06 \\ 
+		Leukemia, Myelocytic, Acute & 2.09e-07 & Liver diseases & 1.55e-06 \\ 
+		Elastosis perforans serpiginosa & 2.21e-07 & Hamartoma Syndrome, Multiple & 1.72e-06 \\ 
+		Malignant neoplasm of ovary & 2.39e-07 & Hyperglycemia & 1.79e-06 \\ 
+		Acute lymphocytic leukemia & 2.90e-07 & Amyloidosis & 1.84e-06 \\ 
+		Degenerative polyarthritis & 3.22e-07 & Pancreatic carcinoma & 2.00e-06 \\ 
+		Pain & 3.92e-07 & Chronic myeloproliferative disorder & 2.01e-06 \\ 
+		Liver neoplasms & 4.53e-07 & Overweight & 2.17e-06 \\ 
+		Kidney Failure & 4.53e-07 & Acute Promyelocytic Leukemia & 2.32e-06 \\ 
+		Psoriasis & 4.66e-07 & Esophageal carcinoma & 2.51e-06 \\ 
+		Liver Cirrhosis & 4.66e-07 & Lupus Erythematosus, Systemic & 2.51e-06 \\ 
+		Acute leukemia & 4.73e-07 & Hamman-Rich syndrome & 2.62e-06 \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{Disease form 36 genes}
+	\label{tab:diseases}
+\end{table}
 
 \end{document}
