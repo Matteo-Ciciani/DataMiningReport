@@ -118,13 +118,17 @@ The aim of the project is to see if NES2RA can be proposed as a new \textit{in s
 \subsection*{Platforms and Datasources}
 \addcontentsline{toc}{subsection}{Platforms and Datasources} % Adds this section to the table of contents
 
-Nessra is designed in three steps in which first subsets data,
-secondly runs the skeleton of the PC algorithm and finally aggregates results, computing the frequencies of the transcripts.
+NES$^2$RA is a PC-based algorithm in which first data undergo subsetting,
+secondly the skeleton of the PC algorithm is ran and finally results are aggregated, giving to each of the isoforms in the expansion lists the corresponding relative frequency score?.
 
-For the most computationally demanding step of Nessra, which consists in running the skeleton of the PC algorithm, the sigle gene expansions were run within the local gene@home \cite{boinc} BOINC (Berkeley Open Infrastructure for Network Computing) project, hosted by the TN-Grid platform. 
-The platform allowed to distribute the expansions computational burden to committed volunteers' machines in order to reduce the running time and memory usage of the algorithm as much as possible.
-This gene@home project was previously set up for the network expansion of genes whose expression data came from the FANTOM5 Database \cite{fantom}, so this guided the choice of the transcriptional data to run Nessra on.
-To adress the drug repurposing task, Open Targets\cite{open} platform was chosen to select genes involved in the CAD disease.  
+To facilitate the most computationally demanding step of NES$^2$RA, running the skeleton of the PC algorithm, the sigle gene expansions were submitted to gene@home \cite{boinc} BOINC (Berkeley Open Infrastructure for Network Computing) project, hosted by the TN-Grid platform. 
+The platform allowed to distribute the algorithm computational burden to committed volunteers' machines in order to reduce the running time and memory usage as much as possible.
+This gene@home project was previously set up for the network expansion of genes whose expression data came from the FANTOM5 Database \cite{fantom}, therefore this guided the choice of the transcriptional data to run NES$^2$RA on. 
+Finally, the isoforms on the BOINC platform available to be expanded were all the gene isoforms that were previously identified as significantly different within the same encoded gene, so to consider the all the isoforms in reasonably different biological functions and roles.
+
+To adress the drug repurposing task, Open Targets\cite{open} platform was used to select genes involved in CAD disease.
+DrugBank database was used to retrieve all the genes already target of a FDA approved drug.
+Toppgene Suite and Open Targets were used to perform Enrichment analysis.
 
 
 \subsection*{Pipeline}
@@ -276,26 +280,24 @@ results of the enrichment analysis
 
 \section*{Discussion}
 \addcontentsline{toc}{section}{Discussion} % Adds this section to the table of contents
-Because NESS2RA gene -isoforms- expansions are meant to explore through a local gene network approach the space of putative causal relationships between genes, without any further biological heuristics,NESS2RA outcome results conservative? enough to the further application of Filtering, Aggregation, Ranking and Comparison methods.
+NES$^2$RA gene-isoforms expansions are meant to explore putative causal relationships between genes via a local gene network (LGN) approach,   and without any further biological heuristics,NES$^2$RA outcome is indeed conservative enough to apply further techniques for filtering, aggregating, ranking and comparing results.
+Applying them wisely on NES$^2$RA results was imperative in order to gain profitable results. Indeed genes were expanded at two different steps of the pipeline to recover a list of genes presumably comparable to the starting list of genes. In this regard, the Weighted Jaccard Similarity and the statistical approach used aimed to produce results with a statistical significance.  
+DrugBank was used to extract the list of genes reported to be target of approved drugs (2229 genes) and Enrichment Analysis was performed in order to assess whether fltering NES$^2$RA results for genes that were already target of drugs introduced a bias in the analysis.
+Among the significant GO terms, apart from Alzheimer,obesity and diabetes also cardiovascular diseases is reported as significant (pvalues $<<$ 0.001), which possibly limited outcomes to CAD compatible results.
 
-
-
-Performing Enrichment analysis on Open Targets of the 36 genes resulted positive to the Significance analysis, GO terms (see Table 5) such as platelet activation, Tyrosine kinase signaling pathway,regulation of blood circulation, cell chemotaxis, angiogenesis and striated muscle contraction are present. 
-
-Performing Enrichment analysis on Open Targets of the 18 genes positive to the Significance analysis, GO terms (see Table 5) such as circulatory system development, cardiac muscle contraction and relaxation (pvalue 7.43^04), blood circulation, leukocytes migration are present (among others more general terms such as responce to compounds?) 
+Enrichment analysis was performed to gain insight on the biological processes involving the genes resulting from the previuous Significance Analysis.
+As Enrichment analysis was performed on the 36 genes list from the option 1 of the Significance analysis, GO terms (Tab.5) such as platelet activation, Tyrosine kinase signaling pathway,regulation of blood circulation, cell chemotaxis, angiogenesis and striated muscle contraction are present.  
  
-Performing it on Top genes, specifically looking at Disease terms - pvalue
+Similarly Enrichment analysis was performed on the 18 genes list from the option 2 of the Significance analysis and GO terms (see Table 6) such as circulatory system development, cardiac muscle contraction and relaxation, blood circulation, leukocytes migration are present (pvalue <  0.001).
 
-gene that are already targets of drugs used for cad
-
-interpretation of the enrichment analysis
+By Enrichment Analysis, indeed, some circulatory system and subsequently CAD related biological processes were retrieved.  
 
 discussion of new targets and drugs
 
 \section*{Conclusions}
 \addcontentsline{toc}{section}{Conclusions} % Adds this section to the table of contents
 
-The pipeline described here was intended to investigate on the potentialities of NESS2RA implementation in respect to a drug repurposing objective.
+The pipeline described here was designed to investigate on the potentialities of NESS2RA implementation in respect to a drug repurposing objective.
 NESS2RA allows to search for putative causal relationships between genes (specifically isoforms) but then a delicate phase of filtering, aggregation and validation has to follow in order to identify most promising gene relations.
 
 necessity of experimental validations
