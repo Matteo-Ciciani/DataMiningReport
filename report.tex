@@ -94,17 +94,17 @@ Drug repurposing is a strategy to identify new therapeutics uses for marketed dr
 \\
 Coronary artery disease (CAD) is the most common type of heart disease.It is the leading cause of death in the United States and in Italy (WHO data). The condition leads the formation of a waxy substance calle plaque into coronary arteries decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture due to the formation of blood clot that could mostrly (or completely) block blood flow through a coronary artery. The disease can weaken the heart muscle and lead to heart failure and arrhytmias, moreover it cas cause angina and heart attack.\\
 \\
-In this project we apply NES2RA\cite{NES2RA}, a pipeline that finds candidate genes to expand a known gene-network based PC-algorithm \cite{PC-alg}, to find marketed drug that can be repurposed for CAD. 
+In this project we apply NES$^2$RA\cite{NES2RA}, a pipeline that finds candidate genes to expand a known gene-network based PC-algorithm \cite{PC-alg}, to find marketed drug that can be repurposed for CAD. 
 The pipeline of our work can be divided in 2 significant steps: retrieving known target genes, backward expansion and analysis.\\
 \\
 In the first step the ranked CAD genetic associated genes are obtained using Open Target \cite{OpenTargetPlatform}, we decide to focus on the 100 most important ones without minding if there are already known drug target for the disease.\\
-For each gene the corresponding isoforms are picked from the filtered annotation of the FANTOM5 database \cite{fantom} and then expanded by NES2RA using the Boinc Platform \cite{realBoinc} and FANTOM5. NES2RA gives an expansion file for each isoform, where isoforms related with the one in input are collected and ranked by an association score. Minding the importance of the previous 100 CAD genes and the overall score for each isoform , the expansion files are filtered such that a list of particularly interesting isoforms is obtained. Successively using the Open Target Platform, we extract the gens that are already known targets for any drug from the aforementioned list. At the end of this step we are left with a list of 148 drugged genes corresponding to 217 isoforms.\\
+For each gene the corresponding isoforms are picked from the filtered annotation of the FANTOM5 database \cite{fantom} and then expanded by NES$^2$RA using the Boinc Platform \cite{realBoinc} and FANTOM5. NES$^2$RA gives an expansion file for each isoform, where isoforms related with the one in input are collected and ranked by an association score. Minding the importance of the previous 100 CAD genes and the overall score for each isoform , the expansion files are filtered such that a list of particularly interesting isoforms is obtained. Successively using the Open Target Platform, we extract the gens that are already known targets for any drug from the aforementioned list. At the end of this step we are left with a list of 148 drugged genes corresponding to 217 isoforms.\\
 \\
 The purpose of the second step is to verify which of the genes has a drug that can be repurposed for CAD.
-Firstly a backward expansion on the 217 isoforms is performed using NES2RA.
+Firstly a backward expansion on the 217 isoforms is performed using NES$^2$RA.
 Secondly an analsyis using weighted Jaccard Similarity (WGS) \cite{WGS} for each expansion result paired with the initial CAD genetic associated genes is done to obtain a p-value for possible relation among the isoform in input and the CAD. 
 
-The aim of the project is to see if NES2RA can be proposed as a new \textit{in silico} tool for drug repurposing and to find possible new drugs for the CAD disease.  
+The aim of the project is to see if NES$^2$RA can be proposed as a new \textit{in silico} tool for drug repurposing and to find possible new drugs for the CAD disease.  
 
 
 \section*{Materials and Methods}
@@ -298,7 +298,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		\hline
 	\end{tabular}
 	\smallskip
-	\caption{List of tagret genes}
+	\caption{List of target genes}
 \end{table}
 
 
