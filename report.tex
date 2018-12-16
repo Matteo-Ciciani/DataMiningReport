@@ -214,22 +214,25 @@ We then computed the WJS scores for both cases.
 
 \subsubsection*{Significance analysis} 
 
-The scores obtained from the WJS are not directly comparable between them, since they depend on the length of the lists. In order to obtain values that can be compared directly, we used a permutation approach to estimate a set of score distributions. For each length present, we generated 2000 random lists of genes or isoforms, we computed the WJS and we generated the score distribution associated to that length. Then, we used these distributions to compute p-values. The Benjamini-Hochberg correction was used to adjust p-values [cit]. A significance level of 0.05 was used to identify statistically significant WJS scores. 
+The scores obtained from the WJS are not directly comparable between them, since they depend on the length of the lists. In order to obtain values that can be compared directly, we used a permutation approach to estimate a set of score distributions. For each length present, we generated 2000 random lists of genes or isoforms, we computed the WJS and we generated the score distribution associated to that length. Then, we used these distributions to compute p-values. The Benjamini-Hochberg correction was used to adjust p-values for multiple hypothesis testing [cit]. A significance level of 0.05 was used to identify statistically significant WJS scores. 
 
 \subsection*{Enrichment analysis}
 \addcontentsline{toc}{subsection}{Enrichment analysis} % Adds this section to the table of contents
 
-In order to gain insight on the biological role of identified genes, we performed functional enrichment analysis. We used both Open Targets and ToppGene to perform enrichment analysis against the Biological Processes from Gene Ontology. In addition, we used ToppGene to perform enrichment analysis against disease databases (Clinical Variations, DisGeNET BeFree, DIsGeNET Curated, GWAS and OMIM).
+In order to gain insight on the biological role of identified genes, we performed functional enrichment analysis. We used both Open Targets and ToppGene to perform enrichment analysis against the Biological Processes from Gene Ontology. In addition, we used ToppGene to perform enrichment analysis against disease databases (Clinical Variations, DisGeNET BeFree, DisGeNET Curated, GWAS and OMIM).
 
 \section*{Results}
 \addcontentsline{toc}{section}{Results} % Adds this section to the table of contents
 
-\subsubsection*{Results of the first expansions}
+\subsubsection*{Intermediate results}
 Step 3 of the pipeline (see Materials and Methods) produced a list of 2043 genes, of which 149 are targets of clinically approved drugs (reported in Tab. \ref{tab:149genes}). For both lists, we employed ToppGene to perform enrichment analysis against the Biological Processes from Gene Ontology. The 50 most significant terms are reported in Tab. \ref{tab:bp2043} and Tab. \ref{tab:bp149}.
 
 Since genes involved in cardiovascular diseases are highly represented among genes targeted by drugs, we may expect the enrichment analysis of the second set to present a bias. Therefore, we retrieved the list of all genes targeted by approved drugs from DrugBank and we performed an enrichment analysis on it (Tab. \ref{tab:bp2229}). We compared the results of this analysis with the results of the previous one in order to evaluate the bias.
 
 \subsubsection*{Final results}
+
+Due to time constraints, only 173 isoform expansions (step 4 of the pipeline) were completed, over a total of 216.
+
 In the last step of the pipeline, we obtained 36 genes from the first approach (converting isoforms to genes) and 18 genes from the second approach (converting genes to isoforms). Remarkably, the latter are a subset of the former. These results are reported in Tab. \ref*{tab:sign}.
 
 For both lists, we used Open Targets to perform enrichment analysis against the Biological Processes from Gene Ontology. The results are reported in Tab. \ref{tab:GO36_1}, Tab. \ref{tab:GO36_2} and Tab. \ref*{tab:GO18}.
@@ -238,69 +241,119 @@ We used Open Targets to identify which drugs target the 36 genes identified. In 
 
 Among the 36 genes, 19 were already associated with CAD. 4 of them are also target of drugs used to treat CAD. The list of genes and their association levels are reported in Fig. \ref{fig:19CAD}.
 
-\renewcommand{\arraystretch}{1.1}
-
-\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
-\begin{table}[!htb]
-	\centering
-	\rowcolors{2}{NavyBlue!10}{white}
-	\begin{tabularx}{\linewidth}{XRRRR}
-		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} Gene} & \textbf{\color{white} Number of isoforms} & \textbf{\color{white} Minimum p-value} & \textbf{\color{white} Number of isoforms} & \textbf{\color{white} Minimum p-value} \\ 
-		CASP7 & 1 & 0 & 1 & 0 \\ 
-		COL1A1 & 1 & 0 & 1 & 0 \\ 
-		COL4A1 & 4 & 0 & 4 & 0 \\ 
-		COL4A2 & 6 & 0 & 3 & 0 \\ 
-		CTGF & 2 & 0 & 1 & 0 \\ 
-		FN1 & 8 & 0 & 8 & 0 \\ 
-		IL1R1 & 1 & 0 & 1 & 0 \\ 
-		INSR & 1 & 0 & 1 & 4.0e-02 \\ 
-		JAK1 & 1 & 0 &  &  \\ 
-		NDUFA4L2 & 1 & 0 & 1 & 0 \\ 
-		PDE4B & 2 & 0 & 1 & 1.7e-02 \\ 
-		PDE4D & 3 & 0 & 2 & 7.5e-03 \\ 
-		RARA & 1 & 0 &  &  \\ 
-		TLR4 & 2 & 0 &  &  \\ 
-		PIK3CG & 1 & 1.2e-02 &  &  \\ 
-		FNTB & 1 & 1.6e-02 &  &  \\ 
-		CSF1 & 1 & 1.7e-02 &  &  \\ 
-		TSG101 & 1 & 1.7e-02 &  &  \\ 
-		F5 & 1 & 2.3e-02 &  &  \\ 
-		CDK14 & 1 & 2.6e-02 & 1 & 2.2e-02 \\ 
-		TGFB1 & 2 & 2.7e-02 &  &  \\ 
-		ANPEP & 1 & 2.9e-03 &  &  \\ 
-		AVPR1A & 1 & 2.9e-03 & 1 & 4.1e-03 \\ 
-		DNMT3A & 1 & 2.9e-03 &  &  \\ 
-		PIK3CA & 1 & 2.9e-03 & 1 & 3.9e-02 \\ 
-		TNFRSF1A & 1 & 2.9e-03 &  &  \\ 
-		IL6 & 1 & 3.2e-02 & 1 & 1.7e-02 \\ 
-		FLT1 & 1 & 3.5e-02 &  &  \\ 
-		SEBOX & 1 & 3.8e-02 &  &  \\ 
-		COL5A3 & 1 & 4.4e-02 &  &  \\ 
-		GAA & 1 & 4.4e-02 &  &  \\ 
-		KCNJ2 & 1 & 4.6e-02 & 1 & 1.1e-02 \\ 
-		FGA & 1 & 4.9e-02 &  &  \\ 
-		NAMPT & 1 & 5.3e-03 &  &  \\ 
-		IFNAR2 & 1 & 7.5e-03 &  &  \\ 
-		PTGER4 & 1 & 7.5e-03 &  &  \\ 
-	\end{tabularx}
-	\smallskip
-	\caption{resulting genes}
-	\label{tab:sign}
-\end{table}
-
 \begin{figure}[ht]
 	\includegraphics[width=\linewidth]{already_in}
 	\smallskip
-	\caption{Putative targets already associated with CAD. Four of them are also already targeted in CAD.}
+	\caption{Putative targets already associated with CAD. Four of them are also targets of drugs used to treat CAD. The association scores were color coded, with white being the lowest value and blue being the largest.}
 	\label{fig:19CAD}
 \end{figure}
+
+\renewcommand{\arraystretch}{1.1}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+\begin{table}[!t]
+	\centering
+	\rowcolors{2}{NavyBlue!10}{white}
+	\begin{tabularx}{\linewidth}{lRRc}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Gene} & \textbf{\color{white} Number of isoforms} & \textbf{\color{white} q-value} & \textbf{\color{white}
+			CAD gene}\\
+		CASP7 &   1 & 0 & No \\ 
+		NDUFA4L2 &   1 & 0 & Yes \\ 
+		INSR &   1 & 0 & Yes \\ 
+		PDE4B &   2 & 0 & Yes \\ 
+		IL1R1 &   1 & 0 & No \\ 
+		CTGF &   2 & 0 & No \\ 
+		FN1 &   8 & 0 & Yes \\ 
+		COL1A1 &   1 & 0 & Yes \\ 
+		PDE4D &   3 & 0 & Yes \\ 
+		COL4A1 &   4 & 0 & Yes \\ 
+		COL4A2 &   6 & 0 & Yes \\ 
+		CDK14 &   1 & 2.6e-02 & No \\ 
+		AVPR1A &   1 & 2.9e-03 & No \\ 
+		PIK3CA &   1 & 2.9e-03 & No \\ 
+		IL6 &   1 & 3.2e-02 & Yes \\ 
+		KCNJ2 &   1 & 4.6e-02 & No \\
+		\hline 
+		JAK1 &   1 & 0 & No \\ 
+		RARA &   1 & 0 & Yes \\ 
+		TLR4 &   2 & 0 & Yes \\ 
+		PIK3CG &   1 & 1.2e-02 & Yes \\ 
+		FNTB &   1 & 1.6e-02 & No \\ 
+		CSF1 &   1 & 1.7e-02 & Yes \\ 
+		TSG101 &   1 & 1.7e-02 & No \\ 
+		F5 &   1 & 2.3e-02 & No \\ 
+		TGFB1 &   2 & 2.7e-02 & Yes \\ 
+		ANPEP &   1 & 2.9e-03 & Yes \\ 
+		DNMT3A &   1 & 2.9e-03 & No \\ 
+		TNFRSF1A &   1 & 2.9e-03 & Yes \\ 
+		FLT1 &   1 & 3.5e-02 & Yes \\ 
+		SEBOX &   1 & 3.8e-02 & No \\ 
+		COL5A3 &   1 & 4.4e-02 & No \\ 
+		GAA &   1 & 4.4e-02 & No \\ 
+		FGA &   1 & 4.9e-02 & Yes \\ 
+		NAMPT &   1 & 5.3e-03 & Yes \\ 
+		IFNAR2 &   1 & 7.5e-03 & No \\ 
+		PTGER4 &   1 & 7.5e-03 & No \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{List of 36 genes resulting from the last step of the pipeline (first approach). The table shows the number of significant isoforms and the minimum q-value associated with that gene.}
+	\label{tab:sign36}
+\end{table}
+
+\begin{table}[!t]
+	\centering
+	\rowcolors{2}{NavyBlue!10}{white}
+	\begin{tabularx}{\linewidth}{lRRc}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Gene} & \textbf{\color{white} Number of isoforms} & \textbf{\color{white} q-value} & \textbf{\color{white}
+			CAD gene}\\
+		CASP7 &   1 & 0 & No \\ 
+		NDUFA4L2 &   1 & 0 & Yes \\ 
+		INSR &   1 & 4.0e-02 & Yes \\ 
+		PDE4B &   1 & 1.7e-02 & Yes \\ 
+		IL1R1 &   1 & 0 & No \\ 
+		CTGF &   1 & 0 & No \\ 
+		FN1 &   8 & 0 & Yes \\ 
+		COL1A1 &   1 & 0 & Yes \\ 
+		PDE4D &   2 & 7.5e-03 & Yes \\ 
+		COL4A1 &   4 & 0 & Yes \\ 
+		COL4A2 &   3 & 0 & Yes \\ 
+		CDK14 &   1 & 2.2e-02 & No \\ 
+		AVPR1A &   1 & 4.1e-03 & No \\ 
+		PIK3CA &   1 & 3.9e-02 & No \\ 
+		IL6 &   1 & 1.7e-02 & Yes \\ 
+		KCNJ2 &   1 & 1.1e-02 & No \\
+		\hline 
+		HAMP &   1 & 3.7e-02 & No \\ 
+		FGG &   1 & 4.7e-02 & No \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{List of 18 genes resulting from the last step of the pipeline (second approach). The table shows the number of significant isoforms and the minimum q-value associated with that gene.}
+	\label{tab:sign18}
+\end{table}
 
 \section*{Discussion}
 \addcontentsline{toc}{section}{Discussion} % Adds this section to the table of contents
 
-NES$^2$RA gene-isoforms expansions are meant to explore putative causal relationships between genes via a local gene network (LGN) approach,   and without any further biological heuristics,NES$^2$RA outcome is indeed conservative enough to apply further techniques for filtering, aggregating, ranking and comparing results.
-Applying them wisely on NES$^2$RA results was imperative in order to gain profitable results. Indeed genes were expanded at two different steps of the pipeline to recover a list of genes presumably comparable to the starting list of genes. In this regard, the Weighted Jaccard Similarity and the statistical approach used aimed to produce results with a statistical significance.  
+NES$^2$RA one gene expansions are meant to explore putative causal relationships between genes. Since NES$^2$RA retrieves up to several thousands genes for each expansion, we have to apply aggregation and filtering techniques in order to extract meaningful biological information from the expansion lists. One of such techniques is the comparison of expansion lists of putative targets with the list of genes already known to be associated with CAD, which allows to identify target genes that are more likely to interact directly with CAD genes. It is worth mentioning that this approach focuses only on the identification of a subset of all the possible putative targets, namely those that interact with CAD genes at the transcriptional level.
+
+\subsubsection*{Discussion of intermediate results}
+
+In order to critically evaluate the biological relevance of the results of 
+NES$^2$RA, we chose to perform enrichment analysis. We expect to find Gene Ontology terms related to the cardiovascular systems. The absence of terms related to the cardiovascular systems would have introduces significant skepticism on the biological validity of the results.
+
+The enrichment analysis applied to the list of 2043 genes resulting from step 3 of the pipeline yielded a large variety of biological processes, among which some related to the circulatory system, as \emph{vasculature development} and \emph{blood vessel development}.
+
+To assess whether the subset of 149 target genes is also related to the cardiovascular system, we performed an enrichment analysis that retrieved a larger number of terms associated with the circulatory system, such as \emph{blood circulation}, \emph{circulatory system process} and \emph{angiogenesis}. This suggests that NES$^2$RA was able to retrieve a group of target genes that directly interact with CAD genes and appear to be involved in the cardiovascular system.
+
+As stated in the Results section, this last result could reflect a bias introduced by the selection of drug targets. To assess this we performed enrichment analysis on all the genes targeted by approved drugs. Nevertheless, according to the results coming from ToppGene, there is no evident bias toward the cardiovascular system.
+
+\subsubsection*{Discussion of final results}
+
+
+
+
 DrugBank was used to extract the list of genes reported to be target of approved drugs (2229 genes) and Enrichment Analysis was performed in order to assess whether fltering NES$^2$RA results for genes that were already target of drugs introduced a bias in the analysis.
 Among the significant GO terms, apart from Alzheimer,obesity and diabetes also cardiovascular diseases is reported as significant (pvalues $<<$ 0.001), which possibly limited outcomes to CAD compatible results.
 
@@ -694,7 +747,45 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	\end{tabularx}
 	\smallskip
 	\caption{Disease from 36 genes}
-	\label{tab:diseases}
+	\label{tab:diseases36}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Disease} & \textbf{\color{white} q-value} & \textbf{\color{white} Disease} & \textbf{\color{white} q-value} \\
+		Keloid & 3.98e-05 & Aortic Valve Insufficiency & 5.00e-04 \\ 
+		Obesity & 4.10e-05 & Anemia of chronic disease & 5.00e-04 \\ 
+		Diffuse Scleroderma & 7.65e-05 & Ear, patella, short stature syndrome & 5.31e-04 \\ 
+		Fibrosis, Liver & 1.40e-04 & Spontaneous abortion & 5.49e-04 \\ 
+		Joint laxity & 1.99e-04 & Acute Cholecystitis & 5.62e-04 \\ 
+		Cardiovascular Diseases & 1.99e-04 & Atherosclerosis & 5.76e-04 \\ 
+		Sick Sinus Syndrome & 1.99e-04 & Kidney Failure & 5.76e-04 \\ 
+		Myocardial Infarction & 1.99e-04 & Inflammatory Myofibroblastic Tumor & 5.76e-04 \\ 
+		Diabetes Mellitus & 1.99e-04 & Arteriosclerosis & 5.76e-04 \\ 
+		Hypertensive disease & 2.18e-04 & Nephrotic Syndrome & 5.76e-04 \\ 
+		Porencephaly, familial & 2.45e-04 & Cerebral Autosomal Recessive Arteriopathy with Subcortical Infarcts and Leukoencephalopathy & 7.80e-04 \\ 
+		Scleroderma & 2.45e-04 & Refractory anemias & 8.06e-04 \\ 
+		Kidney Diseases & 2.68e-04 & Focal glomerulosclerosis & 8.43e-04 \\ 
+		Chronic glomerulonephritis & 3.02e-04 & Diabetic Nephropathy & 9.37e-04 \\ 
+		Elastosis perforans serpiginosa & 3.24e-04 & Rheumatoid Arthritis & 1.37e-03 \\ 
+		Hereditary gingival fibromatosis & 4.05e-04 & Ehlers-Danlos Syndrome & 1.45e-03 \\ 
+		Diabetes & 4.15e-04 & Hamman-Rich syndrome & 1.45e-03 \\ 
+		Alcoholic Intoxication, Chronic & 4.34e-04 & Lymphoma & 1.48e-03 \\ 
+		Hemorrhage, intracerebral, susceptibility to & 4.44e-04 & Subcutaneous nodule & 1.48e-03 \\ 
+		Parkinson disease, late-onset & 4.54e-04 & Multiple, subcutaneous nodules & 1.48e-03 \\ 
+		Endometriosis & 4.59e-04 & Uterine Fibroids & 1.48e-03 \\ 
+		Atrial Fibrillation & 4.66e-04 & Nonalcoholic Steatohepatitis & 1.56e-03 \\ 
+		Renal Insufficiency & 4.84e-04 & Chronic lung disease & 1.65e-03 \\ 
+		Overweight & 4.84e-04 & Retinal Detachment & 1.65e-03 \\ 
+		Lymphoproliferative Disorder of the Skin & 4.90e-04 & Gastroesophageal reflux disease & 1.65e-03 \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{Disease from 18 genes}
+	\label{tab:diseases18}
 \end{table}
 
 \begin{table}[ht]
