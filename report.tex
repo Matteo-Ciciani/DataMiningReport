@@ -129,7 +129,7 @@ Currently, there is no standard for \textit{in silico} drug repurposing. In this
 NES$^2$RA is a method based on the PC-algorithm \cite{PC-alg} and can be summarized in three steps. First, data undergo subsetting, then the skeleton of the PC algorithm is run and finally results are aggregated, assigning to each isoform in the expansion lists the corresponding relative frequency score.
 
 \setlength\emergencystretch{\textwidth}
-To facilitate the most computationally demanding step of NES$^2$RA, i.e. running the skeleton of the PC algorithm, the single gene expansions were submitted to gene@home \cite{boinc, realBoinc} BOINC (Berkeley Open Infrastructure for Network Computing) project, hosted by the TN-Grid platform. The platform allows to distribute the computational burden among committed volunteers' machines, in order to reduce the running time and memory usage as much as possible.
+To facilitate the most computationally demanding step of NES$^2$RA, i.e. running the skeleton of the PC algorithm, the single gene expansions were submitted to gene@home \cite{realBoinc} BOINC (Berkeley Open Infrastructure for Network Computing) project, hosted by the TN-Grid platform. The platform allows to distribute the computational burden among committed volunteers' machines, in order to reduce the running time and memory usage as much as possible.
 
 This gene@home project was previously set up for the network expansion of genes whose expression data came from the FANTOM5 Database \cite{fantom}. On the BOINC platform, alongside the original FANTOM5 expression data, a filtered version is available. The latter was built selecting, among the isoforms encoded by the same gene, the ones that differ mostly in terms of expression profile, presumably corresponding to different biological functions. We chose to use the filtered version, in order to cut down on the computational load of subsequent analyses.
 
@@ -180,7 +180,7 @@ The resulting isoforms were ranked according to the aggregated score described p
 
 \subsubsection*{Selection of target genes}
 
-The Open Targets Python API \cite{open} was used to query which of these genes are known to be targets of clinically approved drugs. We obtained a list of 149 target genes, which are the only ones that are considered in the following analyses.
+The Open Targets Python API was used to query which of these genes are known to be targets of clinically approved drugs. We obtained a list of 149 target genes, which are the only ones that are considered in the following analyses.
 
 \subsubsection*{NES$^{\textbf{2}}$RA expansion of target genes}
 
@@ -397,42 +397,59 @@ Needless to say, a large amount of experimental data would need to be gathered a
 %\bibliography{biblio}
 \begin{thebibliography}{1}
 	
-	\bibitem{Wong} Wong, ND (May 2014). "Epidemiological studies of CHD and the evolution of preventive cardiology". Nature Reviews. Cardiology. 11 (5): 276–89.
+	%Formato PLOS	
 	
-	\bibitem{BH} Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing Journal of the Royal Statistical Society. Series B (Methodological), Vol. 57, No. 1. (1995), pp. 289-300, doi:10.2307/2346101 by Yoav Benjamini, Yosef Hochberg
+	%1
+	\bibitem{Polamreddy}Polamreddy P, Gattu N. The drug repurposing landscape from 2012 to 2017: evolution, challenges, and possible solutions. Drug Discov Today. 2018; doi:10.1016/j.drudis.2018.11.022.		
 	
-	\bibitem{Polamreddy} Polamreddy P, Gattu N. The drug repurposing landscape from 2012 to 2017: evolution, challenges, and possible solutions. Drug Discov Today. 2018 Dec 1.	
+	%2
+	\bibitem{Feixiong}Cheng F, Desai RJ, Handy DE, Wang R, Schneeweiss S, Barabási A-L, et al. Network-based approach to prediction and population-based validation of in silico drug repurposing. Nat Commun. 2018;9: 2691.
 	
-	\bibitem{Feixiong} Cheng F, Desai RJ, Handy DE, Wang R, Schneeweiss S, Barabási AL, Loscalzo J. Network-based approach to prediction and population-based validation of in silico drug repurposing. Nat Commun. (2018).
+	%3
+	\bibitem{Shih}Shih H-P, Zhang X, Aronov AM. Drug discovery effectiveness from the standpoint of therapeutic mechanisms and indications. Nat Rev Drug Discov. 2018;17: 78.
 	
-	\bibitem{Shih} Shih, H. P., Zhang,X. and Aronov, A. M. Drug discovery effectiveness from the standpoint of therapeutic mechanisms and indications. Nat. Rev. Drug Discov.17, 19–33 (2017).
+	%4
+	\bibitem{Wong}Wong ND. Epidemiological studies of CHD and the evolution of preventive cardiology. Nat Rev Cardiol. 2014;11: 276–289.
+	
+	%5	problema non trova quello del 2018
+	\bibitem{NES2RA}Asnicar F, Masera L, Coller E, Gallo C, Sella N, Tolio T, et al. NES2RA. Int J High Perform Comput Appl. 2016;32: 380–392.
+	
+	%6 
+	\bibitem{PC-alg}Spirtes P, Glymour CN. An Algorithm for Fast Recovery of Sparse Causal Graphs. 1990.
+	
+	%7
+	\bibitem{realBoinc}Anderson DP. BOINC: A System for Public-Resource Computing and Storage. Fifth IEEE/ACM International Workshop on Grid Computing. doi:10.1109/grid.2004.14
 
-	\bibitem{NES2RA} Asnicar F, Masera L, NES2RA: network expansion by stratified variable subsetting and ranking aggregation. INTERNATIONAL JOURNAL OF HIGH PERFORMANCE COMPUTING APPLICATIONS (2018)
+	%8
+	\bibitem{fantom}Noguchi S, Arakawa T, Fukuda S, Furuno M, Hasegawa A, Hori F, et al. FANTOM5 CAGE profiles of human and mouse samples. Sci Data. 2017;4: 170112.
 	
-	\bibitem{PC-alg}Spirtes P and Glymour C An algorithm for fast recovery of sparse causal graphs. Social Science Computer, Review, (1991).  
+	
+	%9 
+	\bibitem{open}Koscielny G, An P, Carvalho-Silva D, Cham JA, Fumis L, Gasparyan R, et al. Open Targets: a platform for therapeutic target identification and validation. Nucleic Acids Res. 2017;45: D985–D994.
+	
+	%10
+	\bibitem{OpenTargetPlatform}Carvalho-Silva D, Pierleoni A, Pignatelli M, Ong C, Fumis L, Karamanis N, et al. Open Targets Platform: new developments and updates two years on. Nucleic Acids Res. 2018; doi:10.1093/nar/gky1133 
+	
+	%11
+	\bibitem{drugbank}Wishart DS, Feunang YD, Guo AC, Lo EJ, Marcu A, Grant JR, et al. DrugBank 5.0: a major update to the DrugBank database for 2018. Nucleic Acids Res. 2017;46: D1074–D1082.
+	
+	%12
+	\bibitem{toppgene}Chen J, Bardes EE, Aronow BJ, Jegga AG. ToppGene Suite for gene list enrichment analysis and candidate gene prioritization. Nucleic Acids Res. 2009;37: W305–11.
+	
+	%13
+	\bibitem{WGS}Ioffe S. Improved Consistent Sampling, Weighted Minhash and L1 Sketching. 2010 IEEE International Conference on Data Mining. 2010. doi:10.1109/icdm.2010.80
 
-	\bibitem{OpenTargetPlatform}Denise Carvalho-Silva, Open Targets Platform: new developments and updates two years on, Nucleic Acids Research 
+	%14
+	\bibitem{BH}Benjamini Y, Hochberg Y. Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing. J R Stat Soc Series B Stat Methodol. 1995;57: 289–300.
 	
-	\bibitem{realBoinc}Anderson DP, BOINC: A system for public-resource computing and storage. In: Proceedings of the 5th IEEE/ ACM international workshop on grid computing, GRID ‘04,Washington, DC, US (2004)
+	%15
+	\bibitem{diabetes} Aronson D, Edelman ER. Coronary Artery Disease and Diabetes Mellitus. Heart Fail Clin. 2016;12: 117–133.
+
+	%16
+	\bibitem{metformin} Pryor R, Cabreiro F. Repurposing metformin: an old drug with new tricks in its binding pockets. Biochem J. 2015;471: 307–322.
 	
-	\bibitem{WGS}Improved Consistent Sampling, Weighted Minhash and L1 Sketching, Sergey Ioffe, 2010, ICDM
-	
-	\bibitem{boinc} Asnicar, F. et al. NES2RA. Int. J. High Perform. Comput. Appl. 32, 380–392 (2016).
-	
-	\bibitem{fantom} Noguchi, S. et al. FANTOM5 CAGE profiles of human and mouse samples. Sci Data 4, 170112 (2017).
-	
-	\bibitem{open} Koscielny, G. et al. Open Targets: a platform for therapeutic target identification and validation. Nucleic Acids Res. 45, D985–D994 (2017).
-	
-	\bibitem{drugbank} Wishart DS, Feunang YD, Guo AC, Lo EJ, Marcu A, Grant JR, Sajed T, Johnson D, Li C, Sayeeda Z, Assempour N, Iynkkaran I, Liu Y, Maciejewski A, Gale N, Wilson A, Chin L, Cummings R, Le D, Pon A, Knox C, Wilson M. DrugBank 5.0: a major update to the DrugBank database for 2018. Nucleic Acids Res. 2017 Nov 8. doi: 10.1093/nar/gkx1037.
-	
-	\bibitem{diabetes} Aronson D, Edelman ER. Coronary artery disease and diabetes mellitus. Cardiol Clin. 2014 Aug;32(3):439-55. doi: 10.1016/j.ccl.2014.04.001. Epub 2014 Jun 10. Review. PubMed PMID: 25091969; PubMed Central PMCID: PMC4672945.
-	
-	\bibitem{toppgene} Chen J, Bardes EE, Aronow BJ, Jegga AG 2009. ToppGene Suite for gene list enrichment analysis and candidate gene prioritization. Nucleic Acids Research
-	doi: 10.1093/nar/gkp427 (PubMed).
-	
-	\bibitem{metformin} Pryor R, Cabreiro F. Repurposing metformin: an old drug with new tricks in its binding pockets. Biochem J. 2015 Nov 1;471(3):307-22. doi: 10.1042/BJ20150497. Review. PubMed PMID: 26475449; PubMed Central PMCID: PMC4613459.
-	
-	\bibitem{pento} Seray Kulcu Cakmak, Atil Cakmak, Muzeyyen Gonul, Arzu Kilic and Ulker Gul, “Pentoxifylline Use in Dermatology”, Inflammation and Allergy - Drug Targets (Discontinued) (2012) 11: 422. https://doi.org/10.2174/187152812803590028
+	%17
+	\bibitem{pento} Çakmak SK, Çakmak A, Gönül M, Kiliç A, Gül Ü. Pentoxifylline use in dermatology. Inflamm Allergy Drug Targets. 2012;11: 422–432
 	
 	
 \end{thebibliography}
