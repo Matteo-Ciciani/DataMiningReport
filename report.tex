@@ -25,8 +25,6 @@
 \documentclass[fleqn,10pt]{SelfArx} % Document font size and equations flushed left
 
 \usepackage[english]{babel} % Specify a different language here - english by default
-
-\usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
 \usepackage{tabularx}
 \usepackage[font=normal,labelfont=bf,justification=justified]{caption}
 \usepackage{halloweenmath}
@@ -75,7 +73,7 @@
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
 
-\Abstract{\lipsum[1]~}
+\Abstract{Drug repurposing is a strategy used to identify new uses for clinically approved drugs. We propose a drug repurposing pipeline that employs NES$^2$RA, a method that allows to identify putative interactions between genes, analyzing gene expression data. This pipeline was applied to identify a list of 32 new potential drug repurposing candidates for Coronary Artery Disease (CAD). Functional enrichment analysis was performed to gain insight on the biological role of the identified genes. Some of the putative targets, namely genes involved in diabetes mellitus and skin diseases, were further investigated, revealing striking similarities with genes already targeted for these diseases and CAD.}
 
 %----------------------------------------------------------------------------------------
 
@@ -99,13 +97,13 @@
 
 Drug repurposing is a strategy to identify new therapeutic uses for marketed drugs \cite{Polamreddy}. The use of these procedure has increased in recent years due to new molecular discoveries, new high-throughput technologies and databases. 
 
-The traditional drug discovery is difficult and time consuming. Even though investments in biomedical and pharmaceutical research and development has increased significantly in the past 20 years, the annual number of new treatments approved by the US Food and Drug Administration (FDA) has not significantly increased \cite{Feixiong}. This could be due to a lack of well-established  predictive pharmacokinetics and pharmacodynamics approaches, and concerning safety and tolerability profiles for new chemical entities from preclinical studies to clinical trials\cite{Shih}. 
+The traditional drug discovery is dificult and time consuming. Even though investments in biomedical and pharmaceutical research and development has increased significantly in the past 20 years, the annual number of new treatments approved by the US Food and Drug Administration (FDA) has not significantly increased \cite{Feixiong}. This could be due to a lack of well-established  predictive pharmacokinetics and pharmacodynamics approaches, and concerning safety and tolerability profiles for new chemical entities from preclinical studies to clinical trials\cite{Shih}. 
 
 On average, it takes 14 years to be able to have a marketable product, yet most drug development efforts do not pay off.
 
 Drug repurposing can be a good solution to overcome some of the shortcomings of traditional drug discovery. For instance, it can drastically speed up the process, since it relies on previous knowledge and circumvents the FDA approval procedure.
 
-Coronary artery disease (CAD), also knwon as coronary heart disease (CHD) or ischemic heart disease (IHD), is the most common type of heart disease. It is the leading cause of death in most of the western countries including Italy (World Health Organization data). The condition leads to the formation of a waxy substance called plaque into coronary arteries, decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture, due to the formation of blood clots that could mostly (or completely) block blood flow through coronary arteries. The disease can weaken the heart muscle and lead to heart failure and arrhythmias. Moreover, it can cause angina, heart attack and sudden cardiac death. [cit]
+Coronary artery disease (CAD), also knwon as coronary heart disease (CHD) or ischemic heart disease (IHD), is the most common type of heart disease. It is the leading cause of death in most of the western countries including Italy (World Health Organization data). The condition leads to the formation of a waxy substance called plaque into coronary arteries, decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture, due to the formation of blood clots that could mostly (or completely) block blood flow through coronary arteries. The disease can weaken the heart muscle and lead to heart failure and arrhythmias. Moreover, it can cause angina, heart attack and sudden cardiac death. \cite{Wong}
 
 CAD can be prevented maintaining a healthy lifestyle with regular exercise and a balanced diet. When this is not enough, the use of medication is needed. Since CAD is a complex disease caused by many factors, different kind of drugs can be used to treat it, among which aspirin is the most known one. However, in the worst cases it is necessary to undergo surgical intervention such as coronary artery bypass surgery (CABG).
 
@@ -133,9 +131,9 @@ NES$^2$RA was run with default parameters: $\alpha=0.05$, tile size $=1000$ and 
 \subsubsection*{On-line resources}
 \emph{Open Targets} is a platform which integrates public domain data to enable drug target identification and prioritisation\cite{open, OpenTargetPlatform}. This resource was used to select genes genetically associated with CAD disease, to identify drug targets and to perform functional enrichment analysis on the final results.
 
-The \emph{DrugBank} database is a bioinformatics and cheminformatics resource that combines detailed drug data with comprehensive drug target information [cit]. This resource was used to retrieve all the genes already targeted by FDA approved drugs.
+The \emph{DrugBank} database is a bioinformatics and cheminformatics resource that combines detailed drug data with comprehensive drug target information \cite{drugbank}. This resource was used to retrieve all the genes already targeted by FDA approved drugs.
 
-\emph{ToppGene} is a portal for gene list enrichment analysis and candidate gene prioritization based on functional annotations and protein interaction networks [cit]. This resource was used to perform functional enrichment analysis on the final results.
+\emph{ToppGene} is a portal for gene list enrichment analysis and candidate gene prioritization based on functional annotations and protein interaction networks \cite{toppgene}. This resource was used to perform functional enrichment analysis on the final results.
 
 \subsection*{Pipeline}
 \addcontentsline{toc}{subsection}{Pipeline} % Adds this section to the table of contents
@@ -216,7 +214,7 @@ We then computed the WJS scores for both cases.
 
 \subsubsection*{Significance analysis} 
 
-The scores obtained from the WJS are not directly comparable between them, since they depend on the length of the lists. In order to obtain values that can be compared directly, we used a permutation approach to estimate a set of score distributions. For each length present, we generated 2000 random lists of genes or isoforms, we computed the WJS and we generated the score distribution associated to that length. Then, we used these distributions to compute p-values. The Benjamini-Hochberg correction was used to adjust p-values for multiple hypothesis testing [cit]. A significance level of 0.05 was used to identify statistically significant WJS scores. 
+The scores obtained from the WJS are not directly comparable between them, since they depend on the length of the lists. In order to obtain values that can be compared directly, we used a permutation approach to estimate a set of score distributions. For each length present, we generated 2000 random lists of genes or isoforms, we computed the WJS and we generated the score distribution associated to that length. Then, we used these distributions to compute p-values. The Benjamini-Hochberg correction was used to adjust p-values for multiple hypothesis testing \cite{BH}. A significance level of 0.05 was used to identify statistically significant WJS scores. 
 
 \subsection*{Enrichment analysis}
 \addcontentsline{toc}{subsection}{Enrichment analysis} % Adds this section to the table of contents
@@ -237,9 +235,9 @@ Due to time constraints, only 173 isoform expansions (step 4 of the pipeline) we
 
 In the last step of the pipeline, we obtained 36 genes from the first approach (converting isoforms to genes) and 18 genes from the second approach (converting genes to isoforms). Remarkably, there is a striking overlap (16 genes) between the two lists. These results are reported in Tab. \ref{tab:sign36} and \ref{tab:sign18}.
 
-For both lists, we employed Open Targets to perform enrichment analysis against the Biological Processes from Gene Ontology and ToppGene to perform enrichment analysis against disease databases. The results are reported in Tab. \ref{tab:GO36_1}, Tab. \ref{tab:GO36_2}, Tab. \ref*{tab:GO18} (for Biological Processes) and Tab. \ref{tab:diseases36}, Tab. \ref{tab:diseases18} (for the diseases).
-
 We used Open Targets to identify which drugs target the 36 genes identified. In Tab. \ref{tab:drugs} we reported only the drugs at phase IV of clinical trial.
+
+For both lists, we employed Open Targets to perform enrichment analysis against the Biological Processes from Gene Ontology and ToppGene to perform enrichment analysis against disease databases. The results are reported in Tab. \ref{tab:GO36_1}, Tab. \ref{tab:GO36_2}, Tab. \ref*{tab:GO18} (for Biological Processes) and Tab. \ref{tab:diseases36}, Tab. \ref{tab:diseases18} (for the diseases).
 
 Among the 36 genes, 19 were already associated with CAD. 4 of them are also target of drugs used to treat CAD. The list of genes and their association levels are reported in Fig. \ref{fig:19CAD}.
 
@@ -252,7 +250,6 @@ Among the 36 genes, 19 were already associated with CAD. 4 of them are also targ
 
 \renewcommand{\arraystretch}{1.1}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
-
 \begin{table}[!t]
 	\centering
 	\rowcolors{2}{NavyBlue!10}{white}
@@ -361,36 +358,41 @@ In order to gain insight on the genes found, an enrichment analysis against the 
 
 \subsubsection*{Diabetes Mellitus}
 
-The relation between diabetes mellitus (DM) and cardiovascular diseases is well known. For DM, CAD is a major determinant of the long-term prognosis among patients. DM is associated with a 2 to 4-fold increased mortality risk from heart disease [cit].
+The relation between diabetes mellitus (DM) and cardiovascular diseases is well known. For DM, CAD is a major determinant of the long-term prognosis among patients. DM is associated with a 2 to 4-fold increased mortality risk from heart disease \cite{diabetes}.
 
-Metformin is an example of a drug used to treat both CAD and DM. This drug targets NDUFAL4L2, one of the genes that was retrieved by our pipeline (Fig. \ref{fig:19CAD}). Considering this result, we propose to repurpose drugs used to treat DM for CAD. From our analyses, the genes INSR and GAA seem to be promising target for drug repurposing.
+Metformin is an example of a drug used to treat both CAD and DM. This drug targets NDUFAL4L2, one of the genes that was retrieved by our pipeline (Fig. \ref{fig:19CAD}). \cite{metformin} Considering this result, we propose to repurpose drugs used to treat DM for CAD. From our analyses, the genes INSR and GAA seem to be promising target for drug repurposing.
 
 INSR (Insulin Receptor) mediates the pleiotropic actions of insulin. Binding of insulin leads to phosphorylation of several intracellular substrates, including insulin receptor substrates and other signaling intermediates. This gene has a strong  genetic association with CAD and is targeted by insulin. Given the broad range of processes regulated by this receptor and its association with CAD, it could be a good candidate for drug repurposing.
 
 GAA  (Glucosidase Alpha, Acid) is a protein coding gene essential for the degradation of glycogen in lysosomes. This gene is not associated with CAD, but it was identified by our pipeline. It is targeted by Miglitol, a drug that acts by inhibiting the ability of the patient to breakdown complex carbohydrates into glucose.
 
-\subsubsection*{Skin diseases}
+\subsubsection*{Skin conditions}
 
+Among the 36 genes, PDE4B already has a phase IV drug for CAD (namely, Dypiridamole), alongside approved drugs for some skin conditions, such as atopic eczema and alopecia. This link leads us to suggest that the several drugs acting on skin conditions, targeting the gene RARA (one of our 36 genes), could be investigated through clinical trials for CAD. RARA is very weakly associated with CAD, therefore any positive therapeutic confirmation would be particularly significant for the assessment of the efficacy of NES$^2$RA for drug repurposing.
+
+On a side note, this kind of information can be used for cross-repurposing aims. For example, Pentoxifylline, currently a phase II drug for CAD disease, is reported in the literature to be a drug with wide spectrum applications in dermatology, although it has not being investigated thoroughly for these applications. \cite{pento} This could potentially foster the connection between CAD and skin conditions.
 
 \section*{Conclusions}
 \addcontentsline{toc}{section}{Conclusions} % Adds this section to the table of contents
 
-pippone su drug repurposing
+The application of drug repurposing is an effective strategy to reduce the costs of the drug development process and has successfully applied in recent years, however the lack of standard computational pipelines still hinders the progress in this field.
 
-Drug repurposing is a techique 
+Here we presented a novel drug repurposing pipeline, which has lead to the identification of 36 putative drug targets, 4 of which are already known to be used for CAD. In addition we explore in further details the relationship between CAD and pathologies like DM and skin diseases, proposing new potential drug targets.
 
-risultato trovato
-
-necessità di validazioni sperimentali
+Needless to say, a large amount of experimental data would need to be gathered and analyzed in order to draw conclusions on the validity of the methods, namely NESSRA and our pipeline, and of our findings.
 
 \phantomsection
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
 \phantomsection
-\bibliographystyle{unsrt}
+%\bibliographystyle{unsrt}
 %\bibliography{biblio}
 \begin{thebibliography}{1}
+	
+	\bibitem{Wong} Wong, ND (May 2014). "Epidemiological studies of CHD and the evolution of preventive cardiology". Nature Reviews. Cardiology. 11 (5): 276–89.
+	
+	\bibitem{BH} Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing Journal of the Royal Statistical Society. Series B (Methodological), Vol. 57, No. 1. (1995), pp. 289-300, doi:10.2307/2346101 by Yoav Benjamini, Yosef Hochberg
 	
 	\bibitem{Polamreddy} Polamreddy P, Gattu N. The drug repurposing landscape from 2012 to 2017: evolution, challenges, and possible solutions. Drug Discov Today. 2018 Dec 1.	
 	
@@ -400,8 +402,7 @@ necessità di validazioni sperimentali
 
 	\bibitem{NES2RA} Asnicar F, Masera L, NES2RA: network expansion by stratified variable subsetting and ranking aggregation. INTERNATIONAL JOURNAL OF HIGH PERFORMANCE COMPUTING APPLICATIONS (2018)
 	
-	\bibitem{PC-alg}Spirtes P and Glymour C An algorithm for fast recovery
-of sparse causal graphs. Social Science Computer, Review, (1991).  
+	\bibitem{PC-alg}Spirtes P and Glymour C An algorithm for fast recovery of sparse causal graphs. Social Science Computer, Review, (1991).  
 
 	\bibitem{OpenTargetPlatform}Denise Carvalho-Silva, Open Targets Platform: new developments and updates two years on, Nucleic Acids Research 
 	
@@ -411,11 +412,20 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 	
 	\bibitem{boinc} Asnicar, F. et al. NES2RA. Int. J. High Perform. Comput. Appl. 32, 380–392 (2016).
 	
-	
 	\bibitem{fantom} Noguchi, S. et al. FANTOM5 CAGE profiles of human and mouse samples. Sci Data 4, 170112 (2017).
 	
-	
 	\bibitem{open} Koscielny, G. et al. Open Targets: a platform for therapeutic target identification and validation. Nucleic Acids Res. 45, D985–D994 (2017).
+	
+	\bibitem{drugbank} Wishart DS, Feunang YD, Guo AC, Lo EJ, Marcu A, Grant JR, Sajed T, Johnson D, Li C, Sayeeda Z, Assempour N, Iynkkaran I, Liu Y, Maciejewski A, Gale N, Wilson A, Chin L, Cummings R, Le D, Pon A, Knox C, Wilson M. DrugBank 5.0: a major update to the DrugBank database for 2018. Nucleic Acids Res. 2017 Nov 8. doi: 10.1093/nar/gkx1037.
+	
+	\bibitem{diabetes} Aronson D, Edelman ER. Coronary artery disease and diabetes mellitus. Cardiol Clin. 2014 Aug;32(3):439-55. doi: 10.1016/j.ccl.2014.04.001. Epub 2014 Jun 10. Review. PubMed PMID: 25091969; PubMed Central PMCID: PMC4672945.
+	
+	\bibitem{toppgene} Chen J, Bardes EE, Aronow BJ, Jegga AG 2009. ToppGene Suite for gene list enrichment analysis and candidate gene prioritization. Nucleic Acids Research
+	doi: 10.1093/nar/gkp427 (PubMed).
+	
+	\bibitem{metformin} Pryor R, Cabreiro F. Repurposing metformin: an old drug with new tricks in its binding pockets. Biochem J. 2015 Nov 1;471(3):307-22. doi: 10.1042/BJ20150497. Review. PubMed PMID: 26475449; PubMed Central PMCID: PMC4613459.
+	
+	\bibitem{pento} Seray Kulcu Cakmak, Atil Cakmak, Muzeyyen Gonul, Arzu Kilic and Ulker Gul, “Pentoxifylline Use in Dermatology”, Inflammation and Allergy - Drug Targets (Discontinued) (2012) 11: 422. https://doi.org/10.2174/187152812803590028
 	
 	
 \end{thebibliography}
@@ -431,9 +441,13 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 
 \addcontentsline{toc}{section}{Supplementary Material} % Adds this section to the table of contents
 
+\setcounter{table}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\arraystretch}{1.2}
 
-\begin{table}[ht]
+\begin{table}[!htb]
 	\centering
+	\scriptsize
 	\rowcolors{2}{NavyBlue!10}{white}
 	\begin{tabularx}{\textwidth}{XXXXXX}
 		NDUFA4L2 & JAK1 & CDK16 & SRD5A1 & PRKCD & FLT4 \\ 
@@ -463,11 +477,123 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		NAMPT & COL11A2 & CDK14 & IFNAR2 & KCNC3 &  \\ 
 	\end{tabularx}
 	\smallskip
-	\caption{List of tagret genes}
+	\caption{List of 149 preliminary target genes resulting from step 3 of the pipeline.}
 	\label{tab:149genes}
 \end{table}
 
-\renewcommand{\arraystretch}{1.2}
+\begin{table}[!htb]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
+		organic substance catabolic process & 4.4e-11 & protein catabolic process & 1.2e-07 \\ 
+		positive regulation of biosynthetic process & 4.4e-11 & regulation of protein catabolic process & 1.2e-07 \\ 
+		regulation of intracellular signal transduction & 1.2e-10 & positive regulation of cellular protein metabolic process & 1.6e-07 \\ 
+		positive regulation of cellular biosynthetic process & 1.5e-10 & regulation of cell proliferation & 1.8e-07 \\ 
+		positive regulation of gene expression & 4.1e-10 & positive regulation of molecular function & 2.4e-07 \\ 
+		response to oxygen-containing compound & 4.6e-10 & alcohol metabolic process & 2.8e-07 \\ 
+		positive regulation of nucleic acid-templated transcription & 4.6e-10 & negative regulation of RNA metabolic process & 2.9e-07 \\ 
+		positive regulation of transcription, DNA-templated & 4.6e-10 & lipid metabolic process & 3.3e-07 \\ 
+		positive regulation of macromolecule biosynthetic process & 1.2e-09 & \textbf{blood vessel development} & 6.3e-07 \\ 
+		positive regulation of RNA biosynthetic process & 1.2e-09 & regulation of proteolysis & 7.0e-07 \\ 
+		cellular catabolic process & 1.2e-09 & negative regulation of biosynthetic process & 7.1e-07 \\ 
+		positive regulation of RNA metabolic process & 1.6e-09 & regulation of kinase activity & 9.1e-07 \\ 
+		positive regulation of nitrogen compound metabolic process & 2.7e-09 & negative regulation of macromolecule biosynthetic process & 9.7e-07 \\ 
+		positive regulation of protein metabolic process & 2.7e-09 & multi-organism cellular process & 9.7e-07 \\ 
+		positive regulation of nucleobase-containing compound metabolic process & 3.3e-09 & regulation of protein kinase activity & 1.1e-06 \\ 
+		negative regulation of gene expression & 1.1e-08 & negative regulation of response to stimulus & 1.1e-06 \\ 
+		regulation of response to stress & 2.0e-08 & response to endogenous stimulus & 1.1e-06 \\ 
+		macromolecule catabolic process & 4.6e-08 & cell cycle & 1.1e-06 \\ 
+		\textbf{vasculature development} & 4.6e-08 & negative regulation of cellular macromolecule biosynthetic process & 1.1e-06 \\ 
+		regulation of catabolic process & 5.2e-08 & symbiont process & 1.1e-06 \\ 
+		negative regulation of nitrogen compound metabolic process & 5.4e-08 & interspecies interaction between organisms & 1.1e-06 \\ 
+		\textbf{cardiovascular system development} & 8.4e-08 & negative regulation of cellular biosynthetic process & 1.1e-06 \\ 
+		\textbf{circulatory system development} & 8.4e-08 & negative regulation of transcription, DNA-templated & 1.1e-06 \\ 
+		negative regulation of nucleobase-containing compound metabolic process & 8.7e-08 & regulation of protein serine/threonine kinase activity & 1.3e-06 \\ 
+		cellular response to oxygen-containing compound & 1.2e-07 & negative regulation of RNA biosynthetic process & 1.6e-06 \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{Result of the enrichment analysis against GO Biological processes of the list of 2043 genes, resulting from step 3 of the pipeline. For each term, q-values, resulting from Benjamini-Hochberg correction, are reported. Only the first 50 most significant terms are reported.}
+	\label{tab:bp2043}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
+		response to oxygen-containing compound & 3.6e-25 & apoptotic process & 4.0e-16 \\ 
+		positive regulation of protein metabolic process & 4.4e-21 & positive regulation of signaling & 5.7e-16 \\ 
+		response to organic cyclic compound & 3.0e-20 & regulation of cell proliferation & 6.1e-16 \\ 
+		positive regulation of cellular protein metabolic process & 2.4e-19 & \textbf{cardiovascular system development} & 8.6e-16 \\ 
+		cellular response to oxygen-containing compound & 1.7e-18 & \textbf{circulatory system development} & 8.6e-16 \\ 
+		regulation of programmed cell death & 2.2e-18 & positive regulation of signal transduction & 9.5e-16 \\ 
+		response to endogenous stimulus & 2.4e-18 & inflammatory response & 1.8e-15 \\ 
+		regulation of cell death & 6.8e-18 & response to cytokine & 3.1e-15 \\ 
+		positive regulation of phosphate metabolic process & 1.1e-17 & regulation of system process & 3.5e-15 \\ 
+		positive regulation of phosphorus metabolic process & 1.1e-17 & \textbf{blood circulation} & 7.2e-15 \\ 
+		protein phosphorylation & 1.1e-17 & positive regulation of intracellular signal transduction & 7.2e-15 \\ 
+		regulation of apoptotic process & 2.7e-17 & signal transduction by protein phosphorylation & 7.9e-15 \\ 
+		positive regulation of protein modification process & 4.2e-17 & \textbf{circulatory system process} & 7.9e-15 \\ 
+		programmed cell death & 5.0e-17 & response to lipid & 8.9e-15 \\ 
+		positive regulation of protein phosphorylation & 5.0e-17 & \textbf{response to wounding} & 8.9e-15 \\ 
+		regulation of phosphate metabolic process & 5.9e-17 & regulation of transport & 2.2e-14 \\ 
+		regulation of phosphorus metabolic process & 7.7e-17 & defense response & 4.4e-14 \\ 
+		regulation of protein phosphorylation & 1.5e-16 & \textbf{blood vessel development} & 5.3e-14 \\ 
+		response to alcohol & 1.7e-16 & response to hormone & 7.0e-14 \\ 
+		positive regulation of phosphorylation & 1.9e-16 & cellular response to endogenous stimulus & 7.4e-14 \\ 
+		positive regulation of multicellular organismal process & 1.9e-16 & MAPK cascade & 9.0e-14 \\ 
+		positive regulation of cell communication & 2.2e-16 & cellular response to external stimulus & 1.1e-13 \\ 
+		regulation of protein modification process & 3.4e-16 & \textbf{vasculature development} & 1.4e-13 \\ 
+		regulation of phosphorylation & 3.8e-16 & \textbf{blood vessel morphogenesis} & 2.9e-13 \\ 
+		regulation of intracellular signal transduction & 4.0e-16 & \textbf{angiogenesis} & 3.2e-13 \\
+	\end{tabularx}
+	\smallskip
+	\caption{Result of the enrichment analysis against GO Biological processes of the list of 149 preliminary target genes, resulting from step 3 of the pipeline. For each term, q-values, resulting from Benjamini-Hochberg correction, are reported. Only the first 50 most significant terms are reported.}
+	\label{tab:bp149}
+\end{table}
+
+\begin{table}[!htb]
+	\centering
+	\scriptsize
+	\rowcolors{2}{white}{NavyBlue!10}
+	\begin{tabularx}{\textwidth}{lRlR}
+		\rowcolor{NavyBlue!80}
+		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
+		response to oxygen-containing compound & 8.4e-162 & nucleotide metabolic process & 2.7e-91 \\ 
+		carboxylic acid metabolic process & 4.5e-157 & nucleoside phosphate metabolic process & 5.3e-91 \\ 
+		ion transport & 5.2e-153 & cell-cell signaling & 7.9e-89 \\ 
+		organic acid metabolic process & 1.8e-145 & response to drug & 2.2e-88 \\ 
+		oxoacid metabolic process & 1.8e-145 & regulation of system process & 2.4e-87 \\ 
+		response to endogenous stimulus & 4.1e-134 & response to inorganic substance & 3.2e-87 \\ 
+		response to organic cyclic compound & 9.1e-130 & small molecule biosynthetic process & 5.5e-87 \\ 
+		response to nitrogen compound & 9.9e-130 & cellular response to oxygen-containing compound & 8.3e-87 \\ 
+		response to organonitrogen compound & 1.9e-129 & purine-containing compound metabolic process & 1.3e-85 \\ 
+		oxidation-reduction process & 6.3e-124 & chemical homeostasis & 6.8e-85 \\ 
+		protein phosphorylation & 1.1e-108 & protein autophosphorylation & 4.9e-83 \\ 
+		cation transport & 2.1e-107 & ribose phosphate metabolic process & 9.3e-82 \\ 
+		regulation of transport & 2.6e-106 & lipid metabolic process & 1.3e-81 \\ 
+		ion transmembrane transport & 4.9e-106 & cation transmembrane transport & 4.1e-81 \\ 
+		homeostatic process & 4.8e-103 & \textbf{response to wounding} & 9.4e-80 \\ 
+		organophosphate metabolic process & 2.3e-102 & ribonucleotide metabolic process & 3.6e-79 \\ 
+		transmembrane transport & 1.5e-99 & purine nucleotide metabolic process & 2.2e-78 \\ 
+		response to lipid & 1.2e-97 & organonitrogen compound biosynthetic process & 7.0e-78 \\ 
+		response to hormone & 1.5e-97 & anion transport & 4.4e-77 \\ 
+		nucleobase-containing small molecule metabolic process & 1.9e-97 & alpha-amino acid metabolic process & 1.1e-76 \\ 
+		secretion & 5.4e-97 & purine ribonucleotide metabolic process & 1.3e-76 \\ 
+		\textbf{circulatory system process} & 3.4e-96 & inorganic ion transmembrane transport & 1.8e-76 \\ 
+		\textbf{blood circulation} & 5.0e-96 & metal ion transport & 2.1e-76 \\ 
+		cellular amino acid metabolic process & 4.8e-95 & secretion by cell & 1.7e-73 \\ 
+		regulation of ion transport & 2.6e-93 & response to abiotic stimulus & 4.7e-73 \\ 
+	\end{tabularx}
+	\smallskip
+	\caption{Result of the enrichment analysis against GO Biological processes of the list all genes targeted by clinically approved drugs, obtained form DrugBank. For each term, q-values, resulting from Benjamini-Hochberg correction, are reported. Only the first 50 most significant terms are reported.}
+	\label{tab:bp2229}
+\end{table}
 
 \begin{table}[ht]
 	\centering
@@ -547,7 +673,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		INTERFERON ALFA-N3 & IFNAR2 & severe acute respiratory syndrome & Phase IV & Protein \\ 
 	\end{tabularx}
 	\smallskip
-	\caption{List of drugs targeting the 36 genes. Only Phase IV drugs are reportes.}
+	\caption{List of drugs targeting the list of 36 genes resulting from the final step of the pipeline. Only drugs at phase IV of clinical trial are reported.}
 	\label{tab:drugs}
 \end{table}
 
@@ -628,9 +754,10 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		localization of cell & 7.5e-04 & regulation of cytokine production involved in immune response & 1.8e-02 \\ 
 	\end{tabularx}
 	\smallskip
-	\caption{GO terms enriched in the list of 36 (continued)}
+	\caption{Result of the enrichment analysis against the GO Biological Processes of the list of 36 genes, resulting from the final step of the pipeline. For each term, q-values, resulting from Benjamini-Hochberg correction, are reported. (Table continued in Tab. \ref{tab:GO36_2})}
 	\label{tab:GO36_1}
 \end{table}
+
 			
 \begin{table}[!htb]
 	\centering
@@ -670,15 +797,13 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		inflammatory response & 2.0e-03 &  &  \\
 	\end{tabularx}
 	\smallskip
-	\caption{GO terms enriched in the list of 36.}
+	\caption{Continued from Tab. \ref{tab:GO36_1}}
 	\label{tab:GO36_2}
-\end{table}
-
-\begin{table}[!htb]
-		\centering
-		\scriptsize
-		\rowcolors{2}{NavyBlue!10}{white}
-		\begin{tabularx}{\textwidth}{XlXl}
+	\bigskip\bigskip
+	\centering
+	\scriptsize
+	\rowcolors{2}{NavyBlue!10}{white}
+	\begin{tabularx}{\textwidth}{XlXl}
 		\rowcolor{NavyBlue!80}
 		\textbf{\color{white} GO term} & \textbf{\color{white} q-value} & \textbf{\color{white} GO term} & \textbf{\color{white} q-value} \\
 		cellular response to organic substance & 5.1e-07 & response to interleukin-6 & 9.1e-03 \\ 
@@ -715,10 +840,9 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		cellular response to interleukin-6 & 6.5e-03 &  &  \\ 
 	\end{tabularx}
 	\smallskip
-	\caption{GO terms enriched in the list of 18}
+	\caption{Result of the enrichment analysis against the GO Biological Processes of the list of 18 genes, resulting from the final step of the pipeline. For each term, q-values, resulting from Benjamini-Hochberg correction, are reported.}
 	\label{tab:GO18}
 \end{table}
-
 
 \begin{table}[ht]
 	\centering
@@ -754,7 +878,7 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		Acute leukemia & 4.73e-07 & Hamman-Rich syndrome & 2.62e-06 \\ 
 	\end{tabularx}
 	\smallskip
-	\caption{Disease from 36 genes}
+	\caption{Result of the enrichment analysis against diseases databases of the list of 36 genes, resulting from the final step of the pipeline. For each disease, q-values, resulting from Benjamini-Hochberg correction, are reported. Only the first 50 most significant diseases are reported.}
 	\label{tab:diseases36}
 \end{table}
 
@@ -792,122 +916,8 @@ of sparse causal graphs. Social Science Computer, Review, (1991).
 		Lymphoproliferative Disorder of the Skin & 4.90e-04 & Gastroesophageal reflux disease & 1.65e-03 \\ 
 	\end{tabularx}
 	\smallskip
-	\caption{Disease from 18 genes}
+	\caption{Result of the enrichment analysis against diseases databases of the list of 18 genes, resulting from the final step of the pipeline. For each disease, q-values, resulting from Benjamini-Hochberg correction, are reported. Only the first 50 most significant diseases are reported.}
 	\label{tab:diseases18}
-\end{table}
-
-\begin{table}[ht]
-	\centering
-	\scriptsize
-	\rowcolors{2}{white}{NavyBlue!10}
-	\begin{tabularx}{\textwidth}{lRlR}
-		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
-		response to oxygen-containing compound & 3.6e-25 & apoptotic process & 4.0e-16 \\ 
-		positive regulation of protein metabolic process & 4.4e-21 & positive regulation of signaling & 5.7e-16 \\ 
-		response to organic cyclic compound & 3.0e-20 & regulation of cell proliferation & 6.1e-16 \\ 
-		positive regulation of cellular protein metabolic process & 2.4e-19 & \textbf{cardiovascular system development} & 8.6e-16 \\ 
-		cellular response to oxygen-containing compound & 1.7e-18 & \textbf{circulatory system development} & 8.6e-16 \\ 
-		regulation of programmed cell death & 2.2e-18 & positive regulation of signal transduction & 9.5e-16 \\ 
-		response to endogenous stimulus & 2.4e-18 & inflammatory response & 1.8e-15 \\ 
-		regulation of cell death & 6.8e-18 & response to cytokine & 3.1e-15 \\ 
-		positive regulation of phosphate metabolic process & 1.1e-17 & regulation of system process & 3.5e-15 \\ 
-		positive regulation of phosphorus metabolic process & 1.1e-17 & \textbf{blood circulation} & 7.2e-15 \\ 
-		protein phosphorylation & 1.1e-17 & positive regulation of intracellular signal transduction & 7.2e-15 \\ 
-		regulation of apoptotic process & 2.7e-17 & signal transduction by protein phosphorylation & 7.9e-15 \\ 
-		positive regulation of protein modification process & 4.2e-17 & \textbf{circulatory system process} & 7.9e-15 \\ 
-		programmed cell death & 5.0e-17 & response to lipid & 8.9e-15 \\ 
-		positive regulation of protein phosphorylation & 5.0e-17 & \textbf{response to wounding} & 8.9e-15 \\ 
-		regulation of phosphate metabolic process & 5.9e-17 & regulation of transport & 2.2e-14 \\ 
-		regulation of phosphorus metabolic process & 7.7e-17 & defense response & 4.4e-14 \\ 
-		regulation of protein phosphorylation & 1.5e-16 & \textbf{blood vessel development} & 5.3e-14 \\ 
-		response to alcohol & 1.7e-16 & response to hormone & 7.0e-14 \\ 
-		positive regulation of phosphorylation & 1.9e-16 & cellular response to endogenous stimulus & 7.4e-14 \\ 
-		positive regulation of multicellular organismal process & 1.9e-16 & MAPK cascade & 9.0e-14 \\ 
-		positive regulation of cell communication & 2.2e-16 & cellular response to external stimulus & 1.1e-13 \\ 
-		regulation of protein modification process & 3.4e-16 & \textbf{vasculature development} & 1.4e-13 \\ 
-		regulation of phosphorylation & 3.8e-16 & \textbf{blood vessel morphogenesis} & 2.9e-13 \\ 
-		regulation of intracellular signal transduction & 4.0e-16 & \textbf{angiogenesis} & 3.2e-13 \\
-	\end{tabularx}
-	\smallskip
-	\caption{BP 149 genes ToppGenes}
-	\label{tab:bp149}
-\end{table}
-
-\begin{table}[ht]
-	\centering
-	\scriptsize
-	\rowcolors{2}{white}{NavyBlue!10}
-	\begin{tabularx}{\textwidth}{lRlR}
-		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
-		response to oxygen-containing compound & 8.4e-162 & nucleotide metabolic process & 2.7e-91 \\ 
-		carboxylic acid metabolic process & 4.5e-157 & nucleoside phosphate metabolic process & 5.3e-91 \\ 
-		ion transport & 5.2e-153 & cell-cell signaling & 7.9e-89 \\ 
-		organic acid metabolic process & 1.8e-145 & response to drug & 2.2e-88 \\ 
-		oxoacid metabolic process & 1.8e-145 & regulation of system process & 2.4e-87 \\ 
-		response to endogenous stimulus & 4.1e-134 & response to inorganic substance & 3.2e-87 \\ 
-		response to organic cyclic compound & 9.1e-130 & small molecule biosynthetic process & 5.5e-87 \\ 
-		response to nitrogen compound & 9.9e-130 & cellular response to oxygen-containing compound & 8.3e-87 \\ 
-		response to organonitrogen compound & 1.9e-129 & purine-containing compound metabolic process & 1.3e-85 \\ 
-		oxidation-reduction process & 6.3e-124 & chemical homeostasis & 6.8e-85 \\ 
-		protein phosphorylation & 1.1e-108 & protein autophosphorylation & 4.9e-83 \\ 
-		cation transport & 2.1e-107 & ribose phosphate metabolic process & 9.3e-82 \\ 
-		regulation of transport & 2.6e-106 & lipid metabolic process & 1.3e-81 \\ 
-		ion transmembrane transport & 4.9e-106 & cation transmembrane transport & 4.1e-81 \\ 
-		homeostatic process & 4.8e-103 & \textbf{response to wounding} & 9.4e-80 \\ 
-		organophosphate metabolic process & 2.3e-102 & ribonucleotide metabolic process & 3.6e-79 \\ 
-		transmembrane transport & 1.5e-99 & purine nucleotide metabolic process & 2.2e-78 \\ 
-		response to lipid & 1.2e-97 & organonitrogen compound biosynthetic process & 7.0e-78 \\ 
-		response to hormone & 1.5e-97 & anion transport & 4.4e-77 \\ 
-		nucleobase-containing small molecule metabolic process & 1.9e-97 & alpha-amino acid metabolic process & 1.1e-76 \\ 
-		secretion & 5.4e-97 & purine ribonucleotide metabolic process & 1.3e-76 \\ 
-		\textbf{circulatory system process} & 3.4e-96 & inorganic ion transmembrane transport & 1.8e-76 \\ 
-		\textbf{blood circulation} & 5.0e-96 & metal ion transport & 2.1e-76 \\ 
-		cellular amino acid metabolic process & 4.8e-95 & secretion by cell & 1.7e-73 \\ 
-		regulation of ion transport & 2.6e-93 & response to abiotic stimulus & 4.7e-73 \\ 
-	\end{tabularx}
-	\smallskip
-	\caption{BP 2229 genes ToppGenes}
-	\label{tab:bp2229}
-\end{table}
-
-\begin{table}[ht]
-	\centering
-	\scriptsize
-	\rowcolors{2}{white}{NavyBlue!10}
-	\begin{tabularx}{\textwidth}{lRlR}
-		\rowcolor{NavyBlue!80}
-		\textbf{\color{white} Biological Process} & \textbf{\color{white} q-value} & \textbf{\color{white} Biological Process} & \textbf{\color{white} q-value}\\
-		organic substance catabolic process & 4.4e-11 & protein catabolic process & 1.2e-07 \\ 
-		positive regulation of biosynthetic process & 4.4e-11 & regulation of protein catabolic process & 1.2e-07 \\ 
-		regulation of intracellular signal transduction & 1.2e-10 & positive regulation of cellular protein metabolic process & 1.6e-07 \\ 
-		positive regulation of cellular biosynthetic process & 1.5e-10 & regulation of cell proliferation & 1.8e-07 \\ 
-		positive regulation of gene expression & 4.1e-10 & positive regulation of molecular function & 2.4e-07 \\ 
-		response to oxygen-containing compound & 4.6e-10 & alcohol metabolic process & 2.8e-07 \\ 
-		positive regulation of nucleic acid-templated transcription & 4.6e-10 & negative regulation of RNA metabolic process & 2.9e-07 \\ 
-		positive regulation of transcription, DNA-templated & 4.6e-10 & lipid metabolic process & 3.3e-07 \\ 
-		positive regulation of macromolecule biosynthetic process & 1.2e-09 & \textbf{blood vessel development} & 6.3e-07 \\ 
-		positive regulation of RNA biosynthetic process & 1.2e-09 & regulation of proteolysis & 7.0e-07 \\ 
-		cellular catabolic process & 1.2e-09 & negative regulation of biosynthetic process & 7.1e-07 \\ 
-		positive regulation of RNA metabolic process & 1.6e-09 & regulation of kinase activity & 9.1e-07 \\ 
-		positive regulation of nitrogen compound metabolic process & 2.7e-09 & negative regulation of macromolecule biosynthetic process & 9.7e-07 \\ 
-		positive regulation of protein metabolic process & 2.7e-09 & multi-organism cellular process & 9.7e-07 \\ 
-		positive regulation of nucleobase-containing compound metabolic process & 3.3e-09 & regulation of protein kinase activity & 1.1e-06 \\ 
-		negative regulation of gene expression & 1.1e-08 & negative regulation of response to stimulus & 1.1e-06 \\ 
-		regulation of response to stress & 2.0e-08 & response to endogenous stimulus & 1.1e-06 \\ 
-		macromolecule catabolic process & 4.6e-08 & cell cycle & 1.1e-06 \\ 
-		\textbf{vasculature development} & 4.6e-08 & negative regulation of cellular macromolecule biosynthetic process & 1.1e-06 \\ 
-		regulation of catabolic process & 5.2e-08 & symbiont process & 1.1e-06 \\ 
-		negative regulation of nitrogen compound metabolic process & 5.4e-08 & interspecies interaction between organisms & 1.1e-06 \\ 
-		\textbf{cardiovascular system development} & 8.4e-08 & negative regulation of cellular biosynthetic process & 1.1e-06 \\ 
-		\textbf{circulatory system development} & 8.4e-08 & negative regulation of transcription, DNA-templated & 1.1e-06 \\ 
-		negative regulation of nucleobase-containing compound metabolic process & 8.7e-08 & regulation of protein serine/threonine kinase activity & 1.3e-06 \\ 
-		cellular response to oxygen-containing compound & 1.2e-07 & negative regulation of RNA biosynthetic process & 1.6e-06 \\ 
-	\end{tabularx}
-	\smallskip
-	\caption{BP 2043 genes ToppGenes}
-	\label{tab:bp2043}
 \end{table}
 
 \end{document}
