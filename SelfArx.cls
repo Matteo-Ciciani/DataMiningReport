@@ -229,7 +229,7 @@ justification=raggedright]{caption}
 
 % Remove brackets from numbering in List of References
 \renewcommand{\@biblabel}[1]{\bfseries\color{color1}\textsuperscript{[#1]}}
-%\setlength{\bibitemsep}{0cm}
+%\setlength{\bibitemsep}{1cm}
 \let\oldbibliography\thebibliography
 \renewcommand{\thebibliography}[1]{%
 \addcontentsline{toc}{section}{\refname}%
