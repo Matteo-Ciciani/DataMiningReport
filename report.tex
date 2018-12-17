@@ -30,6 +30,13 @@
 \usepackage{halloweenmath}
 \setlength{\parindent}{0pt}
 
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+	\OLDthebibliography{#1}
+	\setlength{\parskip}{0pt}
+	\setlength{\itemsep}{0pt plus 0.02ex}
+}
+
 
 %----------------------------------------------------------------------------------------
 %	COLUMNS
