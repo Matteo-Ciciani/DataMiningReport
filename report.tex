@@ -34,7 +34,7 @@
 \renewcommand\thebibliography[1]{
 	\OLDthebibliography{#1}
 	\setlength{\parskip}{0pt}
-	\setlength{\itemsep}{0pt plus 0.02ex}
+	\setlength{\itemsep}{0pt plus 0.01ex}
 }
 
 
@@ -104,19 +104,19 @@
 
 Drug repurposing is a strategy to identify new therapeutic uses for marketed drugs \cite{Polamreddy}. The use of these procedure has increased in recent years due to new molecular discoveries, new high-throughput technologies and databases. 
 
-The traditional drug discovery is dificult and time consuming. Even though investments in biomedical and pharmaceutical research and development has increased significantly in the past 20 years, the annual number of new treatments approved by the US Food and Drug Administration (FDA) has not significantly increased \cite{Feixiong}. This could be due to a lack of well-established  predictive pharmacokinetics and pharmacodynamics approaches, and concerning safety and tolerability profiles for new chemical entities from preclinical studies to clinical trials\cite{Shih}. 
+The traditional drug discovery is dificult and time consuming. Even though investments in biomedical and pharmaceutical research and development has increased significantly in the past 20 years, the annual number of new treatments approved by the US Food and Drug Administration (FDA) has not significantly increased \cite{Feixiong}. This could be due to a lack of well-established  predictive pharmacokinetics and pharmacodynamics approaches, and concerning safety and tolerability profiles for new chemical entities from preclinical studies to clinical trials \cite{Shih}. 
 
 On average, it takes 14 years to be able to have a marketable product, yet most drug development efforts do not pay off.
 
 Drug repurposing can be a good solution to overcome some of the shortcomings of traditional drug discovery. For instance, it can drastically speed up the process, since it relies on previous knowledge and circumvents the FDA approval procedure.
 
-Coronary artery disease (CAD), also knwon as coronary heart disease (CHD) or ischemic heart disease (IHD), is the most common type of heart disease. It is the leading cause of death in most of the western countries including Italy (World Health Organization data). The condition leads to the formation of a waxy substance called plaque into coronary arteries, decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture, due to the formation of blood clots that could mostly (or completely) block blood flow through coronary arteries. The disease can weaken the heart muscle and lead to heart failure and arrhythmias. Moreover, it can cause angina, heart attack and sudden cardiac death. \cite{Wong}
+Coronary artery disease (CAD), also knwon as coronary heart disease (CHD) or ischemic heart disease (IHD), is the most common type of heart disease. It is the leading cause of death in most of the western countries including Italy (World Health Organization data). The condition leads to the formation of a waxy substance called plaque into coronary arteries, decreasing the flow of oxygen-rich blood to the heart. The condition could worsen after the plaque rupture, due to the formation of blood clots that could mostly (or completely) block blood flow through coronary arteries. The disease can weaken the heart muscle and lead to heart failure and arrhythmias. Moreover, it can cause angina, heart attack and sudden cardiac death \cite{Wong}. 
 
 CAD can be prevented maintaining a healthy lifestyle with regular exercise and a balanced diet. When this is not enough, the use of medication is needed. Since CAD is a complex disease caused by many factors, different kind of drugs can be used to treat it, among which aspirin is the most known one. However, in the worst cases it is necessary to undergo surgical intervention such as coronary artery bypass surgery (CABG).
 
 Since, as aforementioned, CAD is the leading cause of death in most western countries, we think there is the unmet medical need to broaden the range of drugs effective against this disease.
 
-Currently, there is no standard for \textit{in silico} drug repurposing. In this project we apply NES$^2$RA\cite{NES2RA}, a computational approach that identifies candidate genes that may expand a given gene network. We aim to identify novel putative drug targets for CAD, applying NES$^2$RA to genes genetically associated with CAD. In addition, we aim to test whether NES$^2$RA could be a suitable tool to address drug repurposing.
+Currently, there is no standard for \textit{in silico} drug repurposing. In this project we apply NES$^2$RA \cite{NES2RA}, a computational approach that identifies candidate genes that may expand a given gene network. We aim to identify novel putative drug targets for CAD, applying NES$^2$RA to genes genetically associated with CAD. In addition, we aim to test whether NES$^2$RA could be a suitable tool to address drug repurposing.
 
 \section*{Materials and Methods}
 \addcontentsline{toc}{section}{Materials and Methods} % Adds this section to the table of contents
@@ -129,14 +129,14 @@ Currently, there is no standard for \textit{in silico} drug repurposing. In this
 NES$^2$RA is a method based on the PC-algorithm \cite{PC-alg} and can be summarized in three steps. First, data undergo subsetting, then the skeleton of the PC algorithm is run and finally results are aggregated, assigning to each isoform in the expansion lists the corresponding relative frequency score.
 
 \setlength\emergencystretch{\textwidth}
-To facilitate the most computationally demanding step of NES$^2$RA, i.e. running the skeleton of the PC algorithm, the single gene expansions were submitted to gene@home \cite{realBoinc} BOINC (Berkeley Open Infrastructure for Network Computing) project, hosted by the TN-Grid platform. The platform allows to distribute the computational burden among committed volunteers' machines, in order to reduce the running time and memory usage as much as possible.
+To facilitate the most computationally demanding step of NES$^2$RA, i.e. running the skeleton of the PC algorithm, the single gene expansions were submitted to gene@home BOINC (Berkeley Open Infrastructure for Network Computing) project \cite{realBoinc}, hosted by the TN-Grid platform. The platform allows to distribute the computational burden among committed volunteers' machines, in order to reduce the running time and memory usage as much as possible.
 
 This gene@home project was previously set up for the network expansion of genes whose expression data came from the FANTOM5 Database \cite{fantom}. On the BOINC platform, alongside the original FANTOM5 expression data, a filtered version is available. The latter was built selecting, among the isoforms encoded by the same gene, the ones that differ mostly in terms of expression profile, presumably corresponding to different biological functions. We chose to use the filtered version, in order to cut down on the computational load of subsequent analyses.
 
 NES$^2$RA was run with default parameters: $\alpha=0.05$, tile size $=1000$ and 2000 iterations.
 
 \subsubsection*{On-line resources}
-\emph{Open Targets} is a platform which integrates public domain data to enable drug target identification and prioritisation\cite{open, OpenTargetPlatform}. This resource was used to select genes genetically associated with CAD disease, to identify drug targets and to perform functional enrichment analysis on the final results.
+\emph{Open Targets} is a platform which integrates public domain data to enable drug target identification and prioritization \cite{open, OpenTargetPlatform}. This resource was used to select genes genetically associated with CAD disease, to identify drug targets and to perform functional enrichment analysis on the final results.
 
 The \emph{DrugBank} database is a bioinformatics and cheminformatics resource that combines detailed drug data with comprehensive drug target information \cite{drugbank}. This resource was used to retrieve all the genes already targeted by FDA approved drugs.
 
@@ -174,7 +174,7 @@ The algorithm outputs a series of expansion networks, each of which is a list of
 \subsubsection*{Score aggregation and filtering}
 The output lists were merged on the isoforms, summing their scores in order to rank them based on how many times each isoform appeared in the various expansion lists.
 
-Due to the large number of isoforms present in the expansion lists, we performed a selection on the isoforms. For each expansion list $\ell$, only the first $N_\ell$ isoforms were selected, where $N_\ell=max\{5;\,100-R_\ell\}$, and $R_\ell$ is the rank, based on genetic association, of the gene whose isoform was expanded to obtain the list $\ell$. 
+Due to the large number of isoforms present in the expansion lists, we performed a selection on the isoforms. For each expansion list $\ell$, only the first $N_\ell$ isoforms were selected, where $N_\ell=max\{5;\,100-R_\ell+1\}$, and $R_\ell$ is the rank, based on genetic association, of the gene whose isoform was expanded to obtain the list $\ell$. 
 
 The resulting isoforms were ranked according to the aggregated score described previously. Then, the ranked list of isoforms was converted in a ranked list of genes. The rank of a gene was obtained as the minimum of the ranks of its corresponding isoforms. 
 
@@ -244,7 +244,7 @@ In the last step of the pipeline, we obtained 36 genes from the first approach (
 
 We used Open Targets to identify which drugs target the 36 genes identified. In Tab. \ref{tab:drugs} we reported only the drugs at phase IV of clinical trial.
 
-For both lists, we employed Open Targets to perform enrichment analysis against the Biological Processes from Gene Ontology and ToppGene to perform enrichment analysis against disease databases. The results are reported in Tab. \ref{tab:GO36_1}, Tab. \ref{tab:GO36_2}, Tab. \ref*{tab:GO18} (for Biological Processes) and Tab. \ref{tab:diseases36}, Tab. \ref{tab:diseases18} (for the diseases).
+For both lists, we employed Open Targets to perform enrichment analysis against the Biological Processes from Gene Ontology and ToppGene to perform enrichment analysis against disease databases. The results are reported in Tab. \ref{tab:GO36_1}, Tab. \ref{tab:GO36_2}, Tab. \ref{tab:GO18} (for Biological Processes) and Tab. \ref{tab:diseases36}, Tab. \ref{tab:diseases18} (for the diseases).
 
 Among the 36 genes, 19 were already associated with CAD. 4 of them are also target of drugs used to treat CAD. The list of genes and their association levels are reported in Fig. \ref{fig:19CAD}.
 
@@ -367,7 +367,7 @@ In order to gain insight on the genes found, an enrichment analysis against the 
 
 The relation between diabetes mellitus (DM) and cardiovascular diseases is well known. For DM, CAD is a major determinant of the long-term prognosis among patients. DM is associated with a 2 to 4-fold increased mortality risk from heart disease \cite{diabetes}.
 
-Metformin is an example of a drug used to treat both CAD and DM. This drug targets NDUFAL4L2, one of the genes that was retrieved by our pipeline (Fig. \ref{fig:19CAD}). \cite{metformin} Considering this result, we propose to repurpose drugs used to treat DM for CAD. From our analyses, the genes INSR and GAA seem to be promising target for drug repurposing.
+Metformin is an example of a drug used to treat both CAD and DM. This drug targets NDUFAL4L2, one of the genes that was retrieved by our pipeline (Fig. \ref{fig:19CAD}) \cite{metformin}. Considering this result, we propose to repurpose drugs used to treat DM for CAD. From our analyses, the genes INSR and GAA seem to be promising target for drug repurposing.
 
 INSR (Insulin Receptor) mediates the pleiotropic actions of insulin. Binding of insulin leads to phosphorylation of several intracellular substrates, including insulin receptor substrates and other signaling intermediates. This gene has a strong  genetic association with CAD and is targeted by insulin. Given the broad range of processes regulated by this receptor and its association with CAD, it could be a good candidate for drug repurposing.
 
@@ -377,7 +377,7 @@ GAA  (Glucosidase Alpha, Acid) is a protein coding gene essential for the degrad
 
 Among the 36 genes, PDE4B already has a phase IV drug for CAD (namely, Dypiridamole), alongside approved drugs for some skin conditions, such as atopic eczema and alopecia. This link leads us to suggest that the several drugs acting on skin conditions, targeting the gene RARA (one of our 36 genes), could be investigated through clinical trials for CAD. RARA is very weakly associated with CAD, therefore any positive therapeutic confirmation would be particularly significant for the assessment of the efficacy of NES$^2$RA for drug repurposing.
 
-On a side note, this kind of information can be used for cross-repurposing aims. For example, Pentoxifylline, currently a phase II drug for CAD disease, is reported in the literature to be a drug with wide spectrum applications in dermatology, although it has not being investigated thoroughly for these applications. \cite{pento} This could potentially foster the connection between CAD and skin conditions.
+On a side note, this kind of information can be used for cross-repurposing aims. For example, Pentoxifylline, currently a phase II drug for CAD disease, is reported in the literature to be a drug with wide spectrum applications in dermatology, although it has not being investigated thoroughly for these applications \cite{pento}. This could potentially foster the connection between CAD and skin conditions.
 
 \section*{Conclusions}
 \addcontentsline{toc}{section}{Conclusions} % Adds this section to the table of contents
@@ -386,7 +386,7 @@ The application of drug repurposing is an effective strategy to reduce the costs
 
 Here we presented a novel drug repurposing pipeline, which has lead to the identification of 36 putative drug targets, 4 of which are already known to be used for CAD. In addition we explore in further details the relationship between CAD and pathologies like DM and skin diseases, proposing new potential drug targets.
 
-Needless to say, a large amount of experimental data would need to be gathered and analyzed in order to draw conclusions on the validity of the methods, namely NESSRA and our pipeline, and of our findings.
+Needless to say, a large amount of experimental data would need to be gathered and analyzed in order to draw conclusions on the validity of the methods, namely NES$^2$RA and our pipeline, and of our findings.
 
 \phantomsection
 %----------------------------------------------------------------------------------------
